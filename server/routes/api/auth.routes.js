@@ -27,4 +27,22 @@ authRouter.post('/register', async (req, res) => {
   }
 });
 
+authRouter.post('/login', async (req, res) => {
+  const { login, password } = req.body;
+  const existingUser = await User.findOne({ where: { login } });
+
+  // проверка что пользователь есть и пароли совпадают
+  if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
+    req.session.userId = existingUser.id;
+    req.session.user = existingUser;
+    res.json({ id: existingUser.id, login: existingUser.login });
+  } else {
+    res
+      .status(401)
+      .json({
+        error: 'Пароли не совпадают или такого пользователя не существует',
+      });
+  }
+});
+
 module.exports = authRouter;
