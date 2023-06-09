@@ -12,7 +12,7 @@
     display: grid;
     place-items: center;
     margin: 0;
-    background: #f2f3ff;
+    background: #c4c4c4;
     font-family: "Euclid Circular A";
     color: #1b1e40;
     animation: rotate 5s infinite alternate linear;
@@ -23,23 +23,40 @@
     border: 0;
     cursor: pointer;
   }
+
+  .athlete_svg {
+    width: 400px;
+    text-align: center;
+    margin-left: 100px;
+    margin-top: 10px;
+  }
+
+  .athlete_svg img {
+    width: 560px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 5px;
+    margin-bottom: 10px;
+  }
   
-  .login-card {
+  .login_card {
     width: 400px;
     padding: 60px 30px 32px;
     border-radius: 1.25rem;
-    background: #ffffff;
+    background: #d7d7d7;
     text-align: center;
     transition: 0.4s;
+    margin-left: 500px;
+    margin-top: 10px;
   }
   
-  .login-card > h2 {
+  .login_card > h2 {
     font-size: 36px;
     font-weight: 600;
     margin: 0 0 30px;
   }
   
-  .login-card img {
+  .login_card img {
     width: 260px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -47,13 +64,13 @@
     margin-bottom: 10px;
   }
   
-  .login-form {
+  .login_form {
     width: 100%;
     margin: 0;
     display: grid;
   }
   
-  .login-form input.control::placeholder {
+  .login_form input.control::placeholder {
     color: #9d9fbd;
   }
   

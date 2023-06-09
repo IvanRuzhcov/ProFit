@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import "./styles.module.css";
+import style from "./styles.module.css";
 import logo from "./logo.svg";
 
 const strengthLabels = ["weak", "medium", "strong"];
@@ -48,38 +48,59 @@ export function RegisterPage():JSX.Element {
 
   return (
       <>
-      <div className="login-card">
-      <img src={logo} />
-      <h2>Sign Up</h2>
-      <form className="login-form">
-        <div className="username">
-          <input
-            autoComplete="off"
-            spellCheck="false"
-            className="control"
-            type="email"
-            placeholder="Email"
-          />
-          <div id="spinner" className="spinner" />
-        </div>
+       <div className={style.login_card}>
+    <img src={logo} />
+    <h2>Sign Up</h2>
+    <form className={style.login_form}>
+      <div className={style.username}>
         <input
-          name="password"
+          autoComplete="off"
           spellCheck="false"
-          className="control"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
+          className={style.control}
+          type="name"
+          placeholder="Name"
         />
+        <div id={style.spinner} className={style.spinner}></div>
+      </div>
+      <div className={style.username}>
+        <input
+          autoComplete="off"
+          spellCheck="false"
+          className={style.control}
+          type="email"
+          placeholder="Email"
+        />
+        <div id={style.spinner} className={style.spinner}></div>
+      </div>
+      <input
+        name="password"
+        spellCheck="false"
+        className={style.control}
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+      />
+      <input
+        name="password"
+        spellCheck="false"
+        className={style.control}
+        type="password"
+        placeholder="Repeat password"
+        onChange={handleChange}
+      />
 
-        <div className={`bars ${strength}`}>
-          <div />
-        </div>
-        <div className="strength">{strength && <>{strength} password</>}</div>
-        <button className="control" type="button">
-          JOIN NOW
-        </button>
-      </form>
-    </div>
+      <div className={`${style.bars} ${strength}`}>
+        <div></div>
+      </div>
+      <div className={style.strength}>{strength && <>{strength} password</>}</div>
+      <button className={style.control} type="button">
+        JOIN NOW
+      </button>
+    </form>
+  </div>
+  <div className={style.athlete_svg}>
+      <img src="/athlete.svg" />
+      </div>
       </>
   );
 }

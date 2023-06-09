@@ -1,12 +1,14 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { RegisterPage } from '../features/auth/RegisterPage'
+import Registration from '../features/auth/Registration';
+import { RegisterPage } from '../features/auth/RegisterPage';
 
-function App():JSX.Element {
+function App(): JSX.Element {
   return (
-    <div className="App">
-    <RegisterPage/>
-    </div>
+    <Routes>
+      <Route path="/registration" element={<RegisterPage/>} />
+    </Routes>
   );
 }
 
