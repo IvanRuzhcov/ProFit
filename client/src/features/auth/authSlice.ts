@@ -63,7 +63,7 @@ const authSlice = createSlice({
 
       .addCase(verification.fulfilled, (state, action) => {
         state.authChecked = true;
-        state.user = action.payload;
+        state.user = action.payload.isLoggedIn ? action.payload.user : undefined;
       });
   },
 });

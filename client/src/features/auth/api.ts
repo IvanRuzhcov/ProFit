@@ -34,7 +34,15 @@ export async function loginFetch(credentials: Credentials): Promise<User> {
   return res.json();
 }
 
-export const getUser = async (): Promise<User> => {
+export const getUser = async (): Promise<
+  | {
+      isLoggedIn: true;
+      user: User;
+    }
+  | {
+      isLoggedIn: false;
+    }
+> => {
   const res = await fetch('/api/auth/verification', { credentials: 'include' });
 
   if (!res.ok) {
@@ -43,4 +51,3 @@ export const getUser = async (): Promise<User> => {
   }
   return res.json();
 };
-
