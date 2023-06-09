@@ -45,6 +45,7 @@ authRouter.post('/login', async (req, res) => {
 
 authRouter.get('/verification', async (req, res) => {
   // const userId = req.session.user;
+  // const userId = req.session.user;
 
   // if (userId) {
   //   console.log(userId, '<<<===');
