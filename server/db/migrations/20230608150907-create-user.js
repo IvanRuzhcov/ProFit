@@ -26,6 +26,7 @@ module.exports = {
       status: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
       sertificate: {
         type: Sequelize.BOOLEAN,

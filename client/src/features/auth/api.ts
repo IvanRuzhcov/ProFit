@@ -2,6 +2,7 @@ import RegisterData from './types/RegisterData';
 import User from './types/User';
 
 export const registerFetch = async (obj: RegisterData): Promise<User> => {
+
   const res = await fetch('/api/auth/register', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },

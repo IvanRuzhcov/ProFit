@@ -38,7 +38,7 @@ function Registration(): JSX.Element {
 
   return (
     <div>
-      <form onChange={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <input
             type="text"
