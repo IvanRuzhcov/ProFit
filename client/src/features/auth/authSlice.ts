@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import AuthState from './types/AuthState';
 import RegisterData from './types/RegisterData';
 import * as api from './api';
+import Credentials from './types/Credentials';
 
 const initialState: AuthState = {
   authChecked: false,
@@ -23,6 +24,16 @@ export const register = createAsyncThunk(
   }
 );
 
+export const loginJoin = createAsyncThunk(
+  'auth/loginFetch', 
+  async (credentials: Credentials) => {
+  if (!credentials.login.trim() || !credentials.password.trim()) {
+    throw new Error('Не все поля заполнены');
+  }
+
+  return api.loginFetch(credentials);
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -35,6 +46,14 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, action) => {
         state.registerFormError = action.error.message;
+      })
+
+      .addCase(loginJoin.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.loginFormError = undefined;
+      })
+      .addCase(loginJoin.rejected, (state, action) => {
+        state.loginFormError = action.error.message;
       });
   },
 });
