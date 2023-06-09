@@ -1,11 +1,11 @@
 require('dotenv').config();
 
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const expressConfig = require('./config/express');
 
 // импортируем роутеры (там лежат наши ручки)
-// const authRouter = require('./routes/api/auth.routes');
+const authRouter = require('./routes/api/auth.routes');
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -14,7 +14,7 @@ const PORT = process.env.PORT ?? 4000;
 expressConfig(app);
 
 // подключаем роутеры
-// app.use('', authRouter);
+app.use('api/auth', authRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {

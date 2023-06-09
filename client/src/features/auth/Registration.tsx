@@ -1,25 +1,68 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store';
+import { register } from './authSlice';
+
+// import { useForm } from 'react-hook-form';
 
 function Registration(): JSX.Element {
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit } = useForm();
+  // {...register('name', { required: true })}
 
-  console.log(register);
-  
+  const [login, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordRepeat, setPassword2] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
+  const handleSubmit = React.useCallback(
+    async (event: React.FormEvent) => {
+      event.preventDefault();
+
+      const dispatchResult = await dispatch(
+        register({
+          login,
+          email,
+          password,
+          passwordRepeat,
+        })
+      );
+
+      if (register.fulfilled.match(dispatchResult)) {
+        navigate('/');
+      }
+    },
+    [dispatch, login, navigate, email, password, passwordRepeat]
+  );
 
   return (
     <div>
-      <form>
+      <form onChange={handleSubmit}>
         <div>
-          <input type="text" {...register('name', { required: true })} name="name" placeholder="Имя" />
-          <input type="email" {...register('email', { required: true })} name="email" placeholder="Почта" />
-          <input type="password" {...register('password1', { required: true })} name="password1" placeholder="Пароль" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Имя"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Почта"
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <input
             type="password"
-            {...register('password2', { required: true })}
+            name="password1"
+            placeholder="Пароль"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
             name="password2"
             placeholder="Повторите пароль"
+            onChange={(e) => setPassword2(e.target.value)}
           />
           <div>
             <button type="submit">Зарегистрироваться</button>
