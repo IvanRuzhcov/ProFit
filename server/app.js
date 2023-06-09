@@ -14,7 +14,7 @@ const PORT = process.env.PORT ?? 4000;
 expressConfig(app);
 
 // подключаем роутеры
-app.use('api/auth', authRouter);
+app.use('/api/auth', authRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
