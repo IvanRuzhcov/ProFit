@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import store from '../store';
+import store from './store';
 import App from './App/App';
 
 const root = ReactDOM.createRoot(
@@ -12,9 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-    <App />
+      <App />
     </BrowserRouter>
-    </Provider>
+  </Provider>
 );
-
-
