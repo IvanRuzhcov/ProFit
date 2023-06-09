@@ -1,5 +1,4 @@
 import Credentials from './types/Credentials';
-import { Message } from './types/Message';
 import RegisterData from './types/RegisterData';
 import User from './types/User';
 
