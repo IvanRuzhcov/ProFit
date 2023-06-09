@@ -1,8 +1,10 @@
 import User from './User';
 
-export default interface AuthState {
+type AuthState = {
   authChecked: boolean;
   user?: User;
   loginFormError?: string;
   registerFormError?: string;
-}
+};
+
+export default AuthState;

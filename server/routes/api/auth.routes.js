@@ -11,7 +11,7 @@ authRouter.post('/register', async (req, res) => {
       if (!user) {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({ login, password: hash, email });
-        req.session.user = user.id;
+        req.session.userId = user.id;
         res.locals.user = { login: user.login, id: user.id };
         res
           .status(201)
@@ -37,11 +37,36 @@ authRouter.post('/login', async (req, res) => {
     req.session.user = existingUser;
     res.json({ id: existingUser.id, login: existingUser.login });
   } else {
-    res
-      .status(401)
-      .json({
-        error: 'Пароли не совпадают или такого пользователя не существует',
-      });
+    res.status(401).json({
+      error: 'Пароли не совпадают или такого пользователя не существует',
+    });
+  }
+});
+
+authRouter.get('/verification', async (req, res) => {
+  // const userId = req.session.user;
+  // const userId = req.session.user;
+
+  // if (userId) {
+  //   console.log(userId, '<<<===');
+  //   const user = await User.findOne({ where: { id: userId } });
+  //   res.json(user);
+  //   console.log('user', user);
+  // } else {
+  //   res.json({ message: 'error' });
+  // }
+  const { user } = res.locals;
+  console.log(user);
+  if (user) {
+    res.json({
+      isLoggedIn: true,
+      user: {
+        id: user.id,
+        login: user.login,
+      },
+    });
+  } else {
+    res.json({ isLoggedIn: false });
   }
 });
 

@@ -1,10 +1,10 @@
-const { Admin } = require('../db/models');
+const { User } = require('../db/models');
 
 module.exports = async function getUser(req, res, next) {
   // если пользователь залогинен, то в хранилище сессии лежит его userId
-  const { adminId } = req.session;
-  const admin = adminId && (await Admin.findByPk(adminId));
-  res.locals.admin = admin;
+  const { userId } = req.session;
+  const user = userId && (await User.findByPk(userId));
+  res.locals.user = user;
 
   next();
 };

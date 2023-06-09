@@ -11,6 +11,10 @@ const initialState: AuthState = {
   registerFormError: undefined,
 };
 
+export const verification = createAsyncThunk('auth/verification', () =>
+  api.getUser()
+);
+
 export const register = createAsyncThunk(
   'auth/registerFetch',
   async (data: RegisterData) => {
@@ -25,14 +29,15 @@ export const register = createAsyncThunk(
 );
 
 export const loginJoin = createAsyncThunk(
-  'auth/loginFetch', 
+  'auth/loginFetch',
   async (credentials: Credentials) => {
-  if (!credentials.login.trim() || !credentials.password.trim()) {
-    throw new Error('Не все поля заполнены');
-  }
+    if (!credentials.login.trim() || !credentials.password.trim()) {
+      throw new Error('Не все поля заполнены');
+    }
 
-  return api.loginFetch(credentials);
-});
+    return api.loginFetch(credentials);
+  }
+);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -54,6 +59,11 @@ const authSlice = createSlice({
       })
       .addCase(loginJoin.rejected, (state, action) => {
         state.loginFormError = action.error.message;
+      })
+
+      .addCase(verification.fulfilled, (state, action) => {
+        state.authChecked = true;
+        state.user = action.payload.isLoggedIn ? action.payload.user : undefined;
       });
   },
 });
