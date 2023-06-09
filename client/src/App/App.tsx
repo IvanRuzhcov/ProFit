@@ -11,7 +11,7 @@ function App(): JSX.Element {
   const dispatch =useAppDispatch()
 
   useEffect(() => {
-    dispatch(verification());
+    dispatch(getUser());
   }, [dispatch]);
 
 

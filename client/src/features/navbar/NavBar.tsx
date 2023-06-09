@@ -116,7 +116,7 @@ function NavBar(): JSX.Element {
             ))}
           </Box>
           <div>{user?.login}</div>
-          {!user ? <><Link to='/registration' style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Регистрация</Button></Link>
+          {user ? <><Link to='/registration' style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Регистрация</Button></Link>
           <Link to='/login' style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Войти</Button></Link></> : <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

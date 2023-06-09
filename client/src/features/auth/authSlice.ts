@@ -11,9 +11,11 @@ const initialState: AuthState = {
   registerFormError: undefined,
 };
 
-export const verification = createAsyncThunk('auth/verification', () =>
-  api.getUser()
-);
+// export const verification = createAsyncThunk('auth/verification', () =>
+//   api.getUser()
+// );
+
+export const getUser = createAsyncThunk('auth/user', () => api.user());
 
 export const register = createAsyncThunk(
   'auth/registerFetch',

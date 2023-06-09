@@ -34,13 +34,24 @@ export async function loginFetch(credentials: Credentials): Promise<User> {
   return res.json();
 }
 
-export const getUser = async (): Promise<User> => {
-  const res = await fetch('/api/auth/verification', { credentials: 'include' });
+// export const getUser = async (): Promise<User> => {
+//   const res = await fetch('/api/auth/verification', { credentials: 'include' });
 
-  if (!res.ok) {
-    const { error } = await res.json();
-    throw error;
-  }
-  return res.json();
-};
+//   if (!res.ok) {
+//     const { error } = await res.json();
+//     throw error;
+//   }
+//   return res.json();
+// };
 
+export async function user(): Promise<
+  | {
+      isLoggedIn: true;
+      user: User;
+    }
+  | {
+      isLoggedIn: false;
+    }
+> {
+  return (await fetch('/api/auth/user')).json();
+}

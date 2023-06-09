@@ -44,28 +44,29 @@ authRouter.post('/login', async (req, res) => {
 });
 
 authRouter.get('/verification', async (req, res) => {
-  const userId = req.session.user;
+  // const userId = req.session.user;
 
-  if (userId) {
-    console.log(userId, '<<<===');
-    const user = await User.findOne({ where: { id: userId } });
-    res.json(user);
-    console.log('user', user);
+  // if (userId) {
+  //   console.log(userId, '<<<===');
+  //   const user = await User.findOne({ where: { id: userId } });
+  //   res.json(user);
+
+  // } else {
+  //   res.json({ message: 'error' });
+  // }
+  const { user } = req.session.user;
+  console.log(user);
+  if (user) {
+    res.json({
+      isLoggedIn: true,
+      user: {
+        id: user.id,
+        login: user.login,
+      },
+    });
   } else {
-    res.json({ message: 'error' });
+    res.json({ isLoggedIn: false });
   }
-//   const { user } = res.locals;
-//   if (user) {
-//     res.json({
-//       isLoggedIn: true,
-//       user: {
-//         id: user.id,
-//         login: user.login,
-//       },
-//     });
-//   } else {
-//     res.json({ isLoggedIn: false });
-//   }
 });
 
 module.exports = authRouter;
