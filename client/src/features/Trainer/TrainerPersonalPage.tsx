@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
+import VideoLineTrainer from './VideoLineTrainer';
+import PhotoLineTrainer from './PhotoLineTrainer';
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
@@ -25,7 +27,56 @@ function TrainerPersonalPage(): JSX.Element {
       { description: 'Work at kindergarden', date: '2015-2017' },
     ],
     SportUser: [{ sport: 'Swimming' }, { sport: 'Dancing' }],
-    Files: [{ url: 'https://www.youtube.com/watch?v=ug49OQFB-6s', description: 'training video' }],
+    Files: [
+      {
+        id: 1,
+        type: 'video',
+        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        description: 'training video',
+      },
+      {
+        id: 2,
+        type: 'video',
+        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        description: 'training video',
+      },
+      {
+        id: 3,
+        type: 'video',
+        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        description: 'training video',
+      },
+      {
+        id: 4,
+        type: 'video',
+        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        description: 'training video',
+      },
+      {
+        id: 5,
+        type: 'photo',
+        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        description: 'training video',
+      },
+      {
+        id: 6,
+        type: 'photo',
+        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        description: 'training video',
+      },
+      {
+        id: 7,
+        type: 'photo',
+        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        description: 'training video',
+      },
+      {
+        id: 8,
+        type: 'photo',
+        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        description: 'training video',
+      },
+    ],
   };
   return (
     <div>
@@ -81,9 +132,8 @@ function TrainerPersonalPage(): JSX.Element {
             </li>
           </ul>
         </div>
-
       </div>
-      {/* <iframe src={user.Files[0].url} title='traininig video' allowFullScreen /> */}
+    {user.Files && <div>{user.Files?.map((file) => file.type === 'video' ? <VideoLineTrainer key={file.id} file={file} /> : < PhotoLineTrainer key={file.id} file={file} />)}</div>}
     </div>
   );
 }
@@ -96,3 +146,4 @@ export default TrainerPersonalPage;
 // сделать норм фото с аватаркой
 // в шапке навбара должен быть логин
 // страница редактирования профиля - принимаю онлайн через чекед
+// исправить ссылки в видео - сделать мап
