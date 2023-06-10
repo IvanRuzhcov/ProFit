@@ -9,11 +9,12 @@ export const registerFetch = async (obj: RegisterData): Promise<User> => {
     body: JSON.stringify(obj),
   });
 
-  if (res.status >= 400) {
-    const { error } = await res.json();
-    throw error;
-  }
-  return res.json();
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+ }
+const data = await res.json();
+return data;
 };
 
 export async function loginFetch(credentials: Credentials): Promise<User> {
