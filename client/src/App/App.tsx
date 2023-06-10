@@ -3,12 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
-
 import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
-import { RegisterPage } from '../features/auth/RegisterPage';
 
 
 function App(): JSX.Element {

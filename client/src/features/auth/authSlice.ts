@@ -19,10 +19,10 @@ export const register = createAsyncThunk(
   'auth/registerFetch',
   async (data: RegisterData) => {
     if (data.password !== data.passwordRepeat) {
-      throw new Error('Пароли не совпадают');
+      throw new Error('Пароли не совпадают!');
     }
     if (!data.login.trim() || !data.email.trim() || !data.password.trim()) {
-      throw new Error('Не все поля заполнены');
+      throw new Error('Не все поля заполнены!');
     }
     return api.registerFetch(data);
   }
@@ -32,7 +32,7 @@ export const loginJoin = createAsyncThunk(
   'auth/loginFetch',
   async (credentials: Credentials) => {
     if (!credentials.login.trim() || !credentials.password.trim()) {
-      throw new Error('Не все поля заполнены');
+      throw new Error('Не все поля заполнены!');
     }
 
     return api.loginFetch(credentials);
@@ -42,7 +42,14 @@ export const loginJoin = createAsyncThunk(
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    resetLoginFormError: (state) => {
+      state.loginFormError = undefined;
+    },
+    resetRegisterFormError: (state) => {
+      state.registerFormError = undefined;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
@@ -50,7 +57,7 @@ const authSlice = createSlice({
         state.registerFormError = undefined;
       })
       .addCase(register.rejected, (state, action) => {
-        state.registerFormError = action.error.message;
+        state.registerFormError = action.error.message
       })
 
       .addCase(loginJoin.fulfilled, (state, action) => {
@@ -63,9 +70,13 @@ const authSlice = createSlice({
 
       .addCase(verification.fulfilled, (state, action) => {
         state.authChecked = true;
-        state.user = action.payload.isLoggedIn ? action.payload.user : undefined;
+        state.user = action.payload.isLoggedIn
+          ? action.payload.user
+          : undefined;
       });
   },
 });
+
+export const { resetLoginFormError, resetRegisterFormError } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -4,7 +4,6 @@ const { User } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
   const { login, email, password } = req.body;
-  console.log('===>>>', login, email, password);
   try {
     if (login && password && email) {
       let user = await User.findOne({ where: { login } });
@@ -23,7 +22,7 @@ authRouter.post('/register', async (req, res) => {
       res.status(400).json({ message: 'Заполните все поля' });
     }
   } catch (error) {
-    res.status(500).json(console.log(error.message));
+    res.status(500).json({ message: error.message });
   }
 });
 

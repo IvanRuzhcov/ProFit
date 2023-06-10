@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../store';
-import { register } from './authSlice';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
+import { register, resetRegisterFormError } from './authSlice';
 import style from './styles.module.css';
 import logo from './logo.svg';
 import './styles.css';
@@ -19,6 +20,8 @@ function Registration(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [strength, setStrength] = useState('');
+  const error = useSelector((state: RootState) => state.auth.registerFormError);
+  
 
   const strengthLabels = ['weak', 'medium', 'strong'];
 
@@ -53,11 +56,6 @@ function Registration(): JSX.Element {
     setStrength(strengthLabels[strengthIndicator] ?? '');
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    getStrength(event.target.value);
-    setPassword(event.target.value);
-  };
-
   const handleSubmit = useCallback(
     async (event: React.FormEvent) => {
       event.preventDefault();
@@ -78,6 +76,39 @@ function Registration(): JSX.Element {
     [dispatch, login, navigate, email, password, passwordRepeat]
   );
 
+  const handleNameChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setName(event.target.value);
+      dispatch(resetRegisterFormError());
+    },
+    [dispatch]
+  );
+
+  const handlePasswordChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      getStrength(event.target.value);
+      setPassword(event.target.value);
+      dispatch(resetRegisterFormError());
+    },
+    [dispatch]
+  );
+
+  const handlePasswordRepeatChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword2(event.target.value);
+      dispatch(resetRegisterFormError());
+    },
+    [dispatch]
+  );
+
+  const handleEmailChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(event.target.value);
+      dispatch(resetRegisterFormError());
+    },
+    [dispatch]
+  );
+
   return (
     <div>
       <div className={style.containerForm}>
@@ -91,7 +122,7 @@ function Registration(): JSX.Element {
                 type="text"
                 name="name"
                 placeholder="Имя"
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleNameChange}
               />
               <div id={style.spinner} className={style.spinner} />
             </div>
@@ -101,7 +132,7 @@ function Registration(): JSX.Element {
                 type="email"
                 name="email"
                 placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
               />
               <div id={style.spinner} className={style.spinner} />
             </div>
@@ -110,16 +141,16 @@ function Registration(): JSX.Element {
               spellCheck="false"
               className={style.control}
               type="password"
-              placeholder="Password"
-              onChange={handleChange}
+              placeholder="Пароль"
+              onChange={handlePasswordChange}
             />
             <input
               name="password"
               spellCheck="false"
               className={style.control}
               type="password"
-              placeholder="Repeat password"
-              onChange={(e) => setPassword2(e.target.value)}
+              placeholder="Повторите пароль"
+              onChange={handlePasswordRepeatChange}
             />
 
             <div className={`bars ${strength}`} />
@@ -127,46 +158,14 @@ function Registration(): JSX.Element {
             <div className={style.strength}>
               {strength && <>{strength} password</>}
             </div>
+
             <button className={style.control} type="submit">
               JOIN NOW
             </button>
+            <div className={style.errorRegister}>{error}</div>
           </form>
         </div>
-        {/* <div className={style.athlete_svg}>
-      </div> */}
       </div>
-
-      {/* <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="Имя"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Почта"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            name="password1"
-            placeholder="Пароль"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="password"
-            name="password2"
-            placeholder="Повторите пароль"
-            onChange={(e) => setPassword2(e.target.value)}
-          />
-          <div>
-            <button type="submit">Зарегистрироваться</button>
-          </div>
-        </div>
-      </form> */}
     </div>
   );
 }
