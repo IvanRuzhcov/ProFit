@@ -8,6 +8,7 @@ import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
+import { RegisterPage } from '../features/auth/RegisterPage';
 
 
 function App(): JSX.Element {
@@ -28,10 +29,13 @@ function App(): JSX.Element {
   }
 
   return (
+    <>
+    <NavBar/>
     <Routes>
       <Route path="/registration" element={<Registration />} />
       <Route path="/login" element={<Login />} />
     </Routes>
+    </>
   );
 }
 

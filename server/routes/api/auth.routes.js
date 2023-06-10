@@ -4,7 +4,7 @@ const { User } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
   const { login, email, password } = req.body;
-  console.log(login, email, password);
+  console.log('===>>>', login, email, password);
   try {
     if (login && password && email) {
       let user = await User.findOne({ where: { login } });
@@ -45,7 +45,6 @@ authRouter.post('/login', async (req, res) => {
 
 authRouter.get('/verification', async (req, res) => {
   // const userId = req.session.user;
-  // const userId = req.session.user;
 
   // if (userId) {
   //   console.log(userId, '<<<===');
@@ -56,7 +55,6 @@ authRouter.get('/verification', async (req, res) => {
   //   res.json({ message: 'error' });
   // }
   const { user } = res.locals;
-  console.log(user);
   if (user) {
     res.json({
       isLoggedIn: true,

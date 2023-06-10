@@ -2,20 +2,8 @@
     box-sizing: border-box;
   }
   
-  html,
-  body,
-  .wrapper {
-    height: 100%;
-  }
-  
   body {
-    display: grid;
-    place-items: center;
-    margin: 0;
     background: #c4c4c4;
-    font-family: "Euclid Circular A";
-    color: #1b1e40;
-    animation: rotate 5s infinite alternate linear;
   }
   
   button {
@@ -31,23 +19,22 @@
     margin-top: 10px;
   }
 
-  .athlete_svg img {
-    width: 560px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 5px;
-    margin-bottom: 10px;
-  }
+  .containerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
   .login_card {
+    font-family: "Euclid Circular A";
     width: 400px;
     padding: 60px 30px 32px;
     border-radius: 1.25rem;
     background: #d7d7d7;
     text-align: center;
     transition: 0.4s;
-    margin-left: 500px;
-    margin-top: 10px;
+
+    margin-top: 20px;
   }
   
   .login_card > h2 {
@@ -104,39 +91,6 @@
     text-align: center;
     letter-spacing: 2px;
     transition: all 0.375s;
-  }
-  
-  .bars {
-    margin: 8px 0;
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 6px;
-    border-radius: 3px;
-    background: #dfe1f0;
-  }
-  
-  .bars div {
-    height: 6px;
-    border-radius: 3px;
-    transition: 0.4s;
-    width: 0%;
-  }
-  
-  .bars.weak div {
-    background: #e24c71;
-    width: 33.33%;
-  }
-  
-  .bars.medium div {
-    background: #f39845;
-    width: 66.66%;
-  }
-  
-  .bars.strong div {
-    background: #57c558;
-    width: 100%;
   }
   
   .strength {
