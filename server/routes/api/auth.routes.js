@@ -43,16 +43,6 @@ authRouter.post('/login', async (req, res) => {
 });
 
 authRouter.get('/verification', async (req, res) => {
-  // const userId = req.session.user;
-
-  // if (userId) {
-  //   console.log(userId, '<<<===');
-  //   const user = await User.findOne({ where: { id: userId } });
-  //   res.json(user);
-  //   console.log('user', user);
-  // } else {
-  //   res.json({ message: 'error' });
-  // }
   const { user } = res.locals;
   if (user) {
     res.json({
@@ -65,6 +55,12 @@ authRouter.get('/verification', async (req, res) => {
   } else {
     res.json({ isLoggedIn: false });
   }
+});
+
+authRouter.post('/logout', async (req, res) => {
+  req.session.destroy(() => {
+    res.json({ success: true });
+  });
 });
 
 module.exports = authRouter;
