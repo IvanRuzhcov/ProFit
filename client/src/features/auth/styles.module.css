@@ -25,7 +25,8 @@ button {
   align-items: center;
 }
 
-.login_card {
+
+.login_card  {
   font-family: 'Euclid Circular A';
   width: 400px;
   padding: 20px 30px 30px;
@@ -33,8 +34,9 @@ button {
   background: #d7d7d7;
   text-align: center;
   transition: 0.4s;
-  margin-top: 20px;
+  margin-top: 30px;
 }
+
 
 .login_card > h2 {
   font-size: 36px;

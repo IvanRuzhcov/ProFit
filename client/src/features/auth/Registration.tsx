@@ -21,7 +21,6 @@ function Registration(): JSX.Element {
   const dispatch = useAppDispatch();
   const [strength, setStrength] = useState('');
   const error = useSelector((state: RootState) => state.auth.registerFormError);
-  
 
   const strengthLabels = ['weak', 'medium', 'strong'];
 
@@ -114,7 +113,7 @@ function Registration(): JSX.Element {
       <div className={style.containerForm}>
         <div className={style.login_card}>
           <img src={logo} alt="logo" />
-          <h2>Sign Up</h2>
+          <h2>Регистрация</h2>
           <form className={style.login_form} onSubmit={handleSubmit}>
             <div className={style.username}>
               <input
@@ -131,21 +130,19 @@ function Registration(): JSX.Element {
                 className={style.control}
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Почта"
                 onChange={handleEmailChange}
               />
               <div id={style.spinner} className={style.spinner} />
             </div>
             <input
-              name="password"
               spellCheck="false"
               className={style.control}
-              type="password"
+              // type="password"
               placeholder="Пароль"
               onChange={handlePasswordChange}
             />
             <input
-              name="password"
               spellCheck="false"
               className={style.control}
               type="password"
@@ -160,7 +157,7 @@ function Registration(): JSX.Element {
             </div>
 
             <button className={style.control} type="submit">
-              JOIN NOW
+              Зарегистрироваться
             </button>
             <div className={style.errorRegister}>{error}</div>
           </form>

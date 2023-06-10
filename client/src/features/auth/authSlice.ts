@@ -39,6 +39,8 @@ export const loginJoin = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk('auth/logout', api.logout)
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -73,7 +75,11 @@ const authSlice = createSlice({
         state.user = action.payload.isLoggedIn
           ? action.payload.user
           : undefined;
-      });
+      })
+
+      .addCase(logout.fulfilled, (state) => {
+        state.user = undefined
+      })
   },
 });
 

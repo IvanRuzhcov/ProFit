@@ -13,13 +13,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { RootState } from '../../store';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store';
+import { logout } from '../auth/authSlice';
 
 const pages = ['Products'];
-const settings = ['Личный кабинет', 'Выход'];
 
 function NavBar(): JSX.Element {
+  const { user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -42,14 +46,24 @@ function NavBar(): JSX.Element {
     setAnchorElUser(null);
   };
 
-  const { user } = useSelector((state:RootState) => state.auth)
-  
+  const handleLogout = React.useCallback(async (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    const dispatchResult = await dispatch(logout());
+    if (logout.fulfilled.match(dispatchResult)) {
+      navigate('/');
+    }
+  }, []);
+
+  const settings = [
+    { name: 'Личный кабинет', href: '/myPage' },
+    { name: 'Выход', href: '/', handleLogout },
+  ];
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          
           <Typography
             variant="h6"
             noWrap
@@ -116,38 +130,61 @@ function NavBar(): JSX.Element {
             ))}
           </Box>
           <div>{user?.login}</div>
-          {!user ? <><Link to='/registration' style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Регистрация</Button></Link>
-          <Link to='/login' style={{textDecoration: 'none', color: 'white'}}><Button color="inherit">Войти</Button></Link></> : <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> }
-          
-          
+          {!user ? (
+            <>
+              <Link
+                to="/registration"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                <Button color="inherit">Регистрация</Button>
+              </Link>
+              <Link
+                to="/login"
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                <Button color="inherit">Войти</Button>
+              </Link>
+            </>
+          ) : (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://sun9-22.userapi.com/impg/eMa1WKhBfRMBtDSlCMTG-h4apaeHkWW9Ty1rEQ/PcuYxpBqU9s.jpg?size=2160x2160&quality=96&sign=a8db1806e0ce29bac4ca3596bf1ac6f0&type=album"
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <Link
+                    to={setting.href}
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    onClick={setting.handleLogout}
+                  >
+                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  </Link>
+                ))}
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

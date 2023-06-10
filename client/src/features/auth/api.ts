@@ -51,3 +51,9 @@ export const getUser = async (): Promise<
   }
   return res.json();
 };
+
+export const logout = async (): Promise<void> => {
+await fetch('/api/auth/logout', {
+  method: 'POST'
+})
+}
