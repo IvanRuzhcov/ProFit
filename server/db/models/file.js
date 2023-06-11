@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   File.init(
     {
+      type: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       url: {
         type: DataTypes.TEXT,
       },
