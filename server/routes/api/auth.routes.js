@@ -3,18 +3,23 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
-  const { login, email, password } = req.body;
+  const { login, email, password, status } = req.body;
   try {
-    if (login && password && email) {
+    if (login && password && email && status) {
       let user = await User.findOne({ where: { login } });
       if (!user) {
         const hash = await bcrypt.hash(password, 10);
-        user = await User.create({ login, password: hash, email });
+        user = await User.create({ login, password: hash, email, status });
         req.session.userId = user.id;
         res.locals.user = { login: user.login, id: user.id };
         res
           .status(201)
-          .json({ id: user.id, login: user.login, email: user.email });
+          .json({
+            id: user.id,
+            login: user.login,
+            email: user.email,
+            status: user.status,
+          });
       } else {
         res.status(400).json({ message: 'Такой пользователь уже существует' });
       }
@@ -34,7 +39,12 @@ authRouter.post('/login', async (req, res) => {
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
     req.session.userId = existingUser.id;
     req.session.user = existingUser;
-    res.json({ id: existingUser.id, login: existingUser.login });
+    res.json({
+      id: existingUser.id,
+      login: existingUser.login,
+      email: existingUser.email,
+      status: existingUser.status,
+    });
   } else {
     res.status(401).json({
       error: 'Пароли не совпадают или такого пользователя не существует',
