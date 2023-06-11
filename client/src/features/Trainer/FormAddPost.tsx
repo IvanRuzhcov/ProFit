@@ -1,17 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// const type refRatio = {
-//     current: {
-//         checked: Boolean,
-//     },
-// }
 function FormAddPost({
   showForm,
 }: {
   showForm: (value: boolean) => void;
 }): JSX.Element {
   const [show, setShow] = useState(false);
+  const [showFile, setShowFile] = useState(false);
+  const [showLink, setShowLink] = useState(false);
+  const [showChangeTypeFile, setShowChangeTypeFile] = useState(false);
+  const resetShowFileLink = (): void => {
+    setShowFile(false);
+    setShowLink(false);
+  };
 
+  const addFileFunction = (): void => {
+    setShowFile(true);
+    setShowChangeTypeFile(true);
+  }
+  const addLinkFunction = (): void => {
+    setShowLink(true);
+    setShowChangeTypeFile(true);
+  }
+  const changeTypeFunction = (): void => {
+    setShowChangeTypeFile(false);
+    resetShowFileLink();
+  }
   return (
     <div>
       <button type="button" onClick={() => showForm(false)}>
@@ -25,33 +39,54 @@ function FormAddPost({
             <input
               type="radio"
               name="type"
-              value='video'
+              value="video"
               onClick={() => setShow(true)}
             />
           </p>
           <p>
             Фото:{' '}
-            <input type="radio" name="type" value='photo' onClick={() => setShow(true)} />
+            <input
+              type="radio"
+              name="type"
+              value="photo"
+              onClick={() => setShow(true)}
+            />
           </p>
         </div>
         {show && (
           <div>
-            <input type="text" />
-            <input type="file" />
+            {!showLink && (
+              <button onClick={addFileFunction} type="button">
+                Добавить файл
+              </button>
+            )}
+            {showFile && (
+              <div>
+                <input type="file" />
+                <button type="button">Отправить</button>
+              </div>
+            )}
+            {!showFile && (
+              <button type="button" onClick={addLinkFunction}>
+                Добавить ссылку
+              </button>
+            )}
+            {showLink && (
+              <div>
+                <input type="text" />
+                <button type="button">Отправить</button>
+              </div>
+            )}
+            {showChangeTypeFile && <button type="button" onClick={changeTypeFunction}>
+              Поменять тип файла
+            </button>}
           </div>
         )}
-        {/* <input type="text"></input>
-        <input type="text"></input>
-        <input type="text">
-          <button></button>
-        </input>
-        <input type="text"></input>
-        <input type="text">
-          <button></button>
-        </input> */}
       </form>
     </div>
   );
 }
 
 export default FormAddPost;
+
+// добавить функцию, чтобы можно было добавить только или ссылку или видео
