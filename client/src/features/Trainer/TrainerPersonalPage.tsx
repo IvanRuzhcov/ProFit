@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
+import ModalWindowVideo from './ModalWindowVideo';
+import ModalWindowPhoto from './ModalWindowPhoto';
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
-  const [showFormAdd, setShowFormAdd] = useState<Boolean>(false);
+  const [showFormAdd, setShowFormAdd] = useState(false);
+
+  const showForm = (value: boolean): void => {
+    setShowFormAdd(value);
+  };
+
+
   const user = {
     id: 1,
     name: 'Mary',
@@ -58,7 +66,8 @@ function TrainerPersonalPage(): JSX.Element {
         id: 5,
         type: 'photo',
         url: 'https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg',
-        description: 'training video',
+        description:
+          'training videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablablatraining videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablablatraining videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablablatraining videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablablatraining videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablablatraining videoblablablablablavideoblablablablablavideoblablablablablavideoblablablablabla',
       },
       {
         id: 6,
@@ -113,8 +122,14 @@ function TrainerPersonalPage(): JSX.Element {
               ))}
             </li>
             {user.online && <li>Принимаю онлайн</li>}
-            {!showFormAdd && <li><button type='button' onClick={()=>setShowFormAdd(true)}>Добавить пост</button></li>}
-            <li>{showFormAdd && <FormAddPost setShowFormAdd={setShowFormAdd}/>}</li>
+            {!showFormAdd && (
+              <li>
+                <button type="button" onClick={() => setShowFormAdd(true)}>
+                  Добавить пост
+                </button>
+              </li>
+            )}
+            <li>{showFormAdd && <FormAddPost showForm={showForm} />}</li>
             <li>
               <button
                 type="button"
@@ -131,7 +146,7 @@ function TrainerPersonalPage(): JSX.Element {
                       <img src={el.url_cert} alt="certificate" />
                     </div>
                   ))}
-                  <button type='button'>Добавить сертификат</button>
+                  <button type="button">Добавить сертификат</button>
                 </div>
               )}
             </li>
