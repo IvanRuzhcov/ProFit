@@ -8,6 +8,7 @@ import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
+import MainPage from '../features/MainPage/MainPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ function App(): JSX.Element {
       <NavBar />
       <TrainerPersonalPage />
       <Routes>
+        <Route path='/' element={<MainPage />}/>
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
       </Routes>
