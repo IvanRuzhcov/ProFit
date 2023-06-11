@@ -3,16 +3,17 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
+import TrainerPersonalPage from '../features/Trainer/TrainerPersonalPage';
 import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
 
-
 function App(): JSX.Element {
-  const dispatch =useAppDispatch()
-  const authChecked = useSelector((state: RootState): boolean =>
-  state.auth.authChecked);
+  const dispatch = useAppDispatch();
+  const authChecked = useSelector(
+    (state: RootState): boolean => state.auth.authChecked
+  );
 
   useEffect(() => {
     dispatch(verification());
@@ -28,11 +29,12 @@ function App(): JSX.Element {
 
   return (
     <>
-    <NavBar/>
-    <Routes>
-      <Route path="/registration" element={<Registration />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
+      <NavBar />
+      <TrainerPersonalPage />
+      <Routes>
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </>
   );
 }
