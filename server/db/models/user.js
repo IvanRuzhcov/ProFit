@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.TEXT,
         allowNull: false,
+        defaultValue: false,
       },
       online: {
         type: DataTypes.BOOLEAN,
@@ -65,8 +66,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'User',
-    },
-
+    }
   );
 
   return User;

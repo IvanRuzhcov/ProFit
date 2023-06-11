@@ -13,7 +13,7 @@ module.exports = {
           login: 'Vanya',
           name: 'Иван Рыжков',
           profilePicture:
-          'https://sun9-28.userapi.com/impg/SYZ2CF-J8sdkgqIU8A43nZ9okVkvzqcUZLV3MQ/AiyFfNv1RkM.jpg?size=828x1242&quality=95&sign=ee669a94261a632b2f3b0411d4ddbf2b&type=album',
+          'https://sun9-28.userapi.com/impg/SYZ2CF-J8sdkgqIU8A43nZ9okVkvzqcUZLV3MQ/AiyFfNv1RkM.jpg?size=403x604&quality=95&sign=b5bf4f0b4a807c2ff4f7e2430ae52a08&c_uniq_tag=Rkrsvel1skoxYVya9xzhF7i3K6cWaKoNJyI3XbSvk2g&type=album',
           password: await bcrypt.hash('1234', 5),
           email: 'vanya.ruzhcov@gmail.com',
           status: 'coach',
@@ -64,7 +64,7 @@ module.exports = {
         {
           id: 3,
           profilePicture:
-            'blob:https://web.telegram.org/44399c8a-ff7e-4c48-9f21-f19321121859',
+            'https://sun9-10.userapi.com/impf/GXjf4CEd5qtqvof7U3KZF5UDerfzaxZYIaLnmQ/btrKs4qVLhA.jpg?size=510x510&quality=96&sign=1a00078ba2920131df6b1af9187ce4cb&c_uniq_tag=lPL8Uk_9o2y_FVShtBbX9rudf3U0bjKk0xs7GZTEbMI&type=album',
           login: 'Maxim',
           name: 'Максим Бец',
           password: await bcrypt.hash('1234', 5),
