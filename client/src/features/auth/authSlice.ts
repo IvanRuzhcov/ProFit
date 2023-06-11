@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
     if (data.password !== data.passwordRepeat) {
       throw new Error('Пароли не совпадают!');
     }
-    if (!data.login.trim() || !data.email.trim() || !data.password.trim()) {
+    if (!data.login.trim() || !data.email.trim() || !data.password.trim() || !data.status.trim()) {
       throw new Error('Не все поля заполнены!');
     }
     return api.registerFetch(data);

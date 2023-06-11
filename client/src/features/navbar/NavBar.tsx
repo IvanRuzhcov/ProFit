@@ -175,6 +175,7 @@ function NavBar(): JSX.Element {
                   <Link
                     to={setting.href}
                     style={{ textDecoration: 'none', color: 'black' }}
+                    key={setting.href}
                     onClick={setting.handleLogout}
                   >
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
