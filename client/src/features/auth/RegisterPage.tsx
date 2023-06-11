@@ -98,9 +98,6 @@ export function RegisterPage():JSX.Element {
       </button>
     </form>
   </div>
-  <div className={style.athlete_svg}>
-      <img src="/athlete.svg" />
-      </div>
       </>
   );
 }
