@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
 import TrainerPersonalPage from '../features/Trainer/TrainerPersonalPage';
+import Login from '../features/auth/Login';
+import NavBar from '../features/navbar/NavBar';
+import { RootState, useAppDispatch } from '../store';
+import { verification } from '../features/auth/authSlice';
 
 function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const authChecked = useSelector(
+    (state: RootState): boolean => state.auth.authChecked
+  );
+
+  useEffect(() => {
+    dispatch(verification());
+  }, [dispatch]);
+
+  if (!authChecked) {
+    return (
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <>
+      <NavBar />
       <TrainerPersonalPage />
       <Routes>
         <Route path="/registration" element={<Registration />} />
-        {/* <Route path='/trainer/:trainerLogin' element={<TrainerPersonalPage />} /> */}
+        <Route path="/login" element={<Login />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
