@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ModalWindowVideo from './ModalWindowVideo';
+
 
 function VideoLineTrainer({ file }: { file: any }): JSX.Element {
   return <div>
@@ -18,6 +21,8 @@ function VideoLineTrainer({ file }: { file: any }): JSX.Element {
           label="english_captions"
         />
       </video>
+      <div>{file.description?.slice(0, 100)}</div>
+      <ModalWindowVideo file={file} />
   </div>;
 }
 

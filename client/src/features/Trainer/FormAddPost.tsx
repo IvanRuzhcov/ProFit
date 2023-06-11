@@ -5,45 +5,45 @@ import React, { useEffect, useRef, useState } from 'react';
 //         checked: Boolean,
 //     },
 // }
-function FormAddPost({setShowFormAdd}: {setShowFormAdd: (value: Boolean)=> void}): JSX.Element {
+function FormAddPost({
+  showForm,
+}: {
+  showForm: (value: boolean) => void;
+}): JSX.Element {
   const [show, setShow] = useState(false);
   const [checked, setChecked] = useState(false);
-  const refRatio = useRef(null);
+  const refRatio = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // if (refRatio.current.checked) {
-      setShow(true);
-      console.log(show);
-      
-    // } else {
-      setShow(false);
-      console.log(show);
-    // }
+    if (refRatio.current?.checked) {
+      setShow(!show);
+    }
     return () => setChecked(false);
-  }, [refRatio.current]);
+  }, [refRatio]);
 
   const addWithVideo = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.checked) {
       setChecked(e.target.checked);
-    //   refRatio.current.checked = true;
-      console.log(checked, show);
     } else {
       setChecked(e.target.checked);
-    //   refRatio.current.checked = false;
-      console.log(checked, show);
+
     }
   };
   const addWithPhoto = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.checked) {
-      console.log(show, checked);
+      setChecked(e.target.checked);
+    
     } else {
-      console.log(show, checked);
+      setChecked(e.target.checked);
+  
     }
   };
 
   return (
     <div>
-        <button type='button' onClick={() => setShowFormAdd(false)}>X</button>
+      <button type="button" onClick={() => showForm(false)}>
+        X
+      </button>
       <form action="">
         <div>
           Что вы хотите добавить?
@@ -57,7 +57,7 @@ function FormAddPost({setShowFormAdd}: {setShowFormAdd: (value: Boolean)=> void}
             />
           </p>
           <p>
-            Фото: {' '}
+            Фото:{' '}
             <input type="radio" name="type" onChange={(e) => addWithPhoto(e)} />
           </p>
         </div>
