@@ -63,6 +63,7 @@ function FormAddPost({
             {showFile && (
               <div>
                 <input type="file" />
+                <input type='text'placeholder='Добавьте описание'/>
                 <button type="button">Отправить</button>
               </div>
             )}
@@ -73,7 +74,8 @@ function FormAddPost({
             )}
             {showLink && (
               <div>
-                <input type="text" />
+                <input type="text" placeholder='Вставьте ссылку'/>
+                <input type='text'placeholder='Добавьте описание'/>
                 <button type="button">Отправить</button>
               </div>
             )}
