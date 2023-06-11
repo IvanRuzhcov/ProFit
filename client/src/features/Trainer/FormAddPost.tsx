@@ -11,25 +11,25 @@ function FormAddPost({setShowFormAdd}: {setShowFormAdd: (value: Boolean)=> void}
   const refRatio = useRef(null);
 
   useEffect(() => {
-    if (refRatio.current.checked) {
+    // if (refRatio.current.checked) {
       setShow(true);
       console.log(show);
       
-    } else {
+    // } else {
       setShow(false);
       console.log(show);
-    }
+    // }
     return () => setChecked(false);
   }, [refRatio.current]);
 
   const addWithVideo = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.checked) {
       setChecked(e.target.checked);
-      refRatio.current.checked = true;
+    //   refRatio.current.checked = true;
       console.log(checked, show);
     } else {
       setChecked(e.target.checked);
-      refRatio.current.checked = false;
+    //   refRatio.current.checked = false;
       console.log(checked, show);
     }
   };
