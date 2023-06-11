@@ -131,6 +131,7 @@ function TrainerPersonalPage(): JSX.Element {
                       <img src={el.url_cert} alt="certificate" />
                     </div>
                   ))}
+                  <button type='button'>Добавить сертификат</button>
                 </div>
               )}
             </li>

@@ -30,10 +30,10 @@ function App(): JSX.Element {
   return (
     <>
       <NavBar />
-      <TrainerPersonalPage />
       <Routes>
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/trainerpage' element={<TrainerPersonalPage />} />
       </Routes>
     </>
   );
