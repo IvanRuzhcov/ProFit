@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 
 function ModalWindowPhoto({ file }: { file: any }): JSX.Element {
+    
   return (
     <div>
       <img src={file.url} alt="my photos" />

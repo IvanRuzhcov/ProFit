@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalWindowVideo from './ModalWindowVideo';
 
-
 function VideoLineTrainer({ file }: { file: any }): JSX.Element {
-  return <div>
-    <video
+  const [show, setShow] = useState(false);
+  const refDiv = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    refDiv.current?.addEventListener('click', showFunction);
+  }, [refDiv]);
+
+  const showFunction = (): void => {
+    setShow(true);
+  };
+
+  return (
+    <div ref={refDiv}>
+      <video
         src={file.url}
         width="600px"
         height="300px"
@@ -22,8 +33,9 @@ function VideoLineTrainer({ file }: { file: any }): JSX.Element {
         />
       </video>
       <div>{file.description?.slice(0, 100)}</div>
-      <ModalWindowVideo file={file} />
-  </div>;
+      {show && <ModalWindowVideo file={file} />}
+    </div>
+  );
 }
 
 export default VideoLineTrainer;
