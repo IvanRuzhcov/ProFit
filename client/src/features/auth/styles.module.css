@@ -1,147 +1,116 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  html,
-  body,
-  .wrapper {
-    height: 100%;
-  }
-  
-  body {
-    display: grid;
-    place-items: center;
-    margin: 0;
-    background: #c4c4c4;
-    font-family: "Euclid Circular A";
-    color: #1b1e40;
-    animation: rotate 5s infinite alternate linear;
-  }
-  
-  button {
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-  }
+  box-sizing: border-box;
+}
 
-  .athlete_svg {
-    width: 400px;
-    text-align: center;
-    margin-left: 100px;
-    margin-top: 10px;
-  }
+body {
+  background: #c4c4c4;
+}
 
-  .athlete_svg img {
-    width: 560px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .login_card {
-    width: 400px;
-    padding: 60px 30px 32px;
-    border-radius: 1.25rem;
-    background: #d7d7d7;
-    text-align: center;
-    transition: 0.4s;
-    margin-left: 500px;
-    margin-top: 10px;
-  }
-  
-  .login_card > h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin: 0 0 30px;
-  }
-  
-  .login_card img {
-    width: 260px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .login_form {
-    width: 100%;
-    margin: 0;
-    display: grid;
-  }
-  
-  .login_form input.control::placeholder {
-    color: #9d9fbd;
-  }
-  
-  .control {
-    border: 1.5px solid #dfe1f0;
-    outline: none;
-    width: 100%;
-    height: 56px;
-    padding: 0 16px;
-    background: #f6f7ff;
-    color: inherit;
-    border-radius: 6px;
-    margin: 8px 0;
-    font-family: inherit;
-    text-align: left;
-    font-size: 18px;
-    transition: 0.4s;
-  }
-  
-  button.control {
-    cursor: pointer;
-    width: 100%;
-    height: 56px;
-    padding: 0 16px;
-    background: #454a8f;
-    color: #f7f7f7;
-    border: 0;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 2px;
-    transition: all 0.375s;
-  }
-  
-  .bars {
-    margin: 8px 0;
-    flex: 1 1 auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 6px;
-    border-radius: 3px;
-    background: #dfe1f0;
-  }
-  
-  .bars div {
-    height: 6px;
-    border-radius: 3px;
-    transition: 0.4s;
-    width: 0%;
-  }
-  
-  .bars.weak div {
-    background: #e24c71;
-    width: 33.33%;
-  }
-  
-  .bars.medium div {
-    background: #f39845;
-    width: 66.66%;
-  }
-  
-  .bars.strong div {
-    background: #57c558;
-    width: 100%;
-  }
-  
-  .strength {
-    text-align: left;
-    height: 30px;
-    text-transform: capitalize;
-    color: #868b94;
-  }
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.athlete_svg {
+  width: 400px;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+.containerForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_card {
+  font-family: 'Euclid Circular A';
+  width: 400px;
+  padding: 15px 20px 20px;
+  border-radius: 1.25rem;
+  background: #d7d7d7;
+  text-align: center;
+  transition: 0.4s;
+  margin-top: 30px;
+}
+
+.login_card > h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.login_card img {
+  width: 260px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.login_form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+}
+
+.login_form input.control::placeholder {
+  color: #9d9fbd;
+}
+
+.control {
+  border: 1.5px solid #dfe1f0;
+  outline: none;
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  background: #f6f7ff;
+  color: inherit;
+  border-radius: 6px;
+  margin: 8px 0;
+  font-family: inherit;
+  text-align: left;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.select_status {
+  margin: 8px 0;
+}
+
+button.control {
+  cursor: pointer;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: #454a8f;
+  color: #f7f7f7;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 2px;
+  transition: all 0.375s;
+}
+
+button.control:hover {
+  background: #555894;
+}
+
+button.control:active {
+  transition: 0.01s;
+
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.strength {
+  text-align: left;
+  height: 25px;
+  text-transform: capitalize;
+  color: #868b94;
+}
+
+.errorRegister {
+  font-size: 20px;
+  color: #ff0000;
+}
