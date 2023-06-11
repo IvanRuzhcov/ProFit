@@ -31,6 +31,7 @@ module.exports = {
       status: {
         type: Sequelize.TEXT,
         allowNull: false,
+        defaultValue: false,
       },
       online: {
         type: Sequelize.BOOLEAN,
