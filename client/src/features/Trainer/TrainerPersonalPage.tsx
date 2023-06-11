@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
+import FormAddPost from './FormAddPost';
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
+  const [showFormAdd, setShowFormAdd] = useState<Boolean>(false);
   const user = {
     id: 1,
     name: 'Mary',
@@ -31,49 +33,49 @@ function TrainerPersonalPage(): JSX.Element {
       {
         id: 1,
         type: 'video',
-        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        url: 'https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4',
         description: 'training video',
       },
       {
         id: 2,
         type: 'video',
-        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        url: 'https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4',
         description: 'training video',
       },
       {
         id: 3,
         type: 'video',
-        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        url: 'https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4',
         description: 'training video',
       },
       {
         id: 4,
         type: 'video',
-        url: "https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4",
+        url: 'https://biteable.com/wp-content/uploads/2023/04/static-assets/homepage/HubpageVideo_Training_16x9_01.mp4',
         description: 'training video',
       },
       {
         id: 5,
         type: 'photo',
-        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        url: 'https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg',
         description: 'training video',
       },
       {
         id: 6,
         type: 'photo',
-        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        url: 'https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg',
         description: 'training video',
       },
       {
         id: 7,
         type: 'photo',
-        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        url: 'https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg',
         description: 'training video',
       },
       {
         id: 8,
         type: 'photo',
-        url: "https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg",
+        url: 'https://zagony.ru/admin_new/foto/2022-6-10/1654817813/sportivnye-devushki-35-foto_2.jpg',
         description: 'training video',
       },
     ],
@@ -111,6 +113,8 @@ function TrainerPersonalPage(): JSX.Element {
               ))}
             </li>
             {user.online && <li>Принимаю онлайн</li>}
+            {!showFormAdd && <li><button type='button' onClick={()=>setShowFormAdd(true)}>Добавить пост</button></li>}
+            <li>{showFormAdd && <FormAddPost setShowFormAdd={setShowFormAdd}/>}</li>
             <li>
               <button
                 type="button"
@@ -133,7 +137,17 @@ function TrainerPersonalPage(): JSX.Element {
           </ul>
         </div>
       </div>
-    {user.Files && <div>{user.Files?.map((file) => file.type === 'video' ? <VideoLineTrainer key={file.id} file={file} /> : < PhotoLineTrainer key={file.id} file={file} />)}</div>}
+      {user.Files && (
+        <div>
+          {user.Files?.map((file) =>
+            file.type === 'video' ? (
+              <VideoLineTrainer key={file.id} file={file} />
+            ) : (
+              <PhotoLineTrainer key={file.id} file={file} />
+            )
+          )}
+        </div>
+      )}
     </div>
   );
 }
