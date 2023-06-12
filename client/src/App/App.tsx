@@ -8,6 +8,7 @@ import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
+import Chart from '../features/SportsmenPage/ChartBar';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ function App(): JSX.Element {
   return (
     <>
       <NavBar />
+      <Chart />
       <Routes>
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
