@@ -27,4 +27,5 @@ export async function addStatisticsChartFetch(
   const result = await res.json();
   console.log(result);
   
+  return result
 }

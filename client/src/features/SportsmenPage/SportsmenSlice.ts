@@ -5,6 +5,7 @@ import * as api from './api';
 
 const initialState: SportsmenState = {
   sportsmenState: [],
+  statistic: []
 };
 
 // export const initSportsmen = createAsyncThunk(
@@ -34,8 +35,8 @@ const sportsmenSlice = createSlice({
     //   console.log(action.payload);
     // })
     .addCase(addStatisticsChart.fulfilled, (state, action) => {
-     
-      
+      state.statistic = action.payload.statistic
+
       
     })
   },

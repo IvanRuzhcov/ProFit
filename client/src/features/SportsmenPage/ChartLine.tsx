@@ -13,7 +13,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import styles from './styles.module.css';
 import { addStatisticsChart } from './SportsmenSlice';
-import { useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   BarElement,
@@ -94,12 +95,14 @@ function ChartLine(): JSX.Element {
   const [weight, setWeight] = useState(0);
   const dispatch = useAppDispatch();
 
+  const statistic = useSelector((state: RootState) => state.user.statistic)
+
   const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
+    labels: statistic.map((data) => data.user_id_param),
     datasets: [
       {
         label: 'Users Gained',
-        data: UserData.map((data) => data.userGain),
+        data: statistic.map((data) => data.weight),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
