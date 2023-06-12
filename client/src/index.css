@@ -9,6 +9,11 @@
   --primary-purple: #6a00ff;
 }
 
+body {
+ margin: 0;
+ padding: 0; 
+}
+
 .blue {
   color: var(--primary-blue)
 }
