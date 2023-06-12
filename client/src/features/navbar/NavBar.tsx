@@ -151,7 +151,7 @@ function NavBar(): JSX.Element {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
-                    src="https://sun9-22.userapi.com/impg/eMa1WKhBfRMBtDSlCMTG-h4apaeHkWW9Ty1rEQ/PcuYxpBqU9s.jpg?size=2160x2160&quality=96&sign=a8db1806e0ce29bac4ca3596bf1ac6f0&type=album"
+                    src={user.profilePicture}
                   />
                 </IconButton>
               </Tooltip>
