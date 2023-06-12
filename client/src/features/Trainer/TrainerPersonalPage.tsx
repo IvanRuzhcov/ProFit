@@ -6,6 +6,7 @@ import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import ModalWindowVideo from './ModalWindowVideo';
 import ModalWindowPhoto from './ModalWindowPhoto';
+import Modal from '../Modal/Modal';
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
@@ -15,7 +16,7 @@ function TrainerPersonalPage(): JSX.Element {
     setShowFormAdd(value);
   };
 
-
+  const [modalActive, setModalActive] = useState(true);
   const user = {
     id: 1,
     name: 'Mary',
@@ -129,7 +130,7 @@ function TrainerPersonalPage(): JSX.Element {
                 </button>
               </li>
             )}
-            <li>{showFormAdd && <FormAddPost showForm={showForm} />}</li>
+            {showFormAdd && <Modal active={showFormAdd} setActive={setShowFormAdd}><FormAddPost showForm={showForm} /></Modal> }
             <li>
               <button
                 type="button"
@@ -140,7 +141,8 @@ function TrainerPersonalPage(): JSX.Element {
                 Посмотреть сертификаты
               </button>
               {showCertificates && (
-                <div>
+                <Modal active={showCertificates} setActive={setshowCertificates}>
+                  <div>
                   {user.Certificates.map((el) => (
                     <div>
                       <img src={el.url_cert} alt="certificate" />
@@ -148,6 +150,7 @@ function TrainerPersonalPage(): JSX.Element {
                   ))}
                   <button type="button">Добавить сертификат</button>
                 </div>
+                </Modal>
               )}
             </li>
           </ul>

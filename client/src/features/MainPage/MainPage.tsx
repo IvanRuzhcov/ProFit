@@ -7,7 +7,7 @@ function MainPage():JSX.Element {
   return (
     <div>
       <Hero />
-      <Carousel />
+      {/* <Carousel /> */}
     </div>
   )
 }
