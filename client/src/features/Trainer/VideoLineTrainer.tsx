@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalWindowVideo from './ModalWindowVideo';
+import Modal from '../Modal/Modal';
 
 function VideoLineTrainer({ file }: { file: any }): JSX.Element {
   const [show, setShow] = useState(false);
@@ -33,7 +34,7 @@ function VideoLineTrainer({ file }: { file: any }): JSX.Element {
         />
       </video>
       <div>{file.description?.slice(0, 100)}</div>
-      {show && <ModalWindowVideo file={file} />}
+      {show && <Modal active={show} setActive={setShow}><ModalWindowVideo file={file} /></Modal>}
     </div>
   );
 }

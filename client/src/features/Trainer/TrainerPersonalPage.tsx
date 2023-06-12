@@ -141,7 +141,8 @@ function TrainerPersonalPage(): JSX.Element {
                 Посмотреть сертификаты
               </button>
               {showCertificates && (
-                <div>
+                <Modal active={showCertificates} setActive={setshowCertificates}>
+                  <div>
                   {user.Certificates.map((el) => (
                     <div>
                       <img src={el.url_cert} alt="certificate" />
@@ -149,6 +150,7 @@ function TrainerPersonalPage(): JSX.Element {
                   ))}
                   <button type="button">Добавить сертификат</button>
                 </div>
+                </Modal>
               )}
             </li>
           </ul>
