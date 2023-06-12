@@ -1,49 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// const type refRatio = {
-//     current: {
-//         checked: Boolean,
-//     },
-// }
-function FormAddPost({setShowFormAdd}: {setShowFormAdd: (value: Boolean)=> void}): JSX.Element {
+function FormAddPost({
+  showForm,
+}: {
+  showForm: (value: boolean) => void;
+}): JSX.Element {
   const [show, setShow] = useState(false);
-  const [checked, setChecked] = useState(false);
-  const refRatio = useRef(null);
-
-  useEffect(() => {
-    // if (refRatio.current.checked) {
-      setShow(true);
-      console.log(show);
-      
-    // } else {
-      setShow(false);
-      console.log(show);
-    // }
-    return () => setChecked(false);
-  }, [refRatio.current]);
-
-  const addWithVideo = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.checked) {
-      setChecked(e.target.checked);
-    //   refRatio.current.checked = true;
-      console.log(checked, show);
-    } else {
-      setChecked(e.target.checked);
-    //   refRatio.current.checked = false;
-      console.log(checked, show);
-    }
-  };
-  const addWithPhoto = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.checked) {
-      console.log(show, checked);
-    } else {
-      console.log(show, checked);
-    }
+  const [showFile, setShowFile] = useState(false);
+  const [showLink, setShowLink] = useState(false);
+  const [showChangeTypeFile, setShowChangeTypeFile] = useState(false);
+  const resetShowFileLink = (): void => {
+    setShowFile(false);
+    setShowLink(false);
   };
 
+  const addFileFunction = (): void => {
+    setShowFile(true);
+    setShowChangeTypeFile(true);
+  }
+  const addLinkFunction = (): void => {
+    setShowLink(true);
+    setShowChangeTypeFile(true);
+  }
+  const changeTypeFunction = (): void => {
+    setShowChangeTypeFile(false);
+    resetShowFileLink();
+  }
   return (
     <div>
-        <button type='button' onClick={() => setShowFormAdd(false)}>X</button>
+      <button type="button" onClick={() => showForm(false)}>
+        X
+      </button>
       <form action="">
         <div>
           Что вы хотите добавить?
@@ -52,33 +39,56 @@ function FormAddPost({setShowFormAdd}: {setShowFormAdd: (value: Boolean)=> void}
             <input
               type="radio"
               name="type"
-              ref={refRatio}
-              onChange={(e) => addWithVideo(e)}
+              value="video"
+              onClick={() => setShow(true)}
             />
           </p>
           <p>
-            Фото: {' '}
-            <input type="radio" name="type" onChange={(e) => addWithPhoto(e)} />
+            Фото:{' '}
+            <input
+              type="radio"
+              name="type"
+              value="photo"
+              onClick={() => setShow(true)}
+            />
           </p>
         </div>
         {show && (
           <div>
-            <input type="text" />
-            <input type="file" />
+            {!showLink && (
+              <button onClick={addFileFunction} type="button">
+                Добавить файл
+              </button>
+            )}
+            {showFile && (
+              <div>
+                <input type="file" />
+                <input type='text'placeholder='Добавьте описание'/>
+                <button type="button">Отправить</button>
+              </div>
+            )}
+            {!showFile && (
+              <button type="button" onClick={addLinkFunction}>
+                Добавить ссылку
+              </button>
+            )}
+            {showLink && (
+              <div>
+                <input type="text" placeholder='Вставьте ссылку'/>
+                <input type='text'placeholder='Добавьте описание'/>
+                <button type="button">Отправить</button>
+              </div>
+            )}
+            {showChangeTypeFile && <button type="button" onClick={changeTypeFunction}>
+              Поменять тип файла
+            </button>}
           </div>
         )}
-        {/* <input type="text"></input>
-        <input type="text"></input>
-        <input type="text">
-          <button></button>
-        </input>
-        <input type="text"></input>
-        <input type="text">
-          <button></button>
-        </input> */}
       </form>
     </div>
   );
 }
 
 export default FormAddPost;
+
+// добавить функцию, чтобы можно было добавить только или ссылку или видео

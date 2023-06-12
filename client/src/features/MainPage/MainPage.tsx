@@ -1,11 +1,13 @@
 import React from 'react'
-import { Carousel } from './Carousels'
+import Carousel from './Carousel'
+import Hero from './Hero'
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function MainPage():JSX.Element {
   return (
     <div>
-        <Carousel />
+      <Hero />
+      <Carousel />
     </div>
   )
 }

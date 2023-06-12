@@ -8,6 +8,9 @@ import Login from '../features/auth/Login';
 import NavBar from '../features/navbar/NavBar';
 import { RootState, useAppDispatch } from '../store';
 import { verification } from '../features/auth/authSlice';
+import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
+import MainPage from '../features/MainPage/MainPage';
+
 import Chart from '../features/SportsmenPage/ChartBar';
 
 function App(): JSX.Element {
@@ -33,9 +36,11 @@ function App(): JSX.Element {
       <NavBar />
       <Chart />
       <Routes>
+        <Route path='/' element={<MainPage />}/>
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path='/trainerpage' element={<TrainerPersonalPage />} />
+        <Route path='/myPage' element={ <SportsmenPage />} />
       </Routes>
     </>
   );
