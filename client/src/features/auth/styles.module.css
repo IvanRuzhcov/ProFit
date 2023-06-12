@@ -25,18 +25,16 @@ button {
   align-items: center;
 }
 
-
-.login_card  {
-  font-family: 'Euclid Circular A';
+.login_card {
+  font-family: 'Kanit', sans-serif;
   width: 400px;
-  padding: 20px 30px 30px;
+  padding: 15px 20px 20px;
   border-radius: 1.25rem;
   background: #d7d7d7;
   text-align: center;
   transition: 0.4s;
   margin-top: 30px;
 }
-
 
 .login_card > h2 {
   font-size: 36px;
@@ -64,7 +62,7 @@ button {
   border: 1.5px solid #dfe1f0;
   outline: none;
   width: 100%;
-  height: 56px;
+  height: 50px;
   padding: 0 16px;
   background: #f6f7ff;
   color: inherit;
@@ -74,6 +72,9 @@ button {
   text-align: left;
   font-size: 18px;
   transition: 0.4s;
+}
+.select_status {
+  margin: 8px 0;
 }
 
 button.control {
@@ -99,7 +100,7 @@ button.control:hover {
 button.control:active {
   transition: 0.01s;
 
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .strength {

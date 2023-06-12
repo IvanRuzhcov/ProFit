@@ -1,3 +1,9 @@
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import styled from '@emotion/styled';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,22 +13,24 @@ import style from './styles.module.css';
 import logo from './logo.svg';
 import './styles.css';
 
-// import { useForm } from 'react-hook-form';
-
 function Registration(): JSX.Element {
-  // const { register, handleSubmit } = useForm();
-  // {...register('name', { required: true })}
 
   const [login, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPassword2] = useState('');
+  const [statusUser, setStatusUser] = useState('');
+  const [strength, setStrength] = useState('');
+  
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [strength, setStrength] = useState('');
   const error = useSelector((state: RootState) => state.auth.registerFormError);
 
   const strengthLabels = ['weak', 'medium', 'strong'];
+
+  const handleChange = (event: SelectChangeEvent): void => {
+    setStatusUser(event.target.value);
+  };
 
   const getStrength = (passwordCheck: string): void => {
     let strengthIndicator = -1;
@@ -63,6 +71,7 @@ function Registration(): JSX.Element {
         register({
           login,
           email,
+          status: statusUser,
           password,
           passwordRepeat,
         })
@@ -128,7 +137,7 @@ function Registration(): JSX.Element {
             <div className={style.username}>
               <input
                 className={style.control}
-                type="email"
+                type="Email"
                 name="email"
                 placeholder="Почта"
                 onChange={handleEmailChange}
@@ -149,9 +158,46 @@ function Registration(): JSX.Element {
               placeholder="Повторите пароль"
               onChange={handlePasswordRepeatChange}
             />
-
+            <div className={style.select_status}>
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl
+                  fullWidth
+                  sx={{
+                    '& label.Mui-focused': {
+                      color: 'black',
+                    },
+                  }}
+                >
+                  <InputLabel id="demo-multiple-name-label">
+                    Выберите статус
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={statusUser}
+                    label="Выберите статус"
+                    onChange={handleChange}
+                    sx={{
+                      '&.MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#9e9e9e',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#9e9e9e',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#9e9e9e',
+                        },
+                      },
+                    }}
+                  >
+                    <MenuItem value="sportsman">Спортсмен</MenuItem>
+                    <MenuItem value="coach">Тренер</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </div>
             <div className={`bars ${strength}`} />
-
             <div className={style.strength}>
               {strength && <>{strength} password</>}
             </div>
