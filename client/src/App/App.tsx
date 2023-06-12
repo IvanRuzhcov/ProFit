@@ -34,7 +34,6 @@ function App(): JSX.Element {
   return (
     <>
       <NavBar />
-      <Chart />
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path="/registration" element={<Registration />} />

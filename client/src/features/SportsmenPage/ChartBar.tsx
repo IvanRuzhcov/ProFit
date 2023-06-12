@@ -55,12 +55,9 @@ function ChartBar(): JSX.Element {
   });
 
   return (
-    <>
       <div className={styles.chart_container}>
         <Bar data={userData} />
       </div>
-      <ChartLine />
-    </>
   );
 }
 

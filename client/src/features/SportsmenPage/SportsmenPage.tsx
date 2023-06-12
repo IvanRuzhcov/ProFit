@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import ChartLine from './ChartLine';
+import ChartBar from './ChartBar';
 
 function SportsmenPage(): JSX.Element {
-  const  sportsmenState  = useSelector((store: RootState) => store.auth.user);
-
-  
+  const sportsmenState = useSelector((store: RootState) => store.auth.user);
 
   return (
     <div>
@@ -20,6 +20,12 @@ function SportsmenPage(): JSX.Element {
         <button type="button">Редактирование данных</button>
       </div>
       <div>слайдер</div>
+      <div>
+        <ChartLine />
+      </div>
+      <div>
+        <ChartBar />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,4 @@
 export type Sportsmen ={
-    id:number,
-    description:string,
-    city:string,
-    profilePicture:string
-    name:string
-    
+  user_id_param: number
+  weight: number
 }

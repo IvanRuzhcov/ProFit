@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logout } from '../auth/authSlice';
+import User from '../auth/types/User';
 
 const pages = ['Products'];
 
@@ -55,8 +56,15 @@ function NavBar(): JSX.Element {
     }
   }, []);
 
+  let checkUser;
+  if (user?.status === 'sportsman') {
+    checkUser = '/trainerpage';
+  } else {
+    checkUser = '/myPage';
+  }
+
   const settings = [
-    { name: 'Личный кабинет', href: '/myPage' },
+    { name: 'Личный кабинет', href: checkUser },
     { name: 'Выход', href: '/', handleLogout },
   ];
 

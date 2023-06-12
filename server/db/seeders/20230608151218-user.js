@@ -25,7 +25,6 @@ module.exports = {
             {
               weight: 90,
               user_id_param: 1,
-              height: 185,
             },
           ],
         },
@@ -79,7 +78,6 @@ module.exports = {
             {
               weight: 70,
               user_id_param: 3,
-              height: 180,
             },
           ],
         },
@@ -131,7 +129,6 @@ module.exports = {
             {
               weight: 45,
               user_id_param: 2,
-              height: 160,
             },
           ],
         },
@@ -158,7 +155,6 @@ module.exports = {
             {
               weight: 70,
               user_id_param: 4,
-              height: 189,
             },
           ],
         },

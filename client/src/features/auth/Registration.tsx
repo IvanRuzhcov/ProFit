@@ -32,8 +32,6 @@ function Registration(): JSX.Element {
     setStatusUser(event.target.value);
   };
 
-
-  
   const getStrength = (passwordCheck: string): void => {
     let strengthIndicator = -1;
 

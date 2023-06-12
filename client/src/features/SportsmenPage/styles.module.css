@@ -1,3 +1,7 @@
-.chart_container{
-  min-width: 500px;
+
+
+.container_lineChart {
+  display: flex;
+  max-width: 500px;
+  min-height: 250px;
 }
