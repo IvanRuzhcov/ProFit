@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function SportsmenPage(): JSX.Element {
-  useEffect(()=>{
-    fetch()
-  })
+  const  sportsmenState  = useSelector((store: RootState) => store.auth.user);
+
+  
 
   return (
     <div>
@@ -13,7 +15,7 @@ function SportsmenPage(): JSX.Element {
           alt=""
         />
       </div>
-        <div>информация</div>
+      <div>информация</div>
       <div>
         <button type="button">Редактирование данных</button>
       </div>

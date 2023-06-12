@@ -34,7 +34,17 @@ authRouter.post('/login', async (req, res) => {
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
     req.session.userId = existingUser.id;
     req.session.user = existingUser;
-    res.json({ id: existingUser.id, login: existingUser.login });
+    res.json({
+      id: existingUser.id,
+      login: existingUser.login,
+      name: existingUser.name,
+      email: existingUser.email,
+      status: existingUser.status,
+      online: existingUser.online,
+      description: existingUser.description,
+      city: existingUser.city,
+      vertification: existingUser.vertification,
+    });
   } else {
     res.status(401).json({
       error: 'Пароли не совпадают или такого пользователя не существует',
@@ -50,6 +60,13 @@ authRouter.get('/verification', async (req, res) => {
       user: {
         id: user.id,
         login: user.login,
+        name: user.name,
+        email: user.email,
+        status: user.status,
+        online: user.online,
+        description: user.description,
+        city: user.city,
+        vertification: user.vertification,
       },
     });
   } else {

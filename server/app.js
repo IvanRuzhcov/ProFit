@@ -6,7 +6,6 @@ const expressConfig = require('./config/express');
 
 // импортируем роутеры (там лежат наши ручки)
 const authRouter = require('./routes/api/auth.routes');
-const sportsmenRouter = require('./routes/api/user.routes')
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -16,7 +15,6 @@ expressConfig(app);
 
 // подключаем роутеры
 app.use('/api/auth', authRouter);
-app.use('/api/user', sportsmenRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
