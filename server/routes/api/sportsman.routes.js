@@ -18,4 +18,16 @@ sportsmanRouter.post('/sportsman', async (req, res) => {
   }
 });
 
+sportsmanRouter.get('/sportsman', async (req, res) => {
+  const { userId } = req.session;
+  try {
+    const statistic = await Parametr.findAll({
+      where: { user_id_param: userId },
+    });
+    res.json(statistic);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = sportsmanRouter;

@@ -1,6 +1,7 @@
 import { SportsmenState } from './type/SertificateState';
 import { Sportsmen } from './type/Sportsmen';
 import StatisticLineChart from './type/StatisticLineCart';
+import { Statistic } from './type/Statistic';
 
 export async function apiInitSportsmen(): Promise<Sportsmen[]> {
   const res = await fetch('/api/auth/verification');
@@ -10,7 +11,6 @@ export async function apiInitSportsmen(): Promise<Sportsmen[]> {
   }
   return res.json();
 }
-
 
 export async function addStatisticsChartFetch(
   data: StatisticLineChart
@@ -25,7 +25,14 @@ export async function addStatisticsChartFetch(
     throw error;
   }
   const result = await res.json();
-  console.log(result);
+
+  return result;
+}
+
+export async function chartInitFetch(): Promise<Statistic[]> {
+  const res = await fetch('api/sportsman');
+  const data = await res.json();
+  console.log(data);
   
-  return result
+  return data;
 }

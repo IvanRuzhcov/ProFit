@@ -5,24 +5,21 @@ import * as api from './api';
 
 const initialState: SportsmenState = {
   sportsmenState: [],
-  statistic: []
+  statistic: [],
+  error: ''
 };
-
-// export const initSportsmen = createAsyncThunk(
-//   'sportsman/initSportsmen',
-//   async () => {
-//     const newSportsmen = await apiInitSportsmen();
-//     if (!newSportsmen) {
-//       throw new Error('Не найдено');
-//     }
-//     return newSportsmen;
-//   }
-// );
 
 export const addStatisticsChart = createAsyncThunk(
   'sportsman/addStatisticsChart',
   (data: StatisticLineChart) => api.addStatisticsChartFetch(data)
 );
+
+export const chartInit = createAsyncThunk(
+  'sportsman/init',
+  () => api.chartInitFetch()
+ );
+
+ 
 
 const sportsmenSlice = createSlice({
   name: 'sportsman',
@@ -30,14 +27,18 @@ const sportsmenSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     return builder
-    // .addCase(initSportsmen.fulfilled, (state, action) => {
-    //   state.sportsmenState = action.payload;
-    //   console.log(action.payload);
-    // })
     .addCase(addStatisticsChart.fulfilled, (state, action) => {
       state.statistic = action.payload.statistic
-
-      
+    })
+    .addCase(addStatisticsChart.rejected, (state, action) => {
+      state.error = action.error.message
+    })
+    .addCase(chartInit.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.statistic = action.payload
+    })
+    .addCase(chartInit.rejected, (state, action) => {
+      state.error = action.error.message
     })
   },
 });
