@@ -66,6 +66,7 @@ function Registration(): JSX.Element {
   const handleSubmit = useCallback(
     async (event: React.FormEvent) => {
       event.preventDefault();
+      console.log(statusUser);
 
       const dispatchResult = await dispatch(
         register({
@@ -81,7 +82,7 @@ function Registration(): JSX.Element {
         navigate('/');
       }
     },
-    [dispatch, login, navigate, email, password, passwordRepeat]
+    [dispatch, login, navigate, email, statusUser, password, passwordRepeat]
   );
 
   const handleNameChange = useCallback(
@@ -98,7 +99,7 @@ function Registration(): JSX.Element {
       setPassword(event.target.value);
       dispatch(resetRegisterFormError());
     },
-    [dispatch]
+    [dispatch, getStrength]
   );
 
   const handlePasswordRepeatChange = useCallback(

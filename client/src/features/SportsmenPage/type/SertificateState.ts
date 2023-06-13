@@ -1,7 +1,8 @@
-import { Sportsmen, SportsmenUp } from "./Sportsmen"
+import { Sportsmen } from './Sportsmen';
+import { Statistic } from './Statistic';
 
-export type SportsmenState ={
-    sportsmenState: Sportsmen[], 
-    updateSportsmen:SportsmenUp[]
-    error: undefined | string
-}
+export type SportsmenState = {
+  sportsmenState: Sportsmen[];
+  statistic: Statistic[];
+  error: string | undefined
+};
