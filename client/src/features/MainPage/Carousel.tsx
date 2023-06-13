@@ -50,7 +50,7 @@ const nextSlide = ():void => {
   setCurrentIndex(newIndex);
 };
 
-const goToSlide = (slideIndex):void => {
+const goToSlide = (slideIndex: any):void => {
   setCurrentIndex(slideIndex);
 };
 
