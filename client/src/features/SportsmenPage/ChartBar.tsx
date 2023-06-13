@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   BarElement,
@@ -13,6 +13,9 @@ import {
 import { Bar } from 'react-chartjs-2';
 import ChartLine from './ChartLine';
 import styles from './SportsmenPage.module.css';
+import { RootState, useAppDispatch } from '../../store';
+import { addStatisticsChartBar, chartBarInit } from './SportsmenSlice';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   BarElement,
@@ -25,29 +28,13 @@ ChartJS.register(
   PointElement
 );
 
-const UserData = [
-  {
-    id: 1,
-    year: 2006,
-    userGain: 80000,
-    userLost: 823,
-  },
-  {
-    id: 2,
-    year: 2008,
-    userGain: 80300,
-    userLost: 893,
-  },
-  {
-    id: 3,
-    year: 2008,
-    userGain: 70000,
-    userLost: 853,
-  },
-];
 
 function ChartBar(): JSX.Element {
-  const [userData, setUserData] = useState('');
+  const [time, setTime] = useState('');
+  const dispatch = useAppDispatch();
+
+  const dataCharts = useSelector((state: RootState) => state.user.chartbar)
+  
 
   const options = {
     responsive: true,
@@ -62,12 +49,14 @@ function ChartBar(): JSX.Element {
     },
   };
 
+  
+
   const dataChart = {
-    labels: UserData.map((data) => data.year),
+    labels: dataCharts.map((data) => data.time),
     datasets: [
       {
-        label: 'Ваш вес',
-        data: UserData.map((data) => data.userGain),
+        label: 'Время тренировки',
+        data: dataCharts.map((data) => data.time),
         borderColor: ['rgb(255, 139, 51)'],
         borderWidth: 1,
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
@@ -75,10 +64,32 @@ function ChartBar(): JSX.Element {
     ],
   };
 
+  useEffect(() => {
+    dispatch(chartBarInit());
+  }, []);
+
+  const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    dispatch(addStatisticsChartBar({ time }));
+  };
+
   return (
-    <div className={styles.container_BarChart}>
-      <Bar data={dataChart} options={options} />
-    </div>
+    <>
+      <div className={styles.container_BarChart}>
+        <Bar data={dataChart} options={options} />
+      </div>
+      <form onSubmit={handleAddInputChart}>
+        <div className="">
+          <div>
+          <input type="text" placeholder='Продолжительность тренировки' value={time} onChange={(e) => setTime(e.target.value)}/>
+          </div>
+          <br />
+          <div>
+            <button type="submit">Отправить</button>
+          </div>
+        </div>
+      </form>
+    </>
   );
 }
 

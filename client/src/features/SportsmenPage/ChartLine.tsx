@@ -60,9 +60,10 @@ function ChartLine(): JSX.Element {
     dispatch(chartInit());
   }, []);
 
-  const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleAddInputChartBar: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(addStatisticsChart({ weight }));
+    setWeight('')
   };
 
   const options = {
@@ -83,7 +84,7 @@ function ChartLine(): JSX.Element {
       <div className={styles.container_lineChart}>
         <Line data={dataChart} options={options} />
       </div>
-      <form onSubmit={handleAddInputChart}>
+      <form onSubmit={handleAddInputChartBar}>
         <div className="">
           <div>
             <input
@@ -92,6 +93,8 @@ function ChartLine(): JSX.Element {
               min = "20" 
               max = "250"
               step="any"
+              placeholder='Введите актуальный вес'
+              value={weight}
             />
           </div>
           <br />

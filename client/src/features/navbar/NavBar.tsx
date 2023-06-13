@@ -204,10 +204,3 @@ function NavBar(): JSX.Element {
   );
 }
 export default NavBar;
-function rgba(arg0: number, arg1: number, arg2: number, arg3: number) {
-  throw new Error('Function not implemented.');
-}
-
-function px(arg0: number, px: any) {
-  throw new Error('Function not implemented.');
-}

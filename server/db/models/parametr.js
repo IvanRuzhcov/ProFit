@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         onDelete: 'CASCADE',
       },
+      time: {
+        type: DataTypes.TEXT,
+      },
     },
     {
       sequelize,
