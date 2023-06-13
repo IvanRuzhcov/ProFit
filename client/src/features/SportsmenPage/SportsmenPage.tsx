@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
+import ChartLine from './ChartLine';
+import ChartBar from './ChartBar';
 import style from "./SportsmenPage.module.css";
 import Modal from "../Modal/Modal";
 import { upSportsmen } from "../auth/authSlice";
@@ -96,7 +98,13 @@ function SportsmenPage(): JSX.Element {
               <button type="button" onClick={handlerUpData}>
                 Изменить
               </button>
-            </div>
+              <div>
+        <ChartLine />
+      </div>
+      <div>
+        <ChartBar />
+      </div>
+    </div>
           </>
         </Modal>
       )}
