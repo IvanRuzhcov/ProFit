@@ -46,14 +46,17 @@ function NavBar(): JSX.Element {
     setAnchorElUser(null);
   };
 
-  const handleLogout = React.useCallback(async (event: React.MouseEvent) => {
-    event.preventDefault();
+  const handleLogout = React.useCallback(
+    async (event: React.MouseEvent) => {
+      event.preventDefault();
 
-    const dispatchResult = await dispatch(logout());
-    if (logout.fulfilled.match(dispatchResult)) {
-      navigate('/');
-    }
-  }, [dispatch, navigate]);
+      const dispatchResult = await dispatch(logout());
+      if (logout.fulfilled.match(dispatchResult)) {
+        navigate('/');
+      }
+    },
+    [dispatch, navigate]
+  );
 
   let checkUser;
   if (user?.status === 'sportsman') {
@@ -68,8 +71,11 @@ function NavBar(): JSX.Element {
   ];
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" sx={{backgroundColor: '#5c6366', height: '80px'}}>
+    <AppBar position="static" sx={{ backgroundColor: '#5c6366' }}>
+      <Container
+        maxWidth="xl"
+        sx={{ backgroundColor: '#5c6366', height: '80px' }}
+      >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -157,10 +163,7 @@ function NavBar(): JSX.Element {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={user.profilePicture}
-                  />
+                  <Avatar alt="Remy Sharp" src={user.profilePicture} />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -207,4 +210,3 @@ function rgba(arg0: number, arg1: number, arg2: number, arg3: number) {
 function px(arg0: number, px: any) {
   throw new Error('Function not implemented.');
 }
-
