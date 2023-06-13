@@ -1,4 +1,3 @@
-import { log } from 'console';
 import React, { useEffect, useRef, useState } from 'react';
 import ModalWindowPhoto from './ModalWindowPhoto';
 import Modal from '../Modal/Modal';

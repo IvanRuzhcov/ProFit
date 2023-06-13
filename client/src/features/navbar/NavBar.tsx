@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
@@ -53,7 +52,7 @@ function NavBar(): JSX.Element {
     if (logout.fulfilled.match(dispatchResult)) {
       navigate('/');
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   const settings = [
     { name: 'Личный кабинет', href: '/myPage' },
@@ -151,7 +150,7 @@ function NavBar(): JSX.Element {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
-                    src="https://sun9-22.userapi.com/impg/eMa1WKhBfRMBtDSlCMTG-h4apaeHkWW9Ty1rEQ/PcuYxpBqU9s.jpg?size=2160x2160&quality=96&sign=a8db1806e0ce29bac4ca3596bf1ac6f0&type=album"
+                    src={user.profilePicture}
                   />
                 </IconButton>
               </Tooltip>
