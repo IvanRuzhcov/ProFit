@@ -53,6 +53,7 @@ module.exports = {
     await File.bulkCreate([
       {
         id: 1,
+        type: 'video',
         url: 'https://www.youtube.com/watch?v=VSzEycJUBaY',
         user_id_files: 1,
         description: 'тут мы качаем преес',
@@ -106,6 +107,7 @@ module.exports = {
     await File.bulkCreate([
       {
         id: 3,
+        type: 'video',
         url: 'https://www.youtube.com/watch?v=OfmzNF4QFR8',
         user_id_files: 3,
         description: 'тут мы качаем преес',

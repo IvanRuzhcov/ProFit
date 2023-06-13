@@ -5,48 +5,7 @@
 .btn_Update{
     border: 1px solid black;
 }
-.modul{
-    height: 400vh;
-  width: 500vw;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- opacity: 0;
- pointer-events: none;
-  transition: 0.5s;
-}
-.modal_content{
-    padding: 28px;
-  border-radius: 12px;
-  background-color: rgb(255, 255, 255);
-  
-  /* transform: scale(0.5); */
-  transition: 0.4s all;
-  width: 40%;
-  height: 60%;
-  text-align: center ;
-  position: absolute;
-}
-.modal.active {
-    opacity: 1;
-    pointer-events: all;
 
-}
-.modal__cont.active{
-    transform: scale(1);
-
-}
-.none{
-    display: none;
-}
-.modal_form{
-    display: flex;
-    height: 100vh;
-}
 .input_up{
     margin: 15px;
 }

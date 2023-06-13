@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
@@ -53,7 +52,7 @@ function NavBar(): JSX.Element {
     if (logout.fulfilled.match(dispatchResult)) {
       navigate('/');
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   const settings = [
     { name: 'Личный кабинет', href: '/myPage' },
@@ -175,6 +174,7 @@ function NavBar(): JSX.Element {
                   <Link
                     to={setting.href}
                     style={{ textDecoration: 'none', color: 'black' }}
+                    key={setting.href}
                     onClick={setting.handleLogout}
                   >
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
