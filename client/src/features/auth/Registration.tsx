@@ -120,7 +120,7 @@ function Registration(): JSX.Element {
   return (
     <div>
       <div className={style.containerForm}>
-        <div className={style.login_card}>
+        <div className="login_card animate__animated animate__bounceInLeft">
           <img src={logo} alt="logo" />
           <h2>Регистрация</h2>
           <form className={style.login_form} onSubmit={handleSubmit}>

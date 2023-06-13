@@ -1,2 +1,24 @@
+.wrapper{
+    height: 10vh;
+    display: grid;
+    place-items: center;
+}
 
+.typing-demo {
+    width: 25ch;
+    animation: typing 2s steps(22), blinck .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
 

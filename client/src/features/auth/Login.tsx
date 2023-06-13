@@ -61,7 +61,7 @@ function Login(): JSX.Element {
   return (
     <div className={style.margin_form_login}>
     <div className={style.containerForm}>
-        <div className={style.login_card}>
+        <div className="login_card animate__animated animate__bounceInLeft">
           <img src={logo} alt="logo" />
           <h2>Авторизоваться</h2>
           <form className={style.login_form} onSubmit={handleSubmit}>
