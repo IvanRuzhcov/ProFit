@@ -15,7 +15,7 @@ const slides: Slide[] = [
     url: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
   },
   {
-    url: 'https://plus.unsplash.com/premium_photo-1663050712656-f240e3cdd7d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    url: 'https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1750&q=80',
   },
   {
     url: 'https://images.unsplash.com/photo-1485618609651-5a8bd6efc777?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
@@ -50,12 +50,12 @@ const nextSlide = ():void => {
   setCurrentIndex(newIndex);
 };
 
-const goToSlide = (slideIndex):void => {
+const goToSlide = (slideIndex:any):void => {
   setCurrentIndex(slideIndex);
 };
 
   return (
-    <div className='bg-black'>
+    <div className='black'>
       <div className='max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group'>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
