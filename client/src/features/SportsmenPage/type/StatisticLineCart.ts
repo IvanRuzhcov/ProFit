@@ -1,5 +1,5 @@
 type StatisticLineChart = {
-  weight: number;
+  weight: string;
 };
 
 export default StatisticLineChart
