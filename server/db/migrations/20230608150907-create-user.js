@@ -45,9 +45,6 @@ module.exports = {
       vertification: {
         type: Sequelize.BOOLEAN,
       },
-      subscribers: {
-        type: Sequelize.INTEGER,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -62,9 +62,6 @@ module.exports = (sequelize, DataTypes) => {
       vertification: {
         type: DataTypes.BOOLEAN,
       },
-      subscribers: {
-        type: DataTypes.INTEGER,
-      },
     },
     {
       sequelize,
