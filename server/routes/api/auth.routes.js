@@ -48,6 +48,7 @@ authRouter.post('/login', async (req, res) => {
       description: existingUser.description,
       city: existingUser.city,
       vertification: existingUser.vertification,
+      profilePicture: existingUser.profilePicture,
 
     });
   } else {
@@ -72,6 +73,7 @@ authRouter.get('/verification', async (req, res) => {
         description: user.description,
         city: user.city,
         vertification: user.vertification,
+        profilePicture: user.profilePicture,
       },
     });
   } else {

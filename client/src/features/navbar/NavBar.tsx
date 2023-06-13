@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
@@ -54,7 +53,7 @@ function NavBar(): JSX.Element {
     if (logout.fulfilled.match(dispatchResult)) {
       navigate('/');
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   let checkUser;
   if (user?.status === 'sportsman') {
@@ -70,7 +69,7 @@ function NavBar(): JSX.Element {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{backgroundColor: '#5c6366', height: '80px'}}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -82,8 +81,9 @@ function NavBar(): JSX.Element {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
+              fontSize: '2rem',
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#fbefbb',
               textDecoration: 'none',
             }}
           >
@@ -131,7 +131,7 @@ function NavBar(): JSX.Element {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: '#fbefbb', display: 'block' }}
               >
                 {page}
               </Button>
@@ -142,13 +142,13 @@ function NavBar(): JSX.Element {
             <>
               <Link
                 to="/registration"
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: 'none', color: '#fbefbb' }}
               >
                 <Button color="inherit">Регистрация</Button>
               </Link>
               <Link
                 to="/login"
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: 'none', color: '#fbefbb' }}
               >
                 <Button color="inherit">Войти</Button>
               </Link>
@@ -159,7 +159,7 @@ function NavBar(): JSX.Element {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
-                    src="https://sun9-22.userapi.com/impg/eMa1WKhBfRMBtDSlCMTG-h4apaeHkWW9Ty1rEQ/PcuYxpBqU9s.jpg?size=2160x2160&quality=96&sign=a8db1806e0ce29bac4ca3596bf1ac6f0&type=album"
+                    src={user.profilePicture}
                   />
                 </IconButton>
               </Tooltip>
@@ -200,3 +200,11 @@ function NavBar(): JSX.Element {
   );
 }
 export default NavBar;
+function rgba(arg0: number, arg1: number, arg2: number, arg3: number) {
+  throw new Error('Function not implemented.');
+}
+
+function px(arg0: number, px: any) {
+  throw new Error('Function not implemented.');
+}
+
