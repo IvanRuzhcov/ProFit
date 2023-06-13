@@ -41,3 +41,7 @@ body {
 .black {
   background: linear-gradient(0deg, rgba(196,196,196,1) 0%, rgba(0,0,0,1) 61%);
 }
+
+.black_s {
+  width: 1000px;
+}

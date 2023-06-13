@@ -1,15 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './style.module.css';
+import { useAppDispatch } from '../../store';
+import assert from 'assert';
+import { uploadFileTrainer, uploadUrlTrainer } from '../auth/authSlice';
 
 function FormAddPost({
   showForm,
 }: {
   showForm: (value: boolean) => void;
 }): JSX.Element {
+  const dispatch = useAppDispatch();
   const [show, setShow] = useState(false);
   const [showFile, setShowFile] = useState(false);
   const [showLink, setShowLink] = useState(false);
   const [showChangeTypeFile, setShowChangeTypeFile] = useState(false);
+  const refPhoto = useRef<HTMLInputElement>(null);
+  const refVideo = useRef<HTMLInputElement>(null);
+  const refDescription = useRef<HTMLInputElement>(null);
+  const refFile = useRef<HTMLInputElement>(null);
+  const refUrl = useRef<HTMLInputElement>(null);
+
   const resetShowFileLink = (): void => {
     setShowFile(false);
     setShowLink(false);
@@ -18,15 +28,74 @@ function FormAddPost({
   const addFileFunction = (): void => {
     setShowFile(true);
     setShowChangeTypeFile(true);
-  }
+  };
   const addLinkFunction = (): void => {
     setShowLink(true);
     setShowChangeTypeFile(true);
-  }
+  };
   const changeTypeFunction = (): void => {
     setShowChangeTypeFile(false);
     resetShowFileLink();
-  }
+  };
+  const addFileForFetch = (): void => {
+    
+    if (
+      (refVideo.current?.checked || refPhoto.current?.checked) &&
+      (refFile.current?.files?.[0] || refUrl.current?.value) &&
+      refDescription.current?.value
+    ) {
+      const formData = new FormData();
+      // если пользователь добавляет видео
+      if (refVideo.current?.checked) {
+        // добавляет именно файл
+        if (refFile.current?.files?.[0]) {
+          const type = 'video';
+          const url = refFile?.current?.files?.[0];
+          const description = refDescription.current.value;
+          formData.append('type', type);
+          // assert(url);
+          formData.append('url', url);
+          formData.append('description', description);
+          dispatch(uploadFileTrainer(formData));
+          showForm(false)
+          // добавляет ссылку
+        } else if (refUrl.current?.value) {
+          const type = 'video';
+          const url = refUrl.current?.value;
+          const description = refDescription.current.value;
+          formData.append('type', type);
+          formData.append('url', url);
+          formData.append('description', description);
+          dispatch(uploadUrlTrainer(formData));
+          showForm(false)
+        }
+        // если пользователь добавляет фото
+      } else if (refPhoto.current?.checked) {
+        // добавляет именно файл
+        if (refFile.current?.files?.[0]) {
+          const type = 'photo';
+          const url = refFile?.current?.files?.[0];
+          const description = refDescription.current.value;
+          formData.append('type', type);
+          formData.append('url', url);
+          formData.append('description', description);
+          dispatch(uploadFileTrainer(formData));
+          showForm(false)
+        } else if (refUrl.current?.value) {
+          // добавляет именно ссылку
+          const type = 'photo';
+          const url = refUrl.current?.value;
+          const description = refDescription.current.value;
+          formData.append('type', type);
+          formData.append('url', url);
+          formData.append('description', description);
+          dispatch(uploadUrlTrainer(formData));
+          showForm(false);
+        }
+      }
+    }
+  };
+
   return (
     <div className={style.divFormAddPost}>
       <button type="button" onClick={() => showForm(false)}>
@@ -42,6 +111,7 @@ function FormAddPost({
               name="type"
               value="video"
               onClick={() => setShow(true)}
+              ref={refVideo}
             />
           </p>
           <p>
@@ -50,6 +120,7 @@ function FormAddPost({
               type="radio"
               name="type"
               value="photo"
+              ref={refPhoto}
               onClick={() => setShow(true)}
             />
           </p>
@@ -63,9 +134,15 @@ function FormAddPost({
             )}
             {showFile && (
               <div>
-                <input type="file" />
-                <input type='text'placeholder='Добавьте описание'/>
-                <button type="button">Отправить</button>
+                <input type="file" ref={refFile} />
+                <input
+                  type="text"
+                  placeholder="Добавьте описание"
+                  ref={refDescription}
+                />
+                <button type="button" onClick={addFileForFetch}>
+                  Отправить
+                </button>
               </div>
             )}
             {!showFile && (
@@ -75,14 +152,22 @@ function FormAddPost({
             )}
             {showLink && (
               <div>
-                <input type="text" placeholder='Вставьте ссылку'/>
-                <input type='text'placeholder='Добавьте описание'/>
-                <button type="button">Отправить</button>
+                <input type="text" placeholder="Вставьте ссылку" ref={refUrl} />
+                <input
+                  type="text"
+                  placeholder="Добавьте описание"
+                  ref={refDescription}
+                />
+                <button type="button" onClick={addFileForFetch}>
+                  Отправить
+                </button>
               </div>
             )}
-            {showChangeTypeFile && <button type="button" onClick={changeTypeFunction}>
-              Поменять тип файла
-            </button>}
+            {showChangeTypeFile && (
+              <button type="button" onClick={changeTypeFunction}>
+                Поменять тип файла
+              </button>
+            )}
           </div>
         )}
       </form>

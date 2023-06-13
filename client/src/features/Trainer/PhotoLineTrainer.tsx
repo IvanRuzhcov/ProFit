@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ModalWindowPhoto from './ModalWindowPhoto';
 import Modal from '../Modal/Modal';
+import { FileTrainer } from './types/FileTrainer';
 
-function PhotoLineTrainer({ file }: { file: any }): JSX.Element {
+function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
 
