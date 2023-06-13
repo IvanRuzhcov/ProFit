@@ -65,6 +65,7 @@
     "@typescript-eslint/no-misused-promises": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "@typescript-eslint/dot-notation": 0,
-    "jsx-a11y/click-events-have-key-events": 0
+    "jsx-a11y/click-events-have-key-events": 0,
+    "undefined": 0
   }
 }

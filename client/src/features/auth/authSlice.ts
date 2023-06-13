@@ -4,7 +4,7 @@ import RegisterData from './types/RegisterData';
 import * as api from './api';
 import Credentials from './types/Credentials';
 import * as trainerApi from '../Trainer/api';
-import { FileTrainer } from '../Trainer/types/FileTrainer';
+import User from "./types/User";
 
 // здесь не только сам юзер, но и его файлы, протипизировано в стейте тоже
 const initialState: AuthState = {
@@ -16,15 +16,19 @@ const initialState: AuthState = {
   fileError: '',
 };
 
-export const verification = createAsyncThunk('auth/verification', () =>
+export const verification = createAsyncThunk("auth/verification", () =>
   api.getUser()
+);
+export const upSportsmen = createAsyncThunk(
+  "sportsman/updata",
+  (action: User) => api.apiUpdatSportsmetFeth(action)
 );
 
 export const register = createAsyncThunk(
-  'auth/registerFetch',
+  "auth/registerFetch",
   async (data: RegisterData) => {
     if (data.password !== data.passwordRepeat) {
-      throw new Error('Пароли не совпадают!');
+      throw new Error("Пароли не совпадают!");
     }
     if (
       !data.login.trim() ||
@@ -39,10 +43,10 @@ export const register = createAsyncThunk(
 );
 
 export const loginJoin = createAsyncThunk(
-  'auth/loginFetch',
+  "auth/loginFetch",
   async (credentials: Credentials) => {
     if (!credentials.login.trim() || !credentials.password.trim()) {
-      throw new Error('Не все поля заполнены!');
+      throw new Error("Не все поля заполнены!");
     }
 
     return api.loginFetch(credentials);
@@ -60,7 +64,7 @@ export const uploadUrlTrainer = createAsyncThunk(
 );
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     resetLoginFormError: (state) => {
@@ -90,11 +94,12 @@ const authSlice = createSlice({
 
       .addCase(verification.fulfilled, (state, action) => {
         state.authChecked = true;
+        console.log(action.payload);
+
         state.user = action.payload.isLoggedIn
           ? action.payload.user
           : undefined;
       })
-
       .addCase(logout.fulfilled, (state) => {
         state.user = undefined;
       })
@@ -110,7 +115,13 @@ const authSlice = createSlice({
       })
       .addCase(uploadUrlTrainer.rejected, (state, action) => {
         state.fileError = action.error.message;
+      })
+      .addCase(upSportsmen.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
+    // .addCase(upSportsmen.rejected, (state, action) => {
+    //   state.error = action.error.message;
+    // });
   },
 });
 

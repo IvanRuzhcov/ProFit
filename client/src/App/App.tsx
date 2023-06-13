@@ -11,6 +11,7 @@ import { verification } from '../features/auth/authSlice';
 import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
 import MainPage from '../features/MainPage/MainPage';
 
+import Chart from '../features/SportsmenPage/ChartBar';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();

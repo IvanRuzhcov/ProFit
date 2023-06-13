@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
-import ModalWindowVideo from './ModalWindowVideo';
-import ModalWindowPhoto from './ModalWindowPhoto';
 import Modal from '../Modal/Modal';
 
 function TrainerPersonalPage(): JSX.Element {

@@ -7,19 +7,18 @@ authRouter.post('/register', async (req, res) => {
   try {
     if (login && password && email && status) {
       let user = await User.findOne({ where: { login } });
-      if (!user) {
+      const userEmail = await User.findOne({ where: { email } });
+      if (!user && !userEmail) {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({ login, password: hash, email, status });
         req.session.userId = user.id;
         res.locals.user = { login: user.login, id: user.id };
-        res
-          .status(201)
-          .json({
-            id: user.id,
-            login: user.login,
-            email: user.email,
-            status: user.status,
-          });
+        res.status(201).json({
+          id: user.id,
+          login: user.login,
+          email: user.email,
+          status: user.status,
+        });
       } else {
         res.status(400).json({ message: 'Такой пользователь уже существует' });
       }
@@ -49,6 +48,7 @@ authRouter.post('/login', async (req, res) => {
       description: existingUser.description,
       city: existingUser.city,
       vertification: existingUser.vertification,
+      profilePicture: existingUser.profilePicture,
 
     });
   } else {
@@ -73,6 +73,7 @@ authRouter.get('/verification', async (req, res) => {
         description: user.description,
         city: user.city,
         vertification: user.vertification,
+        profilePicture: user.profilePicture,
       },
     });
   } else {
