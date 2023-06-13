@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import style from './style.module.css';
 import { useAppDispatch } from '../../store';
 import assert from 'assert';
+import { uploadFileTrainer, uploadUrlTrainer } from '../auth/authSlice';
 
 function FormAddPost({
   showForm,
@@ -54,7 +55,7 @@ function FormAddPost({
           // assert(url);
           formData.append('url', url);
           formData.append('description', description);
-          dispatch(videoAdd(FormData));
+          dispatch(uploadFileTrainer(formData));
           // добавляет ссылку
         } else if (refUrl.current?.value) {
           const type = 'video';
@@ -63,7 +64,7 @@ function FormAddPost({
           formData.append('type', type);
           formData.append('url', url);
           formData.append('description', description);
-          dispatch(videoAdd(FormData));
+          dispatch(uploadUrlTrainer(formData));
         }
         // если пользователь добавляет фото
       } else if (refPhoto.current) {
@@ -75,7 +76,7 @@ function FormAddPost({
           formData.append('type', type);
           formData.append('url', url);
           formData.append('description', description);
-          dispatch(photoAdd(FormData));
+          dispatch(uploadFileTrainer(formData));
         } else if (refUrl.current?.value) {
           // добавляет именно ссылку
           const type = 'photo';
@@ -84,7 +85,7 @@ function FormAddPost({
           formData.append('type', type);
           formData.append('url', url);
           formData.append('description', description);
-          dispatch(photoAdd(FormData));
+          dispatch(uploadUrlTrainer(formData));
         }
       }
     }

@@ -16,7 +16,7 @@ expressConfig(app);
 
 // подключаем роутеры
 app.use('/api/auth', authRouter);
-app.use('/api/trainerpage', trainerRouter)
+app.use('/api/trainerpage', trainerRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
