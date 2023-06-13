@@ -24,7 +24,7 @@ button {
   align-items: center;
 }
 
-.login_card img {
+.login_card_img {
   width: 260px;
   padding: 5px;
   margin-left: 90px;
@@ -90,7 +90,7 @@ button.control:active {
   text-align: left;
   height: 25px;
   text-transform: capitalize;
-  color: #868b94;
+  color: #f4f4f4;
 }
 
 .errorRegister {

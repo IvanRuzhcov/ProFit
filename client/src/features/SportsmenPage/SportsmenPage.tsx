@@ -3,19 +3,20 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import ChartLine from './ChartLine';
 import ChartBar from './ChartBar';
-import style from "./SportsmenPage.module.css";
-import Modal from "../Modal/Modal";
-import { upSportsmen } from "../auth/authSlice";
+import style from './SportsmenPage.module.css';
+import Modal from '../Modal/Modal';
+import { upSportsmen } from '../auth/authSlice';
 
 function SportsmenPage(): JSX.Element {
-
   const dispatch = useAppDispatch();
 
   const sportsmen = useSelector((store: RootState) => store.auth.user);
   const [modalUpdat, setModalUpdat] = useState(false);
   const [name, setName] = useState(sportsmen ? sportsmen.name : '');
   const [email, setEmail] = useState(sportsmen ? sportsmen.email : '');
-  const [description, setDescription] = useState(sportsmen ? sportsmen.description : '');
+  const [description, setDescription] = useState(
+    sportsmen ? sportsmen.description : ''
+  );
   const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
 
   function handalUpdata(): void {
@@ -24,7 +25,9 @@ function SportsmenPage(): JSX.Element {
 
   function handlerUpData(e: React.MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
-    dispatch(upSportsmen({ id: sportsmen?.id , name, email, description, city }));
+    dispatch(
+      upSportsmen({ id: sportsmen?.id, name, email, description, city })
+    );
 
     setModalUpdat(!modalUpdat);
   }
@@ -50,6 +53,12 @@ function SportsmenPage(): JSX.Element {
             Редактирование данных
           </button>
         </div>
+      </div>
+      <div>
+        <ChartLine />
+      </div>
+      <div>
+        <ChartBar />
       </div>
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>
@@ -98,13 +107,7 @@ function SportsmenPage(): JSX.Element {
               <button type="button" onClick={handlerUpData}>
                 Изменить
               </button>
-              <div>
-        <ChartLine />
-      </div>
-      <div>
-        <ChartBar />
-      </div>
-    </div>
+            </div>
           </>
         </Modal>
       )}

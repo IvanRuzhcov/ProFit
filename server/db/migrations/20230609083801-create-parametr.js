@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       weight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
       },
       user_id_param: {
         type: Sequelize.INTEGER,
