@@ -10,11 +10,11 @@ import {
   Title,
   PointElement,
 } from 'chart.js';
+import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import styles from './styles.module.css';
 import { addStatisticsChart } from './SportsmenSlice';
 import { RootState, useAppDispatch } from '../../store';
-import { useSelector } from 'react-redux';
 
 ChartJS.register(
   BarElement,
@@ -64,30 +64,6 @@ const UserData = [
     userGain: 70000,
     userLost: 853,
   },
-  {
-    id: 3,
-    year: 2009,
-    userGain: 70000,
-    userLost: 853,
-  },
-  {
-    id: 2,
-    year: 2007,
-    userGain: 80300,
-    userLost: 893,
-  },
-  {
-    id: 2,
-    year: 2007,
-    userGain: 80300,
-    userLost: 893,
-  },
-  {
-    id: 2,
-    year: 2007,
-    userGain: 80300,
-    userLost: 893,
-  },
   
 ];
 
@@ -108,6 +84,8 @@ function ChartLine(): JSX.Element {
       },
     ],
   });
+
+  
 
   const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();

@@ -6,7 +6,7 @@ import Hero from './Hero'
 function MainPage():JSX.Element {
   return (
     <div>
-      <Hero />
+      {/* <Hero /> */}
       <Carousel />
     </div>
   )
