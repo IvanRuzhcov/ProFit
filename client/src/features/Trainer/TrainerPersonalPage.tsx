@@ -65,7 +65,7 @@ function TrainerPersonalPage(): JSX.Element {
                 <FormAddPost showForm={showForm} />
               </Modal>
             )}
-            {/* <li>
+            <li>
               <button
                 type="button"
                 onClick={() => {
@@ -80,7 +80,7 @@ function TrainerPersonalPage(): JSX.Element {
                   setActive={setshowCertificates}
                 >
                   <div>
-                    {user.Certificates.map((el) => (
+                    {user?.Certificates.map((el) => (
                       <div>
                         <img src={el.url_cert} alt="certificate" />
                       </div>
@@ -89,7 +89,7 @@ function TrainerPersonalPage(): JSX.Element {
                   </div>
                 </Modal>
               )}
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>

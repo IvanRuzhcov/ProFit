@@ -38,15 +38,12 @@ function FormAddPost({
     resetShowFileLink();
   };
   const addFileForFetch = (): void => {
-    console.log(111111);
     
     if (
       (refVideo.current?.checked || refPhoto.current?.checked) &&
       (refFile.current?.files?.[0] || refUrl.current?.value) &&
       refDescription.current?.value
     ) {
-      console.log(123);
-      
       const formData = new FormData();
       // если пользователь добавляет видео
       if (refVideo.current?.checked) {
@@ -60,6 +57,7 @@ function FormAddPost({
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
+          showForm(false)
           // добавляет ссылку
         } else if (refUrl.current?.value) {
           const type = 'video';
@@ -69,6 +67,7 @@ function FormAddPost({
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadUrlTrainer(formData));
+          showForm(false)
         }
         // если пользователь добавляет фото
       } else if (refPhoto.current?.checked) {
@@ -81,6 +80,7 @@ function FormAddPost({
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
+          showForm(false)
         } else if (refUrl.current?.value) {
           // добавляет именно ссылку
           const type = 'photo';
@@ -90,6 +90,7 @@ function FormAddPost({
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadUrlTrainer(formData));
+          showForm(false)
         }
       }
     }
