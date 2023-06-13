@@ -38,14 +38,18 @@ function FormAddPost({
     resetShowFileLink();
   };
   const addFileForFetch = (): void => {
+    console.log(111111);
+    
     if (
       (refVideo.current?.checked || refPhoto.current?.checked) &&
       (refFile.current?.files?.[0] || refUrl.current?.value) &&
       refDescription.current?.value
     ) {
+      console.log(123);
+      
       const formData = new FormData();
       // если пользователь добавляет видео
-      if (refVideo.current) {
+      if (refVideo.current?.checked) {
         // добавляет именно файл
         if (refFile.current?.files?.[0]) {
           const type = 'video';
@@ -67,7 +71,7 @@ function FormAddPost({
           dispatch(uploadUrlTrainer(formData));
         }
         // если пользователь добавляет фото
-      } else if (refPhoto.current) {
+      } else if (refPhoto.current?.checked) {
         // добавляет именно файл
         if (refFile.current?.files?.[0]) {
           const type = 'photo';

@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../../db/models');
+const { User, Certificate, File } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
   const { login, email, password, status } = req.body;
@@ -32,7 +32,9 @@ authRouter.post('/register', async (req, res) => {
 
 authRouter.post('/login', async (req, res) => {
   const { login, password } = req.body;
-  const existingUser = await User.findOne({ where: { login } });
+  const existingUser = await User.findOne({
+    where: { login },
+  });
 
   // проверка что пользователь есть и пароли совпадают
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
@@ -49,7 +51,6 @@ authRouter.post('/login', async (req, res) => {
       city: existingUser.city,
       vertification: existingUser.vertification,
       profilePicture: existingUser.profilePicture,
-
     });
   } else {
     res.status(401).json({
@@ -60,20 +61,26 @@ authRouter.post('/login', async (req, res) => {
 
 authRouter.get('/verification', async (req, res) => {
   const { user } = res.locals;
-  if (user) {
+  if (req.session.userId) {
+    const userVer = await User.findOne({
+      where: { id: req.session.userId },
+      include: [{ model: Certificate }, { model: File }],
+    });
     res.json({
       isLoggedIn: true,
       user: {
-        id: user.id,
-        login: user.login,
-        name: user.name,
-        email: user.email,
-        status: user.status,
-        online: user.online,
-        description: user.description,
-        city: user.city,
-        vertification: user.vertification,
-        profilePicture: user.profilePicture,
+        id: userVer.id,
+        login: userVer.login,
+        name: userVer.name,
+        email: userVer.email,
+        status: userVer.status,
+        online: userVer.online,
+        description: userVer.description,
+        city: userVer.city,
+        vertification: userVer.vertification,
+        profilePicture: userVer.profilePicture,
+        Certificates: userVer.Certificates,
+        Files: userVer.Files,
       },
     });
   } else {
