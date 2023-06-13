@@ -90,7 +90,7 @@ function FormAddPost({
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadUrlTrainer(formData));
-          showForm(false)
+          showForm(false);
         }
       }
     }
