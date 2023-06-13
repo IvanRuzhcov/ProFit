@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import style from './style.module.css';
 
 function FormAddPost({
   showForm,
@@ -27,7 +28,7 @@ function FormAddPost({
     resetShowFileLink();
   }
   return (
-    <div>
+    <div className={style.divFormAddPost}>
       <button type="button" onClick={() => showForm(false)}>
         X
       </button>

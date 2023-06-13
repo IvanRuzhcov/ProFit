@@ -42,8 +42,15 @@ authRouter.post('/login', async (req, res) => {
     res.json({
       id: existingUser.id,
       login: existingUser.login,
+      name: existingUser.name,
       email: existingUser.email,
       status: existingUser.status,
+      online: existingUser.online,
+      description: existingUser.description,
+      city: existingUser.city,
+      vertification: existingUser.vertification,
+      profilePicture: existingUser.profilePicture,
+
     });
   } else {
     res.status(401).json({
@@ -60,6 +67,14 @@ authRouter.get('/verification', async (req, res) => {
       user: {
         id: user.id,
         login: user.login,
+        name: user.name,
+        email: user.email,
+        status: user.status,
+        online: user.online,
+        description: user.description,
+        city: user.city,
+        vertification: user.vertification,
+        profilePicture: user.profilePicture,
       },
     });
   } else {
