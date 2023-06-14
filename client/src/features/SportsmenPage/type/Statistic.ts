@@ -1,8 +1,8 @@
 export type Statistic = {
-  id: number
+  id: number;
   user_id_param: number;
   weight: string;
-  createdAt: string
+  createdAt: string;
 };
 
 export type ChartBar = {

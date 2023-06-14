@@ -57,6 +57,7 @@ function SportsmenPage(): JSX.Element {
       </div>
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>
+          
           <div className={style.modal}>
             <div>
               <button  type="button">Загрузить фото</button>
@@ -83,11 +84,12 @@ function SportsmenPage(): JSX.Element {
                 Изменить
               </button>
             </div>
-          </>
+         </div>
         </Modal>
       )}
       <SliderSportsmen /> 
     </div>
+    
   );
 }
 

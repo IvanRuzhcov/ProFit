@@ -6,7 +6,7 @@ export type Sportsmen = {
   name: string;
 };
 
-export type SportsmenId = Sportsmen["id"];
+export type SportsmenId = Sportsmen['id'];
 
 export type SportsmenUp = {
   id: SportsmenId;

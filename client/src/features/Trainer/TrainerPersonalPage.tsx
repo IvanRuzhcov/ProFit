@@ -7,13 +7,13 @@ import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
 import { RootState } from '../../store';
+// import { style } from '@mui/system';
+import styles from './style.module.css'
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  console.log( user  );
-  
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };
@@ -21,14 +21,14 @@ function TrainerPersonalPage(): JSX.Element {
   const [modalActive, setModalActive] = useState(true);
 
   return (
-    <div>
-      <div>
-        <h3>{user?.login}</h3>
-      </div>
+    <div className={styles.trener_container}>
       <div>
         <div>
           <img src={user?.profilePicture} alt="avatar" />
         </div>
+        <div>
+        <h3>{user?.login}</h3>
+      </div>
         {user?.vertification && <AiOutlineCheckCircle />}
         <button type="button">Подписаться</button>
         <button type="button">Сообщение</button>
@@ -80,7 +80,7 @@ function TrainerPersonalPage(): JSX.Element {
                   setActive={setshowCertificates}
                 >
                   <div>
-                    {user?.Certificates.map((el) => (
+                    {user?.Certificates?.map((el) => (
                       <div>
                         <img src={el.url_cert} alt="certificate" />
                       </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import heroVid from "./assets/video.mp4"
+import heroVid from "./assets/1686729651660771.mp4"
 
 function Hero():JSX.Element {
   return (

@@ -2,4 +2,4 @@ type StatisticLineChart = {
   weight: string;
 };
 
-export default StatisticLineChart
+export default StatisticLineChart;
