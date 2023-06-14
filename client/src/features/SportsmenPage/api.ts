@@ -42,11 +42,19 @@ export async function chartInitBarFetch(): Promise<ChartBar[]> {
   return data;
 }
 
-export async function addStatisticsChartBarFetch(data: StatisticBarChart): Promise<void> {
+export async function addStatisticsChartBarFetch(data: StatisticBarChart): Promise<SportsmenState> {
     
   const res = await fetch('/api/chartbar', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
+  if (res.status >= 400) {
+    const { error } = await res.json();
+    throw error;
+  }
+  const result = await res.json();
+  console.log(result);
+  
+  return result;
 }

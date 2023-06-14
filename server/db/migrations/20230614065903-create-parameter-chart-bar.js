@@ -1,17 +1,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Parametrs', {
+    await queryInterface.createTable('ParameterChartBars', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      weight: {
+      time: {
         type: Sequelize.TEXT,
       },
-      user_id_param: {
+      user_id_ChartBar: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Parametrs');
+    await queryInterface.dropTable('ParameterChartBars');
   },
 };

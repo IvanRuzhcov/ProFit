@@ -69,6 +69,26 @@ function ChartLine(): JSX.Element {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+      x: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+    },
     plugins: {
       legend: {
         position: 'top' as const,

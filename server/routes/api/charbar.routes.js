@@ -1,19 +1,19 @@
 const chartBarRouter = require('express').Router();
-const { Parametr } = require('../../db/models');
+const { ParameterChartBar } = require('../../db/models');
 
 chartBarRouter.post('/chartbar', async (req, res) => {
   const { time } = req.body;
   const { userId } = req.session;
   console.log(time);
   try {
-    const result = await Parametr.create({
-      user_id_param: userId,
+    const result = await ParameterChartBar.create({
+      user_id_ChartBar: userId,
       time,
     });
-    const statistic = await Parametr.findAll({
-      where: { user_id_param: userId },
+    const chartbar = await ParameterChartBar.findAll({
+      where: { user_id_ChartBar: userId },
     });
-    res.json({ statistic });
+    res.json({ chartbar });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -22,8 +22,8 @@ chartBarRouter.post('/chartbar', async (req, res) => {
 chartBarRouter.get('/chartbar', async (req, res) => {
   const { userId } = req.session;
   try {
-    const statistic = await Parametr.findAll({
-      where: { user_id_param: userId },
+    const statistic = await ParameterChartBar.findAll({
+      where: { user_id_ChartBar: userId },
     });
     res.json(statistic);
   } catch (error) {

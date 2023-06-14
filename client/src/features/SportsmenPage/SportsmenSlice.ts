@@ -42,8 +42,14 @@ const sportsmenSlice = createSlice({
         state.error = action.error.message;
       })
 
-      .addCase(chartInit.fulfilled, (state, action) => {
+      .addCase(addStatisticsChartBar.fulfilled, (state, action) => {
+        state.chartbar = action.payload.chartbar;
+      })
+      .addCase(addStatisticsChartBar.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
 
+      .addCase(chartInit.fulfilled, (state, action) => {
         state.statistic = action.payload;
       })
       .addCase(chartInit.rejected, (state, action) => {

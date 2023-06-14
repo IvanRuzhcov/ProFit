@@ -1,22 +1,22 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Parametr extends Model {
+  class ParameterChartBar extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate({ User }) {
-      this.belongsTo(User, { foreignKey: 'user_id_param' });
+      this.belongsTo(User, { foreignKey: 'user_id_ChartBar' });
     }
   }
-  Parametr.init(
+  ParameterChartBar.init(
     {
-      weight: {
+      time: {
         type: DataTypes.TEXT,
       },
-      user_id_param: {
+      user_id_ChartBar: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -28,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Parametr',
+      modelName: 'ParameterChartBar',
     },
   );
-  return Parametr;
+  return ParameterChartBar;
 };
