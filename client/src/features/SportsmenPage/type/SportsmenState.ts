@@ -1,8 +1,9 @@
 import { Sportsmen } from './Sportsmen';
-import { Statistic } from './Statistic';
+import { ChartBar, Statistic } from './Statistic';
 
 export type SportsmenState = {
   sportsmenState: Sportsmen[];
   statistic: Statistic[];
-  error: string | undefined;
+  chartbar: ChartBar[]
+  error: string | undefined
 };

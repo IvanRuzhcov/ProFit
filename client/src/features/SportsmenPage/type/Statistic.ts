@@ -4,3 +4,10 @@ export type Statistic = {
   weight: string;
   createdAt: string;
 };
+
+export type ChartBar = {
+  id: number
+  user_id_ChartBar: number;
+  time: string;
+  createdAt: string
+};

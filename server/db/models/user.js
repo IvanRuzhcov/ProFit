@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({
+      ParameterChartBar,
       Parametr,
       Certificate,
       Experience,
@@ -16,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       File,
       Chat,
     }) {
+      this.hasMany(ParameterChartBar, { foreignKey: 'user_id_ChartBar' });
       this.hasMany(Parametr, { foreignKey: 'user_id_param' });
       this.hasMany(Certificate, { foreignKey: 'user_id_cert' });
       this.hasMany(Experience, { foreignKey: 'user_id_exp' });
