@@ -17,6 +17,8 @@ subscriptionRouter.post('/subscribe', async (req, res) => {
   }
 });
 subscriptionRouter.get('/subscribe', async (req, res) => {
+  const { userId } = req.body;
+
   try {
     // Создание подписки в базе данных
     const subscription = await Subscription.create({
