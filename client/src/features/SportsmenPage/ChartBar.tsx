@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartLine from './ChartLine';
-import styles from './styles.module.css';
+import styles from './SportsmenPage.module.css';
 
 ChartJS.register(
   BarElement,
@@ -47,17 +47,38 @@ const UserData = [
 ];
 
 function ChartBar(): JSX.Element {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState('');
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+      },
+    },
+  };
+
+  const dataChart = {
     labels: UserData.map((data) => data.year),
     datasets: [
-      { label: 'Users Gained', data: UserData.map((data) => data.userGain) },
+      {
+        label: 'Ваш вес',
+        data: UserData.map((data) => data.userGain),
+        borderColor: ['rgb(255, 139, 51)'],
+        borderWidth: 1,
+        backgroundColor: 'rgba(246, 130, 81, 0.3)',
+      },
     ],
-  });
+  };
 
   return (
-      <div className={styles.chart_container}>
-        <Bar data={userData} />
-      </div>
+    <div className={styles.container_BarChart}>
+      <Bar data={dataChart} options={options} />
+    </div>
   );
 }
 

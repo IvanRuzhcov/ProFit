@@ -12,9 +12,9 @@ import {
 } from 'chart.js';
 import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-import styles from './styles.module.css';
 import { addStatisticsChart, chartInit } from './SportsmenSlice';
 import { RootState, useAppDispatch } from '../../store';
+import styles from './SportsmenPage.module.css';
 
 ChartJS.register(
   BarElement,
@@ -28,11 +28,11 @@ ChartJS.register(
 );
 
 function ChartLine(): JSX.Element {
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState('');
   const dispatch = useAppDispatch();
 
-  const statistic = useSelector((state: RootState) => state.user.statistic.slice(-30));
 
+  const statistic = useSelector((state: RootState) => state.user.statistic.slice(-30));
 
   const dataChart = {
     labels: statistic.map((data) => {
@@ -51,6 +51,7 @@ function ChartLine(): JSX.Element {
         data: statistic.map((data) => data.weight),
         borderColor: 'rgb(246, 130, 81)',
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
+        tension: 0.3
       },
     ],
   };
@@ -87,8 +88,8 @@ function ChartLine(): JSX.Element {
           <div>
             <input
               type="number"
-              onChange={(event) => setWeight(Number(event.target.value))}
-              min = "1" 
+              onChange={(event) => setWeight(event.target.value)}
+              min = "20" 
               max = "250"
               step="any"
             />
