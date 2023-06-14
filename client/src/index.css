@@ -39,7 +39,7 @@ body {
 }
 
 .black {
-  background: linear-gradient(0deg, rgba(196,196,196,1) 0%, rgba(0,0,0,1) 61%);
+  background: #000000;
 }
 
 .black_s {
@@ -52,13 +52,14 @@ body {
   border-radius: 1.5rem;
   text-align: center;
   transition: 0.4s;
-  margin-top: 30px;
-  background: rgba( 92, 99, 102, 0.65 );
+  margin-top: 10px;
+  background: rgba( 52, 52, 50, 0.1 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
+  backdrop-filter: blur( 3px );
+  -webkit-backdrop-filter: blur( 3px );
+  border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  animation-duration: 3s;
+  animation-duration: 2.5s;
 }
 
 .login_card > h2 {

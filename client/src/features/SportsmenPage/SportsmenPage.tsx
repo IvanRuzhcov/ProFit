@@ -46,8 +46,15 @@ function SportsmenPage(): JSX.Element {
         </div>
         
       </div>
+      <div>
+        <ChartLine />
+      </div>
+      <div>
+        <ChartBar />
+      </div>
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>
+          
           <div className={style.modal}>
             <div>
               <button  type="button">Загрузить фото</button>
@@ -73,19 +80,13 @@ function SportsmenPage(): JSX.Element {
               <button className={style.btn_upd} type="button" onClick={handlerUpData}>
                 Изменить
               </button>
-
-              <div>
-        <ChartLine />
-      </div>
-      <div>
-        <ChartBar />
-      </div>
-    </div>
-          </>
+            </div>
+         </div>
         </Modal>
       )}
       <SliderSportsmen /> 
     </div>
+    
   );
 }
 

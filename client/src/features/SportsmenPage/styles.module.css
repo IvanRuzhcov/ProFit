@@ -2,7 +2,8 @@
 
 .container_lineChart {
   display: flex;
-  max-width: 500px;
+  max-width: 700px;
   min-height: 250px;
   color: rgb(246, 130, 81);
+  background-color: blueviolet;
 }
