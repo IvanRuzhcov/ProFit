@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function ChatMain() {
-  return (
-    <div>ChatMain</div>
-  )
+function ChatMain(): JSX.Element {
+  return <div>ChatMain</div>;
 }
 
-export default ChatMain
+export default ChatMain;
