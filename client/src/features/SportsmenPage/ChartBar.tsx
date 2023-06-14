@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   BarElement,
@@ -10,9 +10,12 @@ import {
   Title,
   PointElement,
 } from 'chart.js';
+import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 import ChartLine from './ChartLine';
 import styles from './SportsmenPage.module.css';
+import { RootState, useAppDispatch } from '../../store';
+import { addStatisticsChartBar, chartBarInit } from './SportsmenSlice';
 
 ChartJS.register(
   BarElement,
@@ -25,33 +28,36 @@ ChartJS.register(
   PointElement
 );
 
-const UserData = [
-  {
-    id: 1,
-    year: 2006,
-    userGain: 80000,
-    userLost: 823,
-  },
-  {
-    id: 2,
-    year: 2008,
-    userGain: 80300,
-    userLost: 893,
-  },
-  {
-    id: 3,
-    year: 2008,
-    userGain: 70000,
-    userLost: 853,
-  },
-];
 
 function ChartBar(): JSX.Element {
-  const [userData, setUserData] = useState('');
+  const [time, setTime] = useState('');
+  const dispatch = useAppDispatch();
+
+  const dataCharts = useSelector((state: RootState) => state.user.chartbar);
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+      x: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+    },
     plugins: {
       legend: {
         position: 'top' as const,
@@ -63,11 +69,20 @@ function ChartBar(): JSX.Element {
   };
 
   const dataChart = {
-    labels: UserData.map((data) => data.year),
+    labels: dataCharts.map((data) => {
+      const dateObject = new Date(data.createdAt);
+      const day = dateObject.getDate();
+      const month = dateObject.getMonth() + 1;
+      if (month < 10) {
+        return `${day}.0${month}`;
+      }
+      return `${day}.${month}`;
+    }),
     datasets: [
       {
-        label: 'Ваш вес',
-        data: UserData.map((data) => data.userGain),
+        label: 'Время тренировки',
+        data: dataCharts.map((data) => data.time
+        ),
         borderColor: ['rgb(255, 139, 51)'],
         borderWidth: 1,
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
@@ -75,10 +90,40 @@ function ChartBar(): JSX.Element {
     ],
   };
 
+  useEffect(() => {
+    dispatch(chartBarInit());
+  }, []);
+
+  const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    const times = time.replace(/:/g, '.');
+    dispatch(addStatisticsChartBar({ time: times }));
+  };
+
   return (
-    <div className={styles.container_BarChart}>
-      <Bar data={dataChart} options={options} />
-    </div>
+    <>
+      <div className={styles.container_BarChart}>
+        <Bar data={dataChart} options={options} />
+      </div>
+      <div className={styles.formBar_container} >
+      <form onSubmit={handleAddInputChart}>
+        <div>
+          <div>
+            <input
+              type="time"
+              placeholder="Продолжительность тренировки"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          </div>
+          <br />
+          <div>
+            <button type="submit">Отправить</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </>
   );
 }
 

@@ -1,21 +1,24 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { RootState, useAppDispatch } from "../../store";
-import { logout } from "../auth/authSlice";
-import User from "../auth/types/User";
+
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store';
+import { logout } from '../auth/authSlice';
+import User from '../auth/types/User';
+import slyles from "./slyles.module.css";
+
 
 const pages = [{ name: "Products", href: "/minePage" },{ name: "Coach", href: "/allCoach" }];
 
@@ -60,8 +63,10 @@ function NavBar(): JSX.Element {
   );
 
   let checkUser;
-  if (user?.status === "sportsman") {
-    checkUser = "/myPage";
+
+  if (user?.status === 'sportsman') {
+    checkUser = '/sportsmanpage';
+
   } else {
     checkUser = "/trainerpage";
   }
@@ -72,10 +77,12 @@ function NavBar(): JSX.Element {
   ];
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#5c6366" }}>
+
+    <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
       <Container
         maxWidth="xl"
-        sx={{ backgroundColor: "#5c6366", height: "80px" }}
+        sx={{ backgroundColor: '#000000', height: '80px' }}
+
       >
         <Toolbar disableGutters>
           <Typography
@@ -146,7 +153,7 @@ function NavBar(): JSX.Element {
                   </Link>
             ))}
           </Box>
-          <div>{user?.login}</div>
+          <div className={slyles.username}>{user?.login}</div>
           {!user ? (
             <>
               <Link
@@ -206,10 +213,4 @@ function NavBar(): JSX.Element {
   );
 }
 export default NavBar;
-function rgba(arg0: number, arg1: number, arg2: number, arg3: number) {
-  throw new Error("Function not implemented.");
-}
 
-function px(arg0: number, px: any) {
-  throw new Error("Function not implemented.");
-}

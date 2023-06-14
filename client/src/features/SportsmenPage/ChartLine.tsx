@@ -60,14 +60,35 @@ function ChartLine(): JSX.Element {
     dispatch(chartInit());
   }, [dispatch]);
 
-  const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleAddInputChartBar: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(addStatisticsChart({ weight }));
+    setWeight('')
   };
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+      x: {
+        ticks: {
+          color: 'black',
+          // Изменение размера шрифта для оси Y
+          font: {
+            size: 15, // Установите желаемый размер шрифта
+          },
+        },
+      },
+    },
     plugins: {
       legend: {
         position: 'top' as const,
@@ -83,8 +104,9 @@ function ChartLine(): JSX.Element {
       <div className={styles.container_lineChart}>
         <Line data={dataChart} options={options} />
       </div>
-      <form onSubmit={handleAddInputChart}>
-        <div className="">
+      <div className={styles.formLine_container}>
+      <form onSubmit={handleAddInputChartBar}>
+        <div className={styles.lineinput_btn_center}>
           <div>
             <input
               type="number"
@@ -92,6 +114,8 @@ function ChartLine(): JSX.Element {
               min = "20" 
               max = "250"
               step="any"
+              placeholder='Введите актуальный вес'
+              value={weight}
             />
           </div>
           <br />
@@ -100,6 +124,7 @@ function ChartLine(): JSX.Element {
           </div>
         </div>
       </form>
+      </div>
     </>
   );
 }

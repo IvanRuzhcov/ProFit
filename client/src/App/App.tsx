@@ -41,9 +41,10 @@ function App(): JSX.Element {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path='/trainerpage' element={<TrainerPersonalPage />} />
-        <Route path='/myPage' element={ <SportsmenPage />} />
         <Route path='/allCoach' element={<TrenerList />}/>
         <Route path='/trainerPageeee/:id' element={<TrainerBlog />}/>
+        <Route path='/sportsmanpage' element={ <SportsmenPage />} />
+
       </Routes>
     </>
   );
