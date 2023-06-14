@@ -2,6 +2,7 @@ const subscriptionRouter = require('express').Router();
 const { Subscription } = require('../../db/models');
 
 subscriptionRouter.post('/api/subscribe', async (req, res) => {
+  console.log(req.body);
   const { userId } = req.body;
 
   try {
