@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
@@ -13,6 +13,7 @@ import MainPage from '../features/MainPage/MainPage';
 
 import Chart from '../features/SportsmenPage/ChartBar';
 import TrenerList from '../features/Trainer/TrenerList';
+import TrainerBlog from '../features/Trainer/TrainerBlog';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path='/trainerpage' element={<TrainerPersonalPage />} />
         <Route path='/allCoach' element={<TrenerList />}/>
+        <Route path='/trainerPageeee/:id' element={<TrainerBlog />}/>
         <Route path='/sportsmanpage' element={ <SportsmenPage />} />
 
       </Routes>
