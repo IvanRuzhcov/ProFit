@@ -3,8 +3,8 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Chat extends Model {
     static associate({ User }) {
-      this.hasOne(User, { foreignKey: 'idUserSender' });
-      this.hasOne(User, { foreignKey: 'idUserReciever' });
+      this.belongsTo(User, { foreignKey: 'idUserSender' });
+      this.belongsTo(User, { foreignKey: 'idUserReciever' });
     }
   }
   Chat.init(
