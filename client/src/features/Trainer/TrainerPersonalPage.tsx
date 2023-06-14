@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
@@ -11,6 +12,7 @@ import { RootState } from '../../store';
 import styles from './style.module.css'
 
 function TrainerPersonalPage(): JSX.Element {
+  const navigate = useNavigate()
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
@@ -19,6 +21,12 @@ function TrainerPersonalPage(): JSX.Element {
   };
 
   const [modalActive, setModalActive] = useState(true);
+
+  useEffect(() => {
+    if(user?.status === 'sportsman'){
+      navigate('/sportsmanpage')
+    }
+  }, [navigate, user])
 
   return (
     <div className={styles.trener_container}>

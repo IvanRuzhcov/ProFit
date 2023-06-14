@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
@@ -13,6 +13,13 @@ function Login(): JSX.Element {
   const [login, setName] = useState('');
   const [password, setPassword] = useState('');
   const error = useSelector((state:RootState) => state.auth.loginFormError)
+  const user = useSelector((state: RootState) => state.auth.user)
+
+  useEffect(() => {
+  if(user){
+    navigate('/')
+  }
+  }, [])
 
   const handleSubmit = React.useCallback(
     async (event: React.FormEvent) => {

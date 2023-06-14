@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import styled from '@emotion/styled';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
@@ -21,17 +21,22 @@ function Registration(): JSX.Element {
   const [passwordRepeat, setPassword2] = useState('');
   const [statusUser, setStatusUser] = useState('');
   const [strength, setStrength] = useState('');
-  
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const error = useSelector((state: RootState) => state.auth.registerFormError);
-
+  const user = useSelector((state: RootState) => state.auth.user)
+  
   const strengthLabels = ['weak', 'medium', 'strong'];
+
+  useEffect(() => {
+  if(user){
+    navigate('/')
+  }
+  }, [navigate, user])
 
   const handleChange = (event: SelectChangeEvent): void => {
     setStatusUser(event.target.value);
   };
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getStrength = (passwordCheck: string): void => {
     let strengthIndicator = -1;

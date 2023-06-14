@@ -16,6 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logout } from '../auth/authSlice';
 import User from '../auth/types/User';
+import slyles from "./slyles.module.css";
 
 const pages = ['Products'];
 
@@ -61,7 +62,7 @@ function NavBar(): JSX.Element {
 
   let checkUser;
   if (user?.status === 'sportsman') {
-    checkUser = '/myPage';
+    checkUser = '/sportsmanpage';
   } else {
     checkUser = '/trainerpage';
   }
@@ -144,7 +145,7 @@ function NavBar(): JSX.Element {
               </Button>
             ))}
           </Box>
-          <div>{user?.login}</div>
+          <div className={slyles.username}>{user?.login}</div>
           {!user ? (
             <>
               <Link
