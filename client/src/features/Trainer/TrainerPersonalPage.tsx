@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
 import { RootState } from '../../store';
+// import { style } from '@mui/system';
+import styles from './style.module.css'
 
 function TrainerPersonalPage(): JSX.Element {
+  const navigate = useNavigate()
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  console.log( user );
-  
+
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };
 
   const [modalActive, setModalActive] = useState(true);
 
+  useEffect(() => {
+    if(user?.status === 'sportsman'){
+      navigate('/sportsmanpage')
+    }
+  }, [navigate, user])
+
   return (
-    <div>
-      <div>
-        <h3>{user?.login}</h3>
-      </div>
+    <div className={styles.trener_container}>
       <div>
         <div>
           <img src={user?.profilePicture} alt="avatar" />
         </div>
+        <div>
+        <h3>{user?.login}</h3>
+      </div>
         {user?.vertification && <AiOutlineCheckCircle />}
         <button type="button">Подписаться</button>
         <button type="button">Сообщение</button>

@@ -17,6 +17,7 @@ export default interface User {
   city: string;
   vertification?: boolean;
   profilePicture?:string;
+
   Certificates?: Certificate[] ;
   Files?: FileTrainer[];
 }
