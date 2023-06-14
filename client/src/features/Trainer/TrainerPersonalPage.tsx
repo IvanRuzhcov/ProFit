@@ -14,8 +14,6 @@ function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  console.log( user  );
-  
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };
@@ -82,7 +80,7 @@ function TrainerPersonalPage(): JSX.Element {
                   setActive={setshowCertificates}
                 >
                   <div>
-                    {user?.Certificates.map((el) => (
+                    {user?.Certificates?.map((el) => (
                       <div>
                         <img src={el.url_cert} alt="certificate" />
                       </div>

@@ -1,24 +1,32 @@
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Parametrs', {
+    await queryInterface.createTable('Chats', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      weight: {
-        type: Sequelize.TEXT,
-      },
-      user_id_param: {
+      idUserSender: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',
         },
         onDelete: 'CASCADE',
+      },
+      idUserReciever: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
+      messageText: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -30,7 +38,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface) {
-    await queryInterface.dropTable('Parametrs');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Chats');
   },
 };

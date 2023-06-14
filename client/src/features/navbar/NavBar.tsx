@@ -46,6 +46,7 @@ function NavBar(): JSX.Element {
     setAnchorElUser(null);
   };
 
+  
   const handleLogout = React.useCallback(
     async (event: React.MouseEvent) => {
       event.preventDefault();
