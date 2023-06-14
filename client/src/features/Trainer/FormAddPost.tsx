@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './style.module.css';
 import { useAppDispatch } from '../../store';
-import assert from 'assert';
+// import assert from 'assert';
 import { uploadFileTrainer, uploadUrlTrainer } from '../auth/authSlice';
 
 function FormAddPost({

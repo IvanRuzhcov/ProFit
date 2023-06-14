@@ -7,7 +7,7 @@ import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
 import { RootState } from '../../store';
-import { style } from '@mui/system';
+// import { style } from '@mui/system';
 import styles from './style.module.css'
 
 function TrainerPersonalPage(): JSX.Element {

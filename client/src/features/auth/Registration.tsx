@@ -32,6 +32,7 @@ function Registration(): JSX.Element {
     setStatusUser(event.target.value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getStrength = (passwordCheck: string): void => {
     let strengthIndicator = -1;
 
