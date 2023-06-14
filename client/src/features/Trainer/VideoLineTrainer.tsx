@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ModalWindowVideo from './ModalWindowVideo';
 import Modal from '../Modal/Modal';
+import { FileTrainer } from './types/FileTrainer';
 
-function VideoLineTrainer({ file }: { file: any }): JSX.Element {
+function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
 

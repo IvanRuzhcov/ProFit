@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       weight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
       },
       user_id_param: {
         type: Sequelize.INTEGER,
@@ -19,9 +19,6 @@ module.exports = {
           key: 'id',
         },
         onDelete: 'CASCADE',
-      },
-      height: {
-        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

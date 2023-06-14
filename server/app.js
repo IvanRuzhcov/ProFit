@@ -6,6 +6,8 @@ const expressConfig = require('./config/express');
 
 // импортируем роутеры (там лежат наши ручки)
 const authRouter = require('./routes/api/auth.routes');
+const trainerRouter = require('./routes/api/trainer.routes');
+const sportsmanRouter = require('./routes/api/sportsman.routes');
 const updatRouter = require('./routes/api/updat.routes');
 
 const app = express();
@@ -16,6 +18,8 @@ expressConfig(app);
 
 // подключаем роутеры
 app.use('/api/auth', authRouter);
+app.use('/api/trainerpage', trainerRouter);
+app.use('/api', sportsmanRouter);
 app.use('/api/updata', updatRouter);
 
 // eslint-disable-next-line no-unused-vars

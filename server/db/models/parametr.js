@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Parametr.init(
     {
       weight: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.TEXT,
       },
       user_id_param: {
         type: DataTypes.INTEGER,
@@ -24,9 +24,6 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
         onDelete: 'CASCADE',
-      },
-      height: {
-        type: DataTypes.INTEGER,
       },
     },
     {

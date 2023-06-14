@@ -3,7 +3,9 @@ const express = require('express');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const path = require('path');
+const fileUpload = require('express-fileupload');
 const getUser = require('../middlewares/getUser');
+
 
 // Конфигурация сессии
 const sessionConfig = {
@@ -25,7 +27,7 @@ function expressConfig(app) {
 
   // позволяет запрашивать статический контент
   // (файлы, которые лежат в / public) с нашего сервера
-  // app.use(express.static(path.join(__dirname, '../../frontend/build')));
+  // app.use(express.static(path.join(__dirname, '../../server/build')));
   app.use(express.static(path.join(__dirname, '../public')));
 
   // при отправке формы методом POST данные из формы приходят
@@ -41,6 +43,7 @@ function expressConfig(app) {
 
   // миддлварка для работы с сессиями
   app.use(session(sessionConfig));
+  app.use(fileUpload());
 
   app.use(getUser);
 }
