@@ -17,6 +17,7 @@ router.post('/file', async (req, res) => {
     });
     res.status(201).json(file);
   } catch (error) {
+    console.log(error);
     res.status(500).json(console.log(error.message));
   }
 });
