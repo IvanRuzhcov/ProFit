@@ -58,6 +58,14 @@ function ChartBar(): JSX.Element {
         },
       },
     },
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+      },
+    },
   };
 
   const dataChart = {
@@ -97,6 +105,7 @@ function ChartBar(): JSX.Element {
       <div className={styles.container_BarChart}>
         <Bar data={dataChart} options={options} />
       </div>
+      <div className={styles.formBar_container} >
       <form onSubmit={handleAddInputChart}>
         <div>
           <div>
@@ -113,6 +122,7 @@ function ChartBar(): JSX.Element {
           </div>
         </div>
       </form>
+      </div>
     </>
   );
 }

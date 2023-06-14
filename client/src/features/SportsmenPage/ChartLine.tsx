@@ -104,8 +104,9 @@ function ChartLine(): JSX.Element {
       <div className={styles.container_lineChart}>
         <Line data={dataChart} options={options} />
       </div>
+      <div className={styles.formLine_container}>
       <form onSubmit={handleAddInputChartBar}>
-        <div className="">
+        <div className={styles.lineinput_btn_center}>
           <div>
             <input
               type="number"
@@ -123,6 +124,7 @@ function ChartLine(): JSX.Element {
           </div>
         </div>
       </form>
+      </div>
     </>
   );
 }
