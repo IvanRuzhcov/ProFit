@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       SportUser,
       Comment,
       File,
+      Chat,
     }) {
       this.hasMany(Parametr, { foreignKey: 'user_id_param' });
       this.hasMany(Certificate, { foreignKey: 'user_id_cert' });
@@ -21,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(SportUser, { foreignKey: 'user_id' });
       this.hasMany(Comment, { foreignKey: 'user_id' });
       this.hasMany(File, { foreignKey: 'user_id_files' });
+      this.hasMany(Chat, { foreignKey: 'idUserSender' });
+      this.hasMany(Chat, { foreignKey: 'idUserReciever' });
     }
   }
   User.init(

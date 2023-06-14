@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function ChatMain(): JSX.Element {
-  return <div>ChatMain</div>;
+  
+  useEffect(() => {}, [])
+  return <div>
+    <div>djk</div>
+    <input type='text' placeholder='Введите сообщение' />
+    <button type='button'>Отправить</button>
+  </div>;
 }
 
 export default ChatMain;
