@@ -63,6 +63,8 @@ export const uploadUrlTrainer = createAsyncThunk(
   (obj: FormData) => trainerApi.addUrlTrainerFetch(obj)
 );
 
+
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -94,7 +96,6 @@ const authSlice = createSlice({
 
       .addCase(verification.fulfilled, (state, action) => {
         state.authChecked = true;
-        console.log(action.payload);
 
         state.user = action.payload.isLoggedIn
           ? action.payload.user
@@ -118,10 +119,8 @@ const authSlice = createSlice({
       })
       .addCase(upSportsmen.fulfilled, (state, action) => {
         state.user = action.payload;
-      });
-    // .addCase(upSportsmen.rejected, (state, action) => {
-    //   state.error = action.error.message;
-    // });
+      })
+      
   },
 });
 

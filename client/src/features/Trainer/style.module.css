@@ -4,3 +4,25 @@
     left: auto;
     background-color: beige;
 } */
+
+.container_trainerCard{
+    display: flex;
+    border: 2px solid black;
+    width: 300px;
+    border-radius: 8vh;
+    padding: 5px;
+    margin: 15px;
+}
+.img_card{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid orange;
+}
+.name_card{
+    margin-left: 10px;
+}
+.info_card{
+    margin: 20px;
+}

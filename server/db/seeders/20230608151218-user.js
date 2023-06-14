@@ -1,6 +1,11 @@
 const bcrypt = require('bcrypt');
 const {
-  User, Parametr, Certificate, Experience, File,
+  User,
+  Parametr,
+  Certificate,
+  Experience,
+  File,
+  SportUser,
 } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
@@ -13,7 +18,7 @@ module.exports = {
           login: 'Vanya',
           name: 'Иван Рыжков',
           profilePicture:
-          'https://sun9-28.userapi.com/impg/SYZ2CF-J8sdkgqIU8A43nZ9okVkvzqcUZLV3MQ/AiyFfNv1RkM.jpg?size=403x604&quality=95&sign=b5bf4f0b4a807c2ff4f7e2430ae52a08&c_uniq_tag=Rkrsvel1skoxYVya9xzhF7i3K6cWaKoNJyI3XbSvk2g&type=album',
+            'https://sun9-28.userapi.com/impg/SYZ2CF-J8sdkgqIU8A43nZ9okVkvzqcUZLV3MQ/AiyFfNv1RkM.jpg?size=403x604&quality=95&sign=b5bf4f0b4a807c2ff4f7e2430ae52a08&c_uniq_tag=Rkrsvel1skoxYVya9xzhF7i3K6cWaKoNJyI3XbSvk2g&type=album',
           password: await bcrypt.hash('1234', 5),
           email: 'vanya.ruzhcov@gmail.com',
           status: 'coach',
@@ -34,6 +39,16 @@ module.exports = {
       },
     );
 
+    await SportUser.bulkCreate([
+      {
+        sport_id: 2,
+        user_id: 1,
+      },
+      {
+        sport_id: 81,
+        user_id: 1,
+      },
+    ]);
     await Certificate.bulkCreate([
       {
         user_id_cert: 1,
@@ -71,7 +86,8 @@ module.exports = {
           email: 'maxim.bes@gmail.com',
           status: 'coach',
           online: true,
-          description: 'Я тут по приколу но могу как написать регу логу на редаксе тул кит !) ',
+          description:
+            'Я тут по приколу но могу как написать регу логу на редаксе тул кит !) ',
           city: 'Санкт-Петербург',
           vertification: true,
           Parametrs: [
@@ -86,7 +102,12 @@ module.exports = {
         include: [Parametr],
       },
     );
-
+    await SportUser.bulkCreate([
+      {
+        sport_id: 38,
+        user_id: 1,
+      },
+    ]);
     await Certificate.bulkCreate([
       {
         user_id_cert: 3,

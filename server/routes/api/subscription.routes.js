@@ -1,13 +1,15 @@
 const subscriptionRouter = require('express').Router();
 const { Subscription } = require('../../db/models');
 
-subscriptionRouter.post('/api/subscribe', async (req, res) => {
-  console.log(req.body);
+subscriptionRouter.post('/subscribe', async (req, res) => {
   const { userId } = req.body;
 
   try {
     // Создание подписки в базе данных
-    const subscription = await Subscription.create({ userId });
+    const subscription = await Subscription.create({
+      sportsmenId: req.session.user.id,
+      coatch: userId,
+    });
 
     res.status(201).json(subscription);
   } catch (error) {

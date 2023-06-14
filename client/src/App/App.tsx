@@ -12,6 +12,7 @@ import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
 import MainPage from '../features/MainPage/MainPage';
 
 import Chart from '../features/SportsmenPage/ChartBar';
+import TrenerList from '../features/Trainer/TrenerList';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -40,6 +41,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path='/trainerpage' element={<TrainerPersonalPage />} />
         <Route path='/myPage' element={ <SportsmenPage />} />
+        <Route path='/allCoach' element={<TrenerList />}/>
       </Routes>
     </>
   );
