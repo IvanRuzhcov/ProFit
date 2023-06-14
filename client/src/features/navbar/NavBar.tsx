@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,7 +19,8 @@ import { logout } from '../auth/authSlice';
 import User from '../auth/types/User';
 import slyles from "./slyles.module.css";
 
-const pages = ['Products'];
+
+const pages = [{ name: "Products", href: "/minePage" },{ name: "Coach", href: "/allCoach" }];
 
 function NavBar(): JSX.Element {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -41,42 +43,46 @@ function NavBar(): JSX.Element {
 
   const handleCloseNavMenu = (): void => {
     setAnchorElNav(null);
+    
   };
 
   const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
 
-  
   const handleLogout = React.useCallback(
     async (event: React.MouseEvent) => {
       event.preventDefault();
 
       const dispatchResult = await dispatch(logout());
       if (logout.fulfilled.match(dispatchResult)) {
-        navigate('/');
+        navigate("/");
       }
     },
     [dispatch, navigate]
   );
 
   let checkUser;
+
   if (user?.status === 'sportsman') {
     checkUser = '/sportsmanpage';
+
   } else {
-    checkUser = '/trainerpage';
+    checkUser = "/trainerpage";
   }
 
   const settings = [
-    { name: 'Личный кабинет', href: checkUser },
-    { name: 'Выход', href: '/', handleLogout },
+    { name: "Личный кабинет", href: checkUser },
+    { name: "Выход", href: "/", handleLogout },
   ];
 
   return (
+
     <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
       <Container
         maxWidth="xl"
         sx={{ backgroundColor: '#000000', height: '80px' }}
+
       >
         <Toolbar disableGutters>
           <Typography
@@ -86,19 +92,19 @@ function NavBar(): JSX.Element {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              fontSize: '2rem',
-              letterSpacing: '.3rem',
-              color: '#fbefbb',
-              textDecoration: 'none',
+              fontSize: "2rem",
+              letterSpacing: ".3rem",
+              color: "#fbefbb",
+              textDecoration: "none",
             }}
           >
             ProFit
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -113,36 +119,38 @@ function NavBar(): JSX.Element {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.href} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.href}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: '#fbefbb', display: 'block' }}
-              >
-                {page}
-              </Button>
+                  <Link to={page.href} >
+                <Button
+                  key={page.href}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "#fbefbb", display: "block" }}
+                >
+                  {page.name}
+                </Button>
+                  </Link>
             ))}
           </Box>
           <div className={slyles.username}>{user?.login}</div>
@@ -150,13 +158,13 @@ function NavBar(): JSX.Element {
             <>
               <Link
                 to="/registration"
-                style={{ textDecoration: 'none', color: '#fbefbb' }}
+                style={{ textDecoration: "none", color: "#fbefbb" }}
               >
                 <Button color="inherit">Регистрация</Button>
               </Link>
               <Link
                 to="/login"
-                style={{ textDecoration: 'none', color: '#fbefbb' }}
+                style={{ textDecoration: "none", color: "#fbefbb" }}
               >
                 <Button color="inherit">Войти</Button>
               </Link>
@@ -169,17 +177,17 @@ function NavBar(): JSX.Element {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
+                sx={{ mt: "45px" }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
@@ -187,7 +195,7 @@ function NavBar(): JSX.Element {
                 {settings.map((setting) => (
                   <Link
                     to={setting.href}
-                    style={{ textDecoration: 'none', color: 'black' }}
+                    style={{ textDecoration: "none", color: "black" }}
                     key={setting.href}
                     onClick={setting.handleLogout}
                   >
@@ -205,3 +213,4 @@ function NavBar(): JSX.Element {
   );
 }
 export default NavBar;
+

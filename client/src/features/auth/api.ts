@@ -66,3 +66,7 @@ export async function apiUpdatSportsmetFeth(obj: User): Promise<User> {
   });
   return res.json();
 }
+export function initTrainerFeth(): any {
+  throw new Error('Function not implemented.');
+}
+

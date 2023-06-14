@@ -12,6 +12,7 @@ import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
 import MainPage from '../features/MainPage/MainPage';
 
 import Chart from '../features/SportsmenPage/ChartBar';
+import TrenerList from '../features/Trainer/TrenerList';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,7 +40,9 @@ function App(): JSX.Element {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path='/trainerpage' element={<TrainerPersonalPage />} />
+        <Route path='/allCoach' element={<TrenerList />}/>
         <Route path='/sportsmanpage' element={ <SportsmenPage />} />
+
       </Routes>
     </>
   );

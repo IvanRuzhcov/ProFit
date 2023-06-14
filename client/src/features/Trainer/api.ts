@@ -4,7 +4,9 @@
 //     description: string,
 //     type: string,
 
+import User from '../auth/types/User';
 import { FileTrainer } from './types/FileTrainer';
+import { Trainer } from './types/Trainer';
 
 // }
 export const addFileTrainerFetch = async (
@@ -27,3 +29,11 @@ export const addUrlTrainerFetch = async (
   const data = await res.json();
   return data;
 };
+
+export async function initTrainerFeth():Promise<Trainer[]>{
+const res = await fetch('/api/coach');
+const data = await res.json();
+console.log(data, ' dfadkshflahfgadhjfgpiadl');
+
+return data
+}

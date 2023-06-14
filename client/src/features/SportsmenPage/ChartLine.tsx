@@ -58,7 +58,7 @@ function ChartLine(): JSX.Element {
 
   useEffect(() => {
     dispatch(chartInit());
-  }, []);
+  }, [dispatch]);
 
   const handleAddInputChartBar: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();

@@ -16,6 +16,7 @@ function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
+
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };

@@ -75,7 +75,12 @@ function SportsmenPage(): JSX.Element {
         <Modal active={modalUpdat} setActive={setModalUpdat}>
           <div className={style.modal}>
             <div>
+
+              <div><input type="file" id='file'  /></div>
+              <div>
               <button type="button">Загрузить фото</button>
+              </div>
+
             </div>
 
             <div>
