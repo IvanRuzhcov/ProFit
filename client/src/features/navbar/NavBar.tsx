@@ -61,7 +61,7 @@ function NavBar(): JSX.Element {
 
   let checkUser;
   if (user?.status === 'sportsman') {
-    checkUser = '/myPage';
+    checkUser = '/sportsmanpage';
   } else {
     checkUser = '/trainerpage';
   }

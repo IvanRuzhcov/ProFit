@@ -171,3 +171,17 @@ border: 1px solid #fbefbb;
     background: linear-gradient(117deg, #fbefbb, #f68251);
     box-shadow: 0 0.1rem 0.8rem rgb(254, 100, 70);
    }
+
+   .grafAll_container {
+    width: 300px;
+    display: flex;
+   }
+   
+   .grafLine_container {
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+  .grafBar_container {
+
+  }

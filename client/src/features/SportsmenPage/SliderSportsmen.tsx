@@ -4,6 +4,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 
 function SliderSportsmen():JSX.Element {
+  
     type Slide = {
         url: string;
       };
