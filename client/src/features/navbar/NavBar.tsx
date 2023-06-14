@@ -72,10 +72,10 @@ function NavBar(): JSX.Element {
   ];
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#5c6366' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
       <Container
         maxWidth="xl"
-        sx={{ backgroundColor: '#5c6366', height: '80px' }}
+        sx={{ backgroundColor: '#000000', height: '80px' }}
       >
         <Toolbar disableGutters>
           <Typography

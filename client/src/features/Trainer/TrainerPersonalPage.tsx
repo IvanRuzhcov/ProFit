@@ -7,6 +7,8 @@ import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
 import { RootState } from '../../store';
+import { style } from '@mui/system';
+import styles from './style.module.css'
 
 function TrainerPersonalPage(): JSX.Element {
   const [showCertificates, setshowCertificates] = useState(false);
@@ -19,14 +21,14 @@ function TrainerPersonalPage(): JSX.Element {
   const [modalActive, setModalActive] = useState(true);
 
   return (
-    <div>
-      <div>
-        <h3>{user?.login}</h3>
-      </div>
+    <div className={styles.trener_container}>
       <div>
         <div>
           <img src={user?.profilePicture} alt="avatar" />
         </div>
+        <div>
+        <h3>{user?.login}</h3>
+      </div>
         {user?.vertification && <AiOutlineCheckCircle />}
         <button type="button">Подписаться</button>
         <button type="button">Сообщение</button>
