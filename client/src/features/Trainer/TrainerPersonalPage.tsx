@@ -9,10 +9,10 @@ import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
 import { RootState } from '../../store';
 // import { style } from '@mui/system';
-import styles from './style.module.css'
+import styles from './style.module.css';
 
 function TrainerPersonalPage(): JSX.Element {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
@@ -24,85 +24,84 @@ function TrainerPersonalPage(): JSX.Element {
   const [modalActive, setModalActive] = useState(true);
 
   useEffect(() => {
-    if(user?.status === 'sportsman'){
-      navigate('/sportsmanpage')
+    if (user?.status === 'sportsman') {
+      navigate('/sportsmanpage');
     }
-  }, [navigate, user])
+  }, [navigate, user]);
 
   return (
     <div className={styles.trener_container}>
-      <div>
+      <div className={styles.trener_ava_name}>
         <div>
           <img src={user?.profilePicture} alt="avatar" />
         </div>
-        <div>
-        <h3>{user?.login}</h3>
-      </div>
-        {user?.vertification && <AiOutlineCheckCircle />}
-        <button type="button">Подписаться</button>
-        <button type="button">Сообщение</button>
-      </div>
-      <div>
-        <h2>Обо мне</h2>
-        <div>
-          <ul>
-            <li>{user?.description}</li>
-            <li>{user?.city}</li>
-            {/* <li>
+        <div className={styles.info_trainer}>
+          {user?.vertification && <AiOutlineCheckCircle />}
+          <div>
+            <h3>{user?.login}</h3>
+          </div>
+            <h2>Обо мне</h2>
+            <div>
+              <div>
+                <div>{user?.description}</div>
+                <div>{user?.city}</div>
+                {/* <div>
               {user?.map((sport) => (
                 <div>{sport.sport}</div>
               ))}
-            </li> */}
-            {/* <li>
+            </div> */}
+                {/* <div>
               {user?.?.map((exp) => (
                 <div>
                   <p>{exp.date}</p>
                   <p>{exp.description}</p>
                 </div>
               ))}
-            </li> */}
-            {user?.online && <li>Принимаю онлайн</li>}
-            {!showFormAdd && (
-              <li>
-                <button type="button" onClick={() => setShowFormAdd(true)}>
-                  Добавить пост
-                </button>
-              </li>
-            )}
-            {showFormAdd && (
-              <Modal active={showFormAdd} setActive={setShowFormAdd}>
-                <FormAddPost showForm={showForm} />
-              </Modal>
-            )}
-            <li>
-              <button
-                type="button"
-                onClick={() => {
-                  setshowCertificates(!showCertificates);
-                }}
-              >
-                Посмотреть сертификаты
-              </button>
-              {showCertificates && (
-                <Modal
-                  active={showCertificates}
-                  setActive={setshowCertificates}
-                >
+            </div> */}
+                {user?.online && <div>Принимаю онлайн</div>}
+                {!showFormAdd && (
                   <div>
-                    {user?.Certificates?.map((el) => (
-                      <div>
-                        <img src={el.url_cert} alt="certificate" />
-                      </div>
-                    ))}
-                    <button type="button">Добавить сертификат</button>
+                    <button type="button" onClick={() => setShowFormAdd(true)}>
+                      Добавить пост
+                    </button>
                   </div>
-                </Modal>
-              )}
-            </li>
-          </ul>
+                )}
+                {showFormAdd && (
+                  <Modal active={showFormAdd} setActive={setShowFormAdd}>
+                    <FormAddPost showForm={showForm} />
+                  </Modal>
+                )}
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setshowCertificates(!showCertificates);
+                    }}
+                  >
+                    Посмотреть сертификаты
+                  </button>
+                  {showCertificates && (
+                    <Modal
+                      active={showCertificates}
+                      setActive={setshowCertificates}
+                    >
+                      <div>
+                        {user?.Certificates?.map((el) => (
+                          <div>
+                            <img src={el.url_cert} alt="certificate" />
+                          </div>
+                        ))}
+                        <button type="button">Добавить сертификат</button>
+                      </div>
+                    </Modal>
+                  )}
+                </div>
+              </div>
+            </div>
         </div>
       </div>
-      {user?.Files&& (
+
+      {user?.Files && (
         <div>
           {user.Files?.map((file) =>
             file.type === 'video' ? (

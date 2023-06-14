@@ -17,7 +17,6 @@ function handaleFailing():void{
             <div className={style.info_card}>
             <div className={style.name_card}>{trainer.name} </div>
             <div className={style.name_card}>{trainer.city}</div>
-            <div className={style.name_card}>{trainer.}</div>
             </div>
         </div>
     );
