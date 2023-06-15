@@ -140,10 +140,10 @@ function FormAddPost({
             )}
             {showFile && (
               <div className={style.upload_file}>
-                <input type="file" ref={refFile} />
+                <input type="file" ref={refFile} className={style.input_files}/>
                 <div className="">
                   <input
-                    className={style.input}
+                    className={style.input_post}
                     type="text"
                     placeholder="Добавьте описание"
                     ref={refDescription}

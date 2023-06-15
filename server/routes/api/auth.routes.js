@@ -1,12 +1,12 @@
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const path = require('path');
 const { User, Certificate, File } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
   const { login, email, password, status } = req.body;
   try {
     if (login && password && email && status) {
+      console.log(req.body);
       let user = await User.findOne({ where: { login } });
       const userEmail = await User.findOne({ where: { email } });
       if (!user && !userEmail) {
@@ -35,6 +35,7 @@ authRouter.post('/register', async (req, res) => {
       res.status(400).json({ message: 'Заполните все поля' });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
@@ -69,7 +70,6 @@ authRouter.post('/login', async (req, res) => {
 });
 
 authRouter.get('/verification', async (req, res) => {
-  const { user } = res.locals;
   if (req.session.userId) {
     const userVer = await User.findOne({
       where: { id: req.session.userId },

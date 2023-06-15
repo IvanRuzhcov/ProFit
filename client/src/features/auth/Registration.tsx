@@ -128,8 +128,7 @@ function Registration(): JSX.Element {
     <div className={style.main}>
       <div className={style.containerForm}>
         <div className="login_card animate__animated animate__bounceInLeft">
-          <img src={logo} alt="logo" />
-          <h2>Регистрация</h2>
+          <h2 className={style.registerName}>Регистрация</h2>
           <form className={style.login_form} onSubmit={handleSubmit}>
             <div className={style.username}>
               <input
@@ -154,7 +153,7 @@ function Registration(): JSX.Element {
             <input
               spellCheck="false"
               className={style.control}
-              // type="password"
+              type="password"
               placeholder="Пароль"
               onChange={handlePasswordChange}
             />

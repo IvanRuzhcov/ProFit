@@ -99,3 +99,8 @@ button.control:active {
   font-size: 20px;
   color: #ff0000;
 }
+
+.registerName {
+margin-bottom: 20px;
+font-size: 60px;
+}
