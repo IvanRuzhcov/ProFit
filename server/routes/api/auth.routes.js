@@ -1,5 +1,6 @@
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
+const path = require('path');
 const { User, Certificate, File } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
@@ -10,7 +11,14 @@ authRouter.post('/register', async (req, res) => {
       const userEmail = await User.findOne({ where: { email } });
       if (!user && !userEmail) {
         const hash = await bcrypt.hash(password, 10);
-        user = await User.create({ login, password: hash, email, status });
+        user = await User.create({
+          login,
+          password: hash,
+          email,
+          status,
+          profilePicture:
+            'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+        });
         req.session.userId = user.id;
         res.locals.user = { login: user.login, id: user.id };
         res.status(201).json({
@@ -18,6 +26,7 @@ authRouter.post('/register', async (req, res) => {
           login: user.login,
           email: user.email,
           status: user.status,
+          profilePicture: user.profilePicture,
         });
       } else {
         res.status(400).json({ message: 'Такой пользователь уже существует' });

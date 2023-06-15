@@ -15,7 +15,16 @@ router.post('/file', async (req, res) => {
       url: newUrl,
       user_id_files: req.session.userId,
     });
-    res.status(201).json(file);
+    res
+      .status(201)
+      .json({
+        id: file.id,
+        type: file.type,
+        url: file.url,
+        user_id_files: file.user_id_files,
+        description: file.description,
+      });
+    // console.log(file);
   } catch (error) {
     console.log(error);
     res.status(500).json(console.log(error.message));
