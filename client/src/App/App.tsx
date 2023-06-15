@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Registration from "../features/auth/Registration";
 import TrainerPersonalPage from "../features/Trainer/TrainerPersonalPage";
 import Login from "../features/auth/Login";
-import NavBar from "../features/Navbar/NavBar";
+import NavBar from "../features/navbar/NavBar";
 import { RootState, useAppDispatch } from "../store";
 import { verification } from "../features/auth/authSlice";
 import SportsmenPage from "../features/SportsmenPage/SportsmenPage";
