@@ -7,5 +7,6 @@ export type Trainer ={
     description?:string,
     city?:string,
     vertification?:string,
-    profilePicture?:string
+    profilePicture?:string,
+    login: string
 }
