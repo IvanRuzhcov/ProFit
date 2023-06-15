@@ -113,11 +113,9 @@ const authSlice = createSlice({
         state.user = undefined;
       })
       .addCase(uploadFileTrainer.fulfilled, (state, action) => {
-        console.log(action.payload,'aaaaaaaaaaa');
       if (state.user && state.user.Files){
         state.user={...state.user,Files:[...state.user.Files,action.payload]}
       }
-       
         state.fileError = '';
       })
       .addCase(uploadFileTrainer.rejected, (state, action) => {
