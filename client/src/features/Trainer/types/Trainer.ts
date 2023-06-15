@@ -1,3 +1,5 @@
+import { FileTrainer } from "./FileTrainer"
+
 export type Trainer ={
     id?:number,
     name:string,
@@ -9,5 +11,6 @@ export type Trainer ={
     vertification?:string,
     profilePicture?:string,
     login: string
+    Files?: FileTrainer[];
 }
 

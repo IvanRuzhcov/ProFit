@@ -1,21 +1,17 @@
-
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
-import { initTrainer } from "./TrainerSlice";
+import { RootState } from "../../store";
 import TrainerCard from "./TrainerCard";
 import style from './style.module.css'
 import { Trainer } from './types/Trainer';
 
 
 function TrenerList(): JSX.Element {
-  const dispatch = useAppDispatch();
   const [login, setLogin] = useState('');
   const [findTrainer, setFindTrainer] = useState <Trainer>();
   const [findCity, setFindCity] = useState <Trainer>();
   const coach = useSelector((store: RootState) => store.coach.trenerState);
-  console.log(coach);
-  console.log(findTrainer);
+
 
 
   const getCoachByLogin: React.MouseEventHandler<HTMLButtonElement> = () => {

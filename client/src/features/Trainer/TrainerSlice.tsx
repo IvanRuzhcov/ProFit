@@ -1,20 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { TrainerState } from "./types/TrainerState";
 import * as api from "./api";
-import { CoachId, Subscribe } from "./types/Subscribe";
+import { CoachId } from "./types/Subscribe";
+import { uploadUrlTrainer } from "../auth/authSlice";
 
 const initialState: TrainerState = {
   trenerState: [],
-  subscribeState: []
+  subscribeState: [],
+  files: [],
 };
 
 export const initTrainer = createAsyncThunk("triner/initTrainer", () =>
   api.initTrainerFeth()
 );
 
-export const addSubscribeTr = createAsyncThunk('trainer/addSubscribe', (userId:CoachId)=> 
-api.addSubscribe(userId)
-)
+export const addSubscribeTr = createAsyncThunk(
+  "trainer/addSubscribe",
+  (userId: CoachId) => api.addSubscribe(userId)
+);
 
 const trainerSlice = createSlice({
   name: "trainer",
@@ -22,12 +25,15 @@ const trainerSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     return builder
-    .addCase(initTrainer.fulfilled, (state, action) => {
-      state.trenerState = action.payload;
-    })
-    .addCase(addSubscribeTr.fulfilled, (state, action) => {
-      state.subscribeState = action.payload;
-    });
+      .addCase(initTrainer.fulfilled, (state, action) => {
+        state.trenerState = action.payload;
+      })
+      .addCase(addSubscribeTr.fulfilled, (state, action) => {
+        state.subscribeState = action.payload;
+      })
+      .addCase(uploadUrlTrainer.fulfilled, (state, action) => {
+        state.files = [...state.files, action.payload];
+      });
   },
 });
 

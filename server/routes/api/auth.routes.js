@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt');
 const { User, Certificate, File } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
-  const { login, email, password, status } = req.body;
+  const {
+    login, email, password, status,
+  } = req.body;
   try {
     if (login && password && email && status) {
       console.log(req.body);
@@ -61,6 +63,7 @@ authRouter.post('/login', async (req, res) => {
       city: existingUser.city,
       vertification: existingUser.vertification,
       profilePicture: existingUser.profilePicture,
+      Files: existingUser.Files,
     });
   } else {
     res.status(401).json({

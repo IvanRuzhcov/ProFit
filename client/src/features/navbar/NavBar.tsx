@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logout } from '../auth/authSlice';
-import User from '../auth/types/User';
 import slyles from './slyles.module.css';
 
 function NavBar(): JSX.Element {

@@ -8,8 +8,10 @@ const storage = async (file) => {
 
   const allowedExtensions = /png|jpeg|jpg|gif|webp|mp4|wmv|mov/;
 
+  // eslint-disable-next-line no-throw-literal
   if (!allowedExtensions.test(extension)) throw 'Unsupported extension !';
 
+  // eslint-disable-next-line no-throw-literal
   if (size > 5000000) throw 'File must be less than 5MB';
 
   const { md5 } = file;
