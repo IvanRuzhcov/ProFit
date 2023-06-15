@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
-import ChartLine from './ChartLine';
 import styles from './SportsmenPage.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import { addStatisticsChartBar, chartBarInit } from './SportsmenSlice';
@@ -93,7 +92,7 @@ function ChartBar(): JSX.Element {
 
   useEffect(() => {
     dispatch(chartBarInit());
-  }, []);
+  }, [dispatch]);
 
   const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();

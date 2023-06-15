@@ -6,7 +6,6 @@ const path = require('path');
 const fileUpload = require('express-fileupload');
 const getUser = require('../middlewares/getUser');
 
-
 // Конфигурация сессии
 const sessionConfig = {
   // сессии будут храниться в файлах

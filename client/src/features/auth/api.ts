@@ -59,6 +59,7 @@ export const logout = async (): Promise<void> => {
 };
 
 export async function apiUpdatSportsmetFeth(obj: User): Promise<User> {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const res = await fetch(`/api/updata/${obj.id!}`, {
     method: "PUT",
     headers: { "Content-type": "application/json" },
@@ -67,9 +68,6 @@ export async function apiUpdatSportsmetFeth(obj: User): Promise<User> {
   return res.json();
 }
 
-export function initTrainerFeth(): any {
-  throw new Error('Function not implemented.');
-}
 
 // export async function apiUpdatTrainerFeth(obj: User): Promise<User> {
 //   const res = await fetch(`/api/updata/${obj.id!}`, {

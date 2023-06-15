@@ -4,8 +4,8 @@ const { ParameterChartBar } = require('../../db/models');
 chartBarRouter.post('/chartbar', async (req, res) => {
   const { time } = req.body;
   const { userId } = req.session;
-  console.log(time);
   try {
+    // eslint-disable-next-line no-unused-vars
     const result = await ParameterChartBar.create({
       user_id_ChartBar: userId,
       time,

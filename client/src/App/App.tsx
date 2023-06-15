@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useSelector } from "react-redux";
 import Registration from "../features/auth/Registration";

@@ -1,10 +1,5 @@
-// export type Video = {
-//     id: number,
-//     url: string,
-//     description: string,
-//     type: string,
 
-import User from "../auth/types/User";
+
 import { FileTrainer } from "./types/FileTrainer";
 import { CoachId, Subscribe } from "./types/Subscribe";
 import { Trainer } from "./types/Trainer";
@@ -32,17 +27,19 @@ export const addUrlTrainerFetch = async (
   const data = await res.json();
   return data;
 };
-export const addSubscribe = async (userId: CoachId): Promise<Subscribe[]> => {
-  console.log(userId);
 
+
+export const addSubscribe = async (userId: CoachId): Promise<Subscribe[]> => {
   const res = await fetch("/api/subscribe", {
     method: "POST",
     headers: { "Content-type": "application/json" },
-    body: JSON.stringify({userId}),
+    body: JSON.stringify({ userId }),
   });
   const data = await res.json();
   return data;
 };
+
+
 
 export async function initTrainerFeth(): Promise<Trainer[]> {
   const res = await fetch("/api/coach");
