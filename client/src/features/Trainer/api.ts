@@ -17,8 +17,10 @@ export const addFileTrainerFetch = async (
     body: obj,
   });
   const data = await res.json();
+  console.log(data)
   return data;
 };
+
 export const addUrlTrainerFetch = async (
   obj: FormData
 ): Promise<FileTrainer> => {
@@ -33,7 +35,5 @@ export const addUrlTrainerFetch = async (
 export async function initTrainerFeth():Promise<Trainer[]>{
 const res = await fetch('/api/coach');
 const data = await res.json();
-console.log(data, ' dfadkshflahfgadhjfgpiadl');
-
 return data
 }

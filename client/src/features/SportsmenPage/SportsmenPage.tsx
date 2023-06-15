@@ -41,6 +41,7 @@ function SportsmenPage(): JSX.Element {
     setModalUpdat(!modalUpdat);
   }
 
+ 
   return (
     <div className={style.sport_container}>
       <div className={style.main}>
