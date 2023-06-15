@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useSelector } from "react-redux";
 import Registration from "../features/auth/Registration";
@@ -10,8 +10,6 @@ import { RootState, useAppDispatch } from "../store";
 import { verification } from "../features/auth/authSlice";
 import SportsmenPage from "../features/SportsmenPage/SportsmenPage";
 import MainPage from "../features/MainPage/MainPage";
-
-
 import Chart from "../features/SportsmenPage/ChartBar";
 import TrenerList from "../features/Trainer/TrenerList";
 import TrainerBlog from "../features/Trainer/TrainerBlog";

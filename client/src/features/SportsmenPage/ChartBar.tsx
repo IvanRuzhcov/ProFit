@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { useSelector } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
-import ChartLine from './ChartLine';
 import styles from './SportsmenPage.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import { addStatisticsChartBar, chartBarInit } from './SportsmenSlice';
@@ -41,7 +40,7 @@ function ChartBar(): JSX.Element {
     scales: {
       y: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта
@@ -50,7 +49,7 @@ function ChartBar(): JSX.Element {
       },
       x: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта
@@ -83,16 +82,17 @@ function ChartBar(): JSX.Element {
         label: 'Время тренировки',
         data: dataCharts.map((data) => data.time
         ),
-        borderColor: ['rgb(255, 139, 51)'],
-        borderWidth: 1,
+        borderColor: ['rgb(246, 130, 81)'],
+        borderWidth: 2,
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
+        
       },
     ],
   };
 
   useEffect(() => {
     dispatch(chartBarInit());
-  }, []);
+  }, [dispatch]);
 
   const handleAddInputChart: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();

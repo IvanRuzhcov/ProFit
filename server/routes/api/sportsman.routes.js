@@ -5,6 +5,7 @@ sportsmanRouter.post('/sportsman', async (req, res) => {
   const { weight } = req.body;
   const { userId } = req.session;
   try {
+    // eslint-disable-next-line no-unused-vars
     const result = await Parametr.create({
       user_id_param: userId,
       weight,

@@ -1,7 +1,8 @@
 import React from 'react';
+import { FileTrainer } from './types/FileTrainer';
 
 
-function ModalWindowPhoto({ file }: { file: any }): JSX.Element {
+function ModalWindowPhoto({ file }: { file: FileTrainer }): JSX.Element {
     
   return (
     <div>

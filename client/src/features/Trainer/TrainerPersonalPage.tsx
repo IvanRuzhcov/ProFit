@@ -19,6 +19,7 @@ function TrainerPersonalPage(): JSX.Element {
   const [showFormAdd, setShowFormAdd] = useState(false);
   const [showFormAddInfo, setShowFormAddInfo] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
+  
 
   const sportsmen = useSelector((store: RootState) => store.auth.user);
   const [modalUpdat, setModalUpdat] = useState(false);

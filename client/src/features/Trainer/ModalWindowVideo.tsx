@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './style.module.css'
+import { FileTrainer } from './types/FileTrainer';
 
-function ModalWindowVideo({ file }: { file: any }): JSX.Element {
+function ModalWindowVideo({ file }: { file: FileTrainer }): JSX.Element {
   return (
     <div>
       <div>
