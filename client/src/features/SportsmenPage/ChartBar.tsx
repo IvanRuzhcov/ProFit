@@ -41,7 +41,7 @@ function ChartBar(): JSX.Element {
     scales: {
       y: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта
@@ -50,7 +50,7 @@ function ChartBar(): JSX.Element {
       },
       x: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта
@@ -83,9 +83,10 @@ function ChartBar(): JSX.Element {
         label: 'Время тренировки',
         data: dataCharts.map((data) => data.time
         ),
-        borderColor: ['rgb(255, 139, 51)'],
-        borderWidth: 1,
+        borderColor: ['rgb(246, 130, 81)'],
+        borderWidth: 2,
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
+        
       },
     ],
   };

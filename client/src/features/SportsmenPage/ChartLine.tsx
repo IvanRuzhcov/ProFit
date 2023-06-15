@@ -51,7 +51,8 @@ function ChartLine(): JSX.Element {
         data: statistic.map((data) => data.weight),
         borderColor: 'rgb(246, 130, 81)',
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
-        tension: 0.3
+        tension: 0.3,
+        borderWidth: 3,
       },
     ],
   };
@@ -72,7 +73,7 @@ function ChartLine(): JSX.Element {
     scales: {
       y: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта
@@ -81,7 +82,7 @@ function ChartLine(): JSX.Element {
       },
       x: {
         ticks: {
-          color: 'black',
+          color: 'rgb(255, 155, 112)',
           // Изменение размера шрифта для оси Y
           font: {
             size: 15, // Установите желаемый размер шрифта

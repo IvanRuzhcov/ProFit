@@ -5,13 +5,11 @@ import { useSelector } from "react-redux";
 import Registration from "../features/auth/Registration";
 import TrainerPersonalPage from "../features/Trainer/TrainerPersonalPage";
 import Login from "../features/auth/Login";
-import NavBar from "../features/Navbar/NavBar";
+import NavBar from "../features/navbar/NavBar";
 import { RootState, useAppDispatch } from "../store";
 import { verification } from "../features/auth/authSlice";
 import SportsmenPage from "../features/SportsmenPage/SportsmenPage";
 import MainPage from "../features/MainPage/MainPage";
-
-
 import Chart from "../features/SportsmenPage/ChartBar";
 import TrenerList from "../features/Trainer/TrenerList";
 import TrainerBlog from "../features/Trainer/TrainerBlog";
