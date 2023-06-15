@@ -15,6 +15,7 @@ import TrenerList from "../features/Trainer/TrenerList";
 import TrainerBlog from "../features/Trainer/TrainerBlog";
 import { initTrainer } from "../features/Trainer/TrainerSlice";
 import Footer from '../features/Footer/Footer';
+import Page404 from "../features/404/Page404";
 
 
 function App(): JSX.Element {
@@ -47,6 +48,7 @@ function App(): JSX.Element {
         <Route path="/allCoach" element={<TrenerList />} />
         <Route path="/trainerBlog/:id" element={<TrainerBlog />} />
         <Route path="/sportsmanpage" element={<SportsmenPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer/>
     </>

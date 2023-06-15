@@ -28,7 +28,7 @@
   backdrop-filter: blur( 3px );
   -webkit-backdrop-filter: blur( 3px );
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid ;
   
 }
 
@@ -81,17 +81,6 @@
   background: url('https://images.unsplash.com/photo-1558009525-8518ac46127d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );    
 }
-
-.grow8 {
-  width: 500px;
-  height: 400px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border-radius: 25%;  
-  background: url('https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80') no-repeat center center/cover;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );    
-}
-
 
 .about_text {
     margin-top: 30px;
