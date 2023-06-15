@@ -14,6 +14,7 @@ import MainPage from '../features/MainPage/MainPage';
 import Chart from '../features/SportsmenPage/ChartBar';
 import TrenerList from '../features/Trainer/TrenerList';
 import TrainerBlog from '../features/Trainer/TrainerBlog';
+import Footer from '../features/Footer/Footer';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -46,6 +47,7 @@ function App(): JSX.Element {
         <Route path='/sportsmanpage' element={ <SportsmenPage />} />
 
       </Routes>
+      <Footer/>
     </>
   );
 }

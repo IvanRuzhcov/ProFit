@@ -21,7 +21,11 @@
 .modal__content {
     padding: 20px;
     border-radius: 12px;
-    background-color: white;
+    background-color: #a8a9b3;
+    text-decoration: underline;
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 18px;
+    font-weight: 600;
     width: 50vw;
     z-index: 2;
 }

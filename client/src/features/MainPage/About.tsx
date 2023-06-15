@@ -24,7 +24,10 @@ function About():JSX.Element {
               <p className={style.about_text}>Это позволяет создавать сообщество спортивных энтузиастов, обмениваться мнениями и взаимодействовать друг с другом.</p>
               <p className={style.about_text}>Также мы предоставляем возможность создания персонализированных плейлистов или подборок видео.</p>
             </div>
-            <div className={style.grow5}>.</div>  
+            <div className={style.grow5}>.</div>
+            <div className={style.grow6}>.</div>
+            <div className={style.grow7}>.</div>
+            <div className={style.grow8}>.</div>  
       </div>
     
   )

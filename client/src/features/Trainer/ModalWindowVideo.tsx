@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import style from './style.module.css'
 
 function ModalWindowVideo({ file }: { file: any }): JSX.Element {
   return (
@@ -23,7 +24,7 @@ function ModalWindowVideo({ file }: { file: any }): JSX.Element {
         <div>{file.description}</div>
         <div>Добавить комментарий</div>
         <div>
-          <input type="text" placeholder="Прокомментируйте" />
+          <input className={style.input} type="text" placeholder="Прокомментируйте" />
         </div>
         <div>Комментарии к текущему посту:</div>
       </div>

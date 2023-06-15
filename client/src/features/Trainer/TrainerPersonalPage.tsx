@@ -32,19 +32,19 @@ function TrainerPersonalPage(): JSX.Element {
   return (
     <div className={styles.trener_container}>
       <div className={styles.trener_ava_name}>
-        <div>
+        <div className={styles.img_container}>
           <img src={user?.profilePicture} alt="avatar" />
         </div>
         <div className={styles.info_trainer}>
           {user?.vertification && <AiOutlineCheckCircle />}
           <div>
-            <h3>{user?.login}</h3>
+            <h1>{user?.login}</h1>
           </div>
             <h2>Обо мне</h2>
             <div>
               <div>
-                <div>{user?.description}</div>
-                <div>{user?.city}</div>
+                <h2>{user?.description}</h2>
+                <h2>{user?.city}</h2>
                 {/* <div>
               {user?.map((sport) => (
                 <div>{sport.sport}</div>
@@ -58,10 +58,10 @@ function TrainerPersonalPage(): JSX.Element {
                 </div>
               ))}
             </div> */}
-                {user?.online && <div>Принимаю онлайн</div>}
+                {user?.online && <h2>Принимаю онлайн</h2>}
                 {!showFormAdd && (
                   <div>
-                    <button type="button" onClick={() => setShowFormAdd(true)}>
+                    <button className={styles.bn5} type="button" onClick={() => setShowFormAdd(true)}>
                       Добавить пост
                     </button>
                   </div>
@@ -72,13 +72,11 @@ function TrainerPersonalPage(): JSX.Element {
                   </Modal>
                 )}
                 <div>
-                  <button
-                    type="button"
-                    onClick={() => {
+                  <button className={styles.bn5} type="button" onClick={() => {
                       setshowCertificates(!showCertificates);
                     }}
                   >
-                    Посмотреть сертификаты
+                    Cертификаты
                   </button>
                   {showCertificates && (
                     <Modal
@@ -91,7 +89,7 @@ function TrainerPersonalPage(): JSX.Element {
                             <img src={el.url_cert} alt="certificate" />
                           </div>
                         ))}
-                        <button type="button">Добавить сертификат</button>
+                        <button className={styles.bn5} type="button">Cертификат</button>
                       </div>
                     </Modal>
                   )}

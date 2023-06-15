@@ -18,7 +18,7 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   return (
     <div ref={refDiv}>
       <video
-        src={file.url}
+        src='https://www.youtube.com/embed/nkyUArFHIgI'
         width="600px"
         height="300px"
         autoPlay
