@@ -14,9 +14,6 @@ function TrenerList(): JSX.Element {
   console.log(coach);
   console.log(findTrainer);
 
-  useEffect(() => {
-    dispatch(initTrainer());
-  }, [dispatch]);
 
   const getCoachByLogin: React.MouseEventHandler<HTMLButtonElement> = () => {
     const res = coach.filter((obj) => obj.login === login);

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Subscription.init(
     {
-      ssportsmen_id: {
+      sportsmen_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
