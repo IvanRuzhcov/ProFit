@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
 import { initTrainer } from "./TrainerSlice";
 import TrainerCard from "./TrainerCard";
+import style from './style.module.css'
 
 function TrenerList(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ function TrenerList(): JSX.Element {
   }, [dispatch]);
 
   return (
-  <div>
+  <div className={style.treners_cont}>
     {coach.map((trainer)=> <TrainerCard trainer={trainer} key={trainer.id}/>)}
   </div>
   );

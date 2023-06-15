@@ -207,8 +207,8 @@ function TrainerPersonalPage(): JSX.Element {
           </div>
         </div>
       </div>
-
-      {user?.Files && (
+    </div>
+    {user?.Files && (
         <div>
           {user.Files?.map((file) =>
             file.type === 'video' ? (
@@ -219,7 +219,7 @@ function TrainerPersonalPage(): JSX.Element {
           )}
         </div>
       )}
-    </div>
+  </div>
   );
 }
 
