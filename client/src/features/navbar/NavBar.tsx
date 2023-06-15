@@ -87,7 +87,7 @@ function NavBar(): JSX.Element {
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
+                fontFamily: 'Bruno Ace SC',
                 fontWeight: 700,
                 fontSize: '2rem',
                 letterSpacing: '.3rem',
@@ -130,9 +130,11 @@ function NavBar(): JSX.Element {
             >
               {pages.map((page) => (
                 <MenuItem key={page.href} onClick={handleCloseNavMenu}>
-                 {user?.status === 'sportsman' && <Link to={page.href}>
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </Link>}
+                  {user?.status === 'sportsman' && (
+                    <Link to={page.href}>
+                      <Typography textAlign="center">{page.name}</Typography>
+                    </Link>
+                  )}
                 </MenuItem>
               ))}
             </Menu>
@@ -140,13 +142,21 @@ function NavBar(): JSX.Element {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Link to={page.href}>
-                {user?.status === 'sportsman' && <Button
-                  key={page.href}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: '#fbefbb', display: 'block' }}
-                >
-                  {page.name}
-                </Button>}
+                {user?.status === 'sportsman' && (
+                  <Button
+                    key={page.href}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: '#fbefbb',
+                      display: 'block',
+                      fontSize: '16px',
+                      marginLeft: '5px',
+                    }}
+                  >
+                    {page.name}
+                  </Button>
+                )}
               </Link>
             ))}
           </Box>
