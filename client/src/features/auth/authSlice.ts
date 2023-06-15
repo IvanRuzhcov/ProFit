@@ -19,10 +19,16 @@ const initialState: AuthState = {
 export const verification = createAsyncThunk("auth/verification", () =>
   api.getUser()
 );
+
 export const upSportsmen = createAsyncThunk(
   "sportsman/updata",
   (action: User) => api.apiUpdatSportsmetFeth(action)
 );
+
+// export const upTrainer = createAsyncThunk(
+//   "sportsman/updatatrainer",
+//   (action: User) => api.apiUpdatTrainerFeth(action)
+// );
 
 export const register = createAsyncThunk(
   "auth/registerFetch",
@@ -54,10 +60,12 @@ export const loginJoin = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk('auth/logout', api.logout);
+
 export const uploadFileTrainer = createAsyncThunk(
   'trainer/uploadFile',
   (obj: FormData) => trainerApi.addFileTrainerFetch(obj)
 );
+
 export const uploadUrlTrainer = createAsyncThunk(
   'trainer/uploadUrl',
   (obj: FormData) => trainerApi.addUrlTrainerFetch(obj)
@@ -105,7 +113,9 @@ const authSlice = createSlice({
         state.user = undefined;
       })
       .addCase(uploadFileTrainer.fulfilled, (state, action) => {
-        state.files = [...state.files, action.payload];
+      if (state.user && state.user.Files){
+        state.user={...state.user,Files:[...state.user.Files,action.payload]}
+      }
         state.fileError = '';
       })
       .addCase(uploadFileTrainer.rejected, (state, action) => {

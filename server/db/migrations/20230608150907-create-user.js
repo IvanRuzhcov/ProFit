@@ -10,6 +10,7 @@ module.exports = {
       },
       profilePicture: {
         type: Sequelize.TEXT,
+        defaultValue: '/server/public/img/free-icon-user-149071.png',
       },
       name: {
         type: Sequelize.TEXT,

@@ -66,7 +66,17 @@ export async function apiUpdatSportsmetFeth(obj: User): Promise<User> {
   });
   return res.json();
 }
+
 export function initTrainerFeth(): any {
   throw new Error('Function not implemented.');
 }
+
+// export async function apiUpdatTrainerFeth(obj: User): Promise<User> {
+//   const res = await fetch(`/api/updata/${obj.id!}`, {
+//     method: "PUT",
+//     headers: { "Content-type": "application/json" },
+//     body: JSON.stringify(obj),
+//   });
+//   return res.json();
+// }
 

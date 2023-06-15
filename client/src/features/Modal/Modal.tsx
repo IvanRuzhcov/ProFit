@@ -8,7 +8,7 @@ function Modal({ active, setActive, children } : {active : boolean, setActive: (
       onClick={() => setActive(false)}
     >
       <div
-        className={active ? `${styles.modal__content} ${styles.active}` : styles['modal__content']}
+        className={active ? `${styles.modal__content} ${styles.active}` : styles.modal__content}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

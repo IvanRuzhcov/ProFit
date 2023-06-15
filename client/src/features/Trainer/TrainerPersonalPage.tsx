@@ -7,27 +7,48 @@ import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import FormAddPost from './FormAddPost';
 import Modal from '../Modal/Modal';
-import { RootState } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
 // import { style } from '@mui/system';
 import styles from './style.module.css';
+import { upSportsmen } from '../auth/authSlice';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
+  const [showFormAddInfo, setShowFormAddInfo] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
+
+  const sportsmen = useSelector((store: RootState) => store.auth.user);
+  const [modalUpdat, setModalUpdat] = useState(false);
+  const [name, setName] = useState(sportsmen ? sportsmen.name : '');
+  const [email, setEmail] = useState(sportsmen ? sportsmen.email : '');
+  const [modalActive, setModalActive] = useState(true);
+  const [description, setDescription] = useState(
+    sportsmen ? sportsmen.description : ''
+  );
+  const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
 
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };
 
-  const [modalActive, setModalActive] = useState(true);
+  function handlerUpData(e: React.MouseEvent<HTMLButtonElement>): void {
+    e.preventDefault();
+    dispatch(
+      upSportsmen({ id: sportsmen?.id, name, email, description, city })
+    );
+
+    setShowFormAddInfo(!showFormAddInfo);
+  }
 
   useEffect(() => {
     if (user?.status === 'sportsman') {
       navigate('/sportsmanpage');
     }
   }, [navigate, user]);
+
 
   return (
     <div className={styles.trener_container}>
@@ -40,17 +61,20 @@ function TrainerPersonalPage(): JSX.Element {
           <div>
             <h1>{user?.login}</h1>
           </div>
-            <h2>Обо мне</h2>
+          <h2>Обо мне</h2>
+          <div>
             <div>
+
               <div>
                 <h2>{user?.description}</h2>
                 <h2>{user?.city}</h2>
                 {/* <div>
+
               {user?.map((sport) => (
                 <div>{sport.sport}</div>
               ))}
             </div> */}
-                {/* <div>
+              {/* <div>
               {user?.?.map((exp) => (
                 <div>
                   <p>{exp.date}</p>
@@ -58,6 +82,7 @@ function TrainerPersonalPage(): JSX.Element {
                 </div>
               ))}
             </div> */}
+
                 {user?.online && <h2>Принимаю онлайн</h2>}
                 {!showFormAdd && (
                   <div>
@@ -85,17 +110,101 @@ function TrainerPersonalPage(): JSX.Element {
                     >
                       <div>
                         {user?.Certificates?.map((el) => (
-                          <div>
-                            <img src={el.url_cert} alt="certificate" />
-                          </div>
-                        ))}
+                        <div>
+                          <img src={el.url_cert} alt="certificate" />
+                        </div>
+                      ))}
                         <button className={styles.bn5} type="button">Cертификат</button>
                       </div>
                     </Modal>
                   )}
                 </div>
+              <div>
+                {!showFormAddInfo && (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setShowFormAddInfo(true)}
+                    >
+                      Редактировать профиль
+                    </button>
+                  </div>
+                )}
+                {showFormAddInfo && (
+                  <Modal
+                    active={showFormAddInfo}
+                    setActive={setShowFormAddInfo}
+                  >
+                    <div className={styles.info_form_container}>
+                        <div>
+                          <div>
+                            <input type="file" id="file" />
+                          </div>
+                          <div>
+                            <button type="button">Загрузить фото</button>
+                          </div>
+                        </div>
+
+                        <div>
+                          <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Изменить/добавить имя"
+                            defaultValue={sportsmen?.name}
+                            onChange={(event) => setName(event.target.value)}
+                            value={name}
+                          />
+                        </div>
+
+                        <div>
+                          <input
+                            type="email"
+                            className={styles.input}
+                            onChange={(event) => setEmail(event.target.value)}
+                            value={email}
+                            defaultValue={sportsmen?.email}
+                            placeholder="Изменить/добавить почту"
+                          />
+                        </div>
+
+                        <div>
+                          <input
+                            type="text"
+                            className={styles.input}
+                            onChange={(event) =>
+                              setDescription(event.target.value)
+                            }
+                            value={description}
+                            placeholder="Изменить/добавить Описание"
+                          />
+                        </div>
+
+                        <div>
+                          <input
+                            type="text"
+                            className={styles.input}
+                            onChange={(event) => setCity(event.target.value)}
+                            value={city}
+                            placeholder="Изменить/добавить Город"
+                          />
+                        </div>
+
+                        <div>
+                          <button
+                            className={styles.btn_upd}
+                            type="button"
+                            onClick={handlerUpData}
+                          >
+                            Изменить
+                          </button>
+                        </div>
+
+                    </div>
+                  </Modal>
+                )}
               </div>
             </div>
+          </div>
         </div>
       </div>
 
