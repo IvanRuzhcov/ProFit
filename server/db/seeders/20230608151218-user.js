@@ -13,7 +13,6 @@ module.exports = {
     await User.bulkCreate(
       [
         {
-          id: 1,
           login: 'Vanya',
           name: 'Иван Рыжков',
           profilePicture:
@@ -41,7 +40,6 @@ module.exports = {
     await User.bulkCreate(
       [
         {
-          id: 3,
           profilePicture:
             'https://sun9-10.userapi.com/impf/GXjf4CEd5qtqvof7U3KZF5UDerfzaxZYIaLnmQ/btrKs4qVLhA.jpg?size=510x510&quality=96&sign=1a00078ba2920131df6b1af9187ce4cb&c_uniq_tag=lPL8Uk_9o2y_FVShtBbX9rudf3U0bjKk0xs7GZTEbMI&type=album',
           login: 'Maxim',
@@ -70,7 +68,6 @@ module.exports = {
     await User.bulkCreate(
       [
         {
-          id: 2,
           profilePicture:
             'https://sun9-22.userapi.com/impg/eMa1WKhBfRMBtDSlCMTG-h4apaeHkWW9Ty1rEQ/PcuYxpBqU9s.jpg?size=2160x2160&quality=96&sign=a8db1806e0ce29bac4ca3596bf1ac6f0&type=album',
           login: 'Sofa',
@@ -96,7 +93,6 @@ module.exports = {
     await User.bulkCreate(
       [
         {
-          id: 4,
           profilePicture: 'blob:https://web.telegram.org/3bfd1e07-8e7e-4827-abca-612d30e01db0',
           login: 'Konstantin',
           name: 'Константин ',

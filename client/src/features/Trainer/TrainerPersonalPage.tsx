@@ -57,16 +57,19 @@ function TrainerPersonalPage(): JSX.Element {
           <img src={user?.profilePicture} alt="avatar" />
         </div>
         <div className={styles.info_trainer}>
-          {user?.vertification && <AiOutlineCheckCircle />}
-          <div>
+          <div className={styles.name_trainer}>
             <h1>{user?.login}</h1>
+            <div className="">
+              {user?.vertification && <AiOutlineCheckCircle />}
+            </div>
           </div>
           <h2>Обо мне</h2>
           <div>
             <div>
               <div>
-                <h2>{user?.description}</h2>
-                <h2>{user?.city}</h2>
+                <div>
+                <h2 className={styles.info_trainer_main}>{user?.description}</h2>
+                <h2 className={styles.city_trainer_main}>Город: {user?.city}</h2>
                 {/* <div>
 
               {user?.map((sport) => (
@@ -82,62 +85,66 @@ function TrainerPersonalPage(): JSX.Element {
               ))}
             </div> */}
 
-                {user?.online && <h2>Принимаю онлайн</h2>}
-                {!showFormAdd && (
+               <div className="">{user?.online && <h2 className={styles.online_trainer_main}>Принимаю онлайн</h2>}</div></div> 
+                <div className={styles.container_btn_trainer_info}>
+                  {!showFormAdd && (
+                    <div>
+                      <button
+                        className={styles.bn5}
+                        type="button"
+                        onClick={() => setShowFormAdd(true)}
+                      >
+                        Добавить пост
+                      </button>
+                    </div>
+                  )}
+                  {showFormAdd && (
+                    <Modal active={showFormAdd} setActive={setShowFormAdd}>
+                      <FormAddPost showForm={showForm} />
+                    </Modal>
+                  )}
                   <div>
                     <button
                       className={styles.bn5}
                       type="button"
-                      onClick={() => setShowFormAdd(true)}
+                      onClick={() => {
+                        setshowCertificates(!showCertificates);
+                      }}
                     >
-                      Добавить пост
+                      Cертификаты
                     </button>
+                    {showCertificates && (
+                      <Modal
+                        active={showCertificates}
+                        setActive={setshowCertificates}
+                      >
+                        <div>
+                          {user?.Certificates?.map((el) => (
+                            <div>
+                              <img src={el.url_cert} alt="certificate" />
+                            </div>
+                          ))}
+                          <button className={styles.bn5} type="button">
+                            Cертификат
+                          </button>
+                        </div>
+                      </Modal>
+                    )}
                   </div>
-                )}
-                {showFormAdd && (
-                  <Modal active={showFormAdd} setActive={setShowFormAdd}>
-                    <FormAddPost showForm={showForm} />
-                  </Modal>
-                )}
-                <div>
-                  <button
-                    className={styles.bn5}
-                    type="button"
-                    onClick={() => {
-                      setshowCertificates(!showCertificates);
-                    }}
-                  >
-                    Cертификаты
-                  </button>
-                  {showCertificates && (
-                    <Modal
-                      active={showCertificates}
-                      setActive={setshowCertificates}
-                    >
+
+                  <div>
+                    {!showFormAddInfo && (
                       <div>
-                        {user?.Certificates?.map((el) => (
-                          <div>
-                            <img src={el.url_cert} alt="certificate" />
-                          </div>
-                        ))}
-                        <button className={styles.bn5} type="button">
-                          Cертификат
+                        <button
+                          type="button"
+                          onClick={() => setShowFormAddInfo(true)}
+                          className={styles.bn5}
+                        >
+                          Редактировать
                         </button>
                       </div>
-                    </Modal>
-                  )}
-                </div>
-                <div>
-                  {!showFormAddInfo && (
-                    <div>
-                      <button
-                        type="button"
-                        onClick={() => setShowFormAddInfo(true)}
-                      >
-                        Редактировать профиль
-                      </button>
-                    </div>
-                  )}
+                    )}
+                  </div>
                   {showFormAddInfo && (
                     <Modal
                       active={showFormAddInfo}
@@ -146,7 +153,7 @@ function TrainerPersonalPage(): JSX.Element {
                       <div className={styles.info_form_container}>
                         <div>
                           <div>
-                            <input type="file" id="file" />
+                            <input type="file" id="file" className={styles.bn5}/>
                           </div>
                           <div>
                             <button type="button">Загрузить фото</button>
@@ -199,7 +206,7 @@ function TrainerPersonalPage(): JSX.Element {
 
                         <div>
                           <button
-                            className={styles.btn_upd}
+                            className={styles.bn5}
                             type="button"
                             onClick={handlerUpData}
                           >
@@ -215,8 +222,9 @@ function TrainerPersonalPage(): JSX.Element {
           </div>
         </div>
       </div>
-    {user?.Files && (
-        <div>
+      {user?.Files && (
+        <div className={styles.container_post}>
+
           {user.Files?.map((file) =>
             file.type === 'video' ? (
               <VideoLineTrainer key={file.id} file={file} />
@@ -226,7 +234,7 @@ function TrainerPersonalPage(): JSX.Element {
           )}
         </div>
       )}
-  </div>
+    </div>
   );
 }
 

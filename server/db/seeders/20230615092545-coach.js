@@ -7,7 +7,6 @@ module.exports = {
   async up() {
     await User.bulkCreate([
       {
-        id: 5,
         login: 'Kirill',
         name: 'Кирилл Сарычев',
         profilePicture:
@@ -50,7 +49,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 1,
         type: 'photo',
         url: 'https://www.ambal.ru/72867942411f.jpg',
         user_id_files: 5,
@@ -69,7 +67,6 @@ module.exports = {
         Не забывайте про отдых. `,
       },
       {
-        id: 2,
         type: 'photo',
         url: 'https://avatars.mds.yandex.net/i?id=09aa23035c64ad77cbff9f4e0acfe72f25376818-9107081-images-thumbs&n=13',
         user_id_files: 5,
@@ -86,7 +83,6 @@ module.exports = {
         Наслаждайтесь процессом. Помните, что соревнования - это возможность проявить свои навыки и получить новый опыт. Наслаждайтесь этим процессом и не торопитесь слишком сильно успехами.`,
       },
       {
-        id: 3,
         type: 'photo',
         url: 'https://i.ytimg.com/vi/ZXqFN01LjIo/maxresdefault.jpg',
         user_id_files: 5,
@@ -101,7 +97,6 @@ module.exports = {
         Повторите упражнение в нескольких подходах по 8-12 повторений.`,
       },
       {
-        id: 4,
         type: 'photo',
         url: 'https://avatars.dzeninfra.ru/get-zen_doc/1899117/pub_5ff84fe3f906b168723ea6a9_5ff886cdaf142f0b17183c28/scale_1200',
         user_id_files: 5,
@@ -121,7 +116,6 @@ module.exports = {
         Старайтесь не переедать, но и не отказывайтесь от еды. Планируйте свой рацион заранее так, чтобы питаться в регулярные промежутки времени и не голодать между приемами пищи.`,
       },
       {
-        id: 5,
         type: 'photo',
         url: 'https://elenamuhina.ru/wp-content/uploads/0/3/b/03bfc4199256fb8c4231093b16cfe8c5.jpeg',
         user_id_files: 5,
@@ -147,7 +141,6 @@ module.exports = {
 
     await User.bulkCreate([
       {
-        id: 6,
         profilePicture:
           'https://sportishka.com/uploads/posts/2022-11/1667479251_45-sportishka-com-p-zal-viktora-bluda-oboi-47.jpg',
         login: 'VictorBld',
@@ -185,7 +178,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 6,
         type: 'photo',
         url: 'https://sportishka.com/uploads/posts/2022-11/1667479267_52-sportishka-com-p-zal-viktora-bluda-oboi-54.jpg',
         user_id_files: 6,
@@ -200,7 +192,6 @@ module.exports = {
         Подъем гири. Двигая гирю вверх, используйте силу плеч и рук, но также активируйте растяжку вашего тела, чтобы создать дополнительный импульс. Идеальный путь подъема гири это подъем по дуге. На положении, когда гиря поднялась выше головы, локти должны быть слегка разогнуты, а спина пряма.`,
       },
       {
-        id: 7,
         type: 'photo',
         url: 'http://i10.fotocdn.net/s125/a8594eb462fdd8f4/public_pin_l/2849594699.jpg',
         user_id_files: 6,
@@ -211,7 +202,6 @@ module.exports = {
         Правильная техника. Когда у вас есть достаточно силы и гибкости, вы можете начинаете выполнять сложные упражнения. Если вы не уверены в своей технике, работайте с тренером или посмотрите инструкционные видео, чтобы убедиться, что вы правильно выполняете упражнения и не наносите вред своим суставам и мышцам.`,
       },
       {
-        id: 8,
         type: 'photo',
         url: 'https://sportishka.com/uploads/posts/2022-11/1667479301_21-sportishka-com-p-zal-viktora-bluda-oboi-22.jpg',
         user_id_files: 6,
@@ -226,7 +216,6 @@ module.exports = {
         Учитесь правильной технике выполнения упражнений. Ошибки в технике выполнения могут привести к травмам и потенциальному повреждению сухожилий.`,
       },
       {
-        id: 9,
         type: 'photo',
         url: 'https://fightwear.ru/images/phocagallery/blud/thumbs/phoca_thumb_l_img_7322.jpg',
         user_id_files: 6,
@@ -241,7 +230,6 @@ module.exports = {
         Гидратация - правильное увлажнение также важно для восстановления организма после тренировки. Пейте достаточное количество воды, чтобы заменить жидкость, потерянную во время тренировки.`,
       },
       {
-        id: 10,
         type: 'photo',
         url: 'https://sportishka.com/uploads/posts/2022-11/1667479229_8-sportishka-com-p-zal-viktora-bluda-oboi-8.png',
         user_id_files: 6,
@@ -265,7 +253,6 @@ module.exports = {
     ]);
     await User.bulkCreate([
       {
-        id: 7,
         profilePicture:
           'https://yt3.googleusercontent.com/XX-7uca2eWYLXTUJ3VcoanjDYFfjK1pTXUohKxv_7K56VBJdgFyPL2UXUsyZvdCtUyQVTGlKSA=s900-c-k-c0x00ffffff-no-rj',
         login: 'IvanCras',
@@ -307,7 +294,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 11,
         type: 'photo',
         url: 'https://i.ytimg.com/vi/j9wLVOBpNjc/maxresdefault.jpg',
         user_id_files: 7,
@@ -324,7 +310,6 @@ module.exports = {
         3 - лёжа на спине, упираясь руками в бёдра`,
       },
       {
-        id: 12,
         type: 'photo',
         url: 'http://i10.fotocdn.nhttps://starsbio.ru/wp-content/uploads/2021/09/ivan-krasavin-1.jpget/s125/a8594eb462fdd8f4/public_pin_l/2849594699.jpg',
         user_id_files: 7,
@@ -337,7 +322,6 @@ module.exports = {
        И плоского живота!`,
       },
       {
-        id: 13,
         type: 'photo',
         url: 'https://sun9-40.userapi.com/impg/kjRYI8FC8riMX7zhIX1Z5aTnOjlH6iyXsp8CGg/mJz_se27Yoc.jpg?size=1344x1792&quality=95&sign=d0e2556bbf23a3af7a7dddde7f0b714a&c_uniq_tag=vV76yXB5pRynWmiqN-TXhO0T1txueyprNk8aeSnGRRA&type=album',
         user_id_files: 7,
@@ -354,7 +338,6 @@ module.exports = {
      3. 10- гиперэкстензия в грудном отделе`,
       },
       {
-        id: 14,
         type: 'photo',
         url: 'https://i.ytimg.com/vi/KJgRbI37PwI/maxresdefault.jpg',
         user_id_files: 7,
@@ -378,7 +361,6 @@ module.exports = {
         5. Коллаген `,
       },
       {
-        id: 15,
         type: 'photo',
         url: 'https://sun9-west.userapi.com/sun9-50/s/v1/if1/U4A4MQobw1lvVmCgZUUyTXTXrK9m7FLDrHk-N3h4Doj3VAdkAvHkTRZzMpAN_h3jF9u23qRR.jpg?size=1080x1076&quality=96&type=album',
         user_id_files: 7,
@@ -395,7 +377,6 @@ module.exports = {
     ]);
     await User.bulkCreate([
       {
-        id: 8,
         profilePicture:
           'https://avatars.dzeninfra.ru/get-zen_doc/118779/pub_6202bbd0b50d562c7276441b_6202c23883bebd10a178d582/scale_1200',
         login: 'denisGus',
@@ -437,7 +418,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 16,
         type: 'photo',
         url: 'https://avatars.mds.yandex.net/i?id=7f4d41ffdc456a454bc3cea44e1016e37fbb7d50-9086430-images-thumbs&n=13',
         user_id_files: 8,
@@ -458,7 +438,6 @@ module.exports = {
         Терпение: Результаты не приходят на следующий день. Важно не отчиваться и продолжать работать над собой.`,
       },
       {
-        id: 17,
         type: 'photo',
         url: 'https://elenaportnova.ru/wp-content/uploads/8/8/b/88b62ef9d10bbb5d494a52caeac93c8e.jpeg',
         user_id_files: 8,
@@ -477,7 +456,6 @@ module.exports = {
         Будьте терпеливы и последовательны: Результаты не приходят мгновенно, и вы должны быть готовы терпеть неприятности, которые возникают в процессе выработки нужных привычек. Но при постоянной работе вы достигнете желаемых результатов.`,
       },
       {
-        id: 18,
         type: 'photo',
         url: 'https://elenaportnova.ru/wp-content/uploads/3/1/f/31f1cdc22fe5943e3cba4e7eb59adfb2.jpeg',
         user_id_files: 8,
@@ -494,7 +472,6 @@ module.exports = {
         Жиры: 0,5-1 грамма на каждый килограмм веса тела.`,
       },
       {
-        id: 19,
         type: 'photo',
         url: 'https://sun9-79.userapi.com/impf/c629514/v629514320/12078/ts6fy0x-LuQ.jpg?size=1280x853&quality=96&sign=6d6dde36fcbfc7ca59706b6b8b093996&c_uniq_tag=gkUksMu12PK5Ug5qlXEO0fJQyDvtXTKRkUc80NwoHnc&type=album',
         user_id_files: 8,
@@ -510,7 +487,6 @@ module.exports = {
     ]);
     await User.bulkCreate([
       {
-        id: 9,
         profilePicture:
           'https://avatars.dzeninfra.ru/get-zen_doc/1901671/pub_5e3096a1816a2e0a1abae125_5e31126db1ff7c4cf07c7908/scale_1200',
         login: 'denisSem',
@@ -552,7 +528,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 20,
         type: 'photo',
         url: 'https://sun9-25.userapi.com/impf/c627217/v627217677/3bc96/013gMMswz6c.jpg?size=604x604&quality=96&sign=ff20986ac8c415df39fd62e3731dc74f&type=album',
         user_id_files: 9,
@@ -567,7 +542,6 @@ module.exports = {
         Важно также употреблять достаточное количество воды, чтобы предотвратить обезвоживание и помочь организму восстановиться после тренировок. Также стоит ограничивать употребление сахара и ненатуральных продуктов, таких как сладкая газированная вода и чипсы.`,
       },
       {
-        id: 21,
         type: 'photo',
         url: 'https://swyper.ru/wp-content/uploads/2020/05/s1200-4.jpg',
         user_id_files: 9,
@@ -580,7 +554,6 @@ module.exports = {
         Эллиптические тренажеры: обладают тройным действием - работают с ногами, руками и сердечно-сосудистой системой. При использовании этого оборудования вы получаете хорошую кардио-нагрузку и укрепляете мышцы.`,
       },
       {
-        id: 22,
         type: 'photo',
         url: 'http://cdn01.ru/files/users/images/f2/80/f280d62750e752b3f609bf16a020809b.jpg',
         user_id_files: 9,
@@ -601,7 +574,6 @@ module.exports = {
         Выполните 2–3 подхода по 10–12 повторений на каждую ногу.`,
       },
       {
-        id: 23,
         type: 'photo',
         url: 'https://i.ytimg.com/vi/4zeiW-ikf84/maxresdefault.jpg',
         user_id_files: 9,
@@ -620,7 +592,6 @@ module.exports = {
     ]);
     await User.bulkCreate([
       {
-        id: 10,
         profilePicture:
           'https://everipedia-storage.s3.amazonaws.com/ProfilePicture/en/jeff-cavaliere/mainphoto.jpeg',
         login: 'JeffСavaliere',
@@ -662,7 +633,6 @@ module.exports = {
 
     await File.bulkCreate([
       {
-        id: 24,
         type: 'photo',
         url: 'https://i.ytimg.com/vi/BHLTA1OvuYQ/maxresdefault.jpg',
         user_id_files: 10,
@@ -679,7 +649,6 @@ module.exports = {
         Напоминаю, что перед началом тренировки настоятельно рекомендуется согласовать свои планы с врачом.`,
       },
       {
-        id: 25,
         type: 'photo',
         url: 'https://gymsozluk.com/whois/wp-content/uploads/2021/09/jeff_cavaliere-819x1024-1.jpg',
         user_id_files: 10,
