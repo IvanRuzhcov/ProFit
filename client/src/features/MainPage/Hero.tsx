@@ -9,6 +9,7 @@ function Hero():JSX.Element {
           <h1 className='text-8xl font-bold tracking-widest'><span className='orange'>ProFit</span></h1>
           <h1 className='text-5xl py-2 tracking-wider mt-10'><span className='blue'>Training Video Area</span></h1>
           <p className='text-4xl font-semibold'><div className='wrapper'><div className='typing-demo'><span className='blue'>Sport, Style, Video...</span></div></div></p>
+          
       </div>
     </div>
   )

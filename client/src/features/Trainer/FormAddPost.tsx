@@ -98,73 +98,52 @@ function FormAddPost({
 
   return (
     <div className={style.divFormAddPost}>
-      <button type="button" onClick={() => showForm(false)}>
+      <button className={style.btnx} type="button" onClick={() => showForm(false)}>
         X
       </button>
       <form action="">
         <div>
           Что вы хотите добавить?
-          <p>
+          <div className={style.radio_input}>
             Видео:{' '}
-            <input
-              type="radio"
-              name="type"
-              value="video"
-              onClick={() => setShow(true)}
-              ref={refVideo}
-            />
-          </p>
-          <p>
+            <input className={style.inputs} type="radio" name="type" value="video" onClick={() => setShow(true)} ref={refVideo} />
+          
             Фото:{' '}
-            <input
-              type="radio"
-              name="type"
-              value="photo"
-              ref={refPhoto}
-              onClick={() => setShow(true)}
-            />
-          </p>
+            <input className={style.inputs} type="radio" name="type" value="photo" ref={refPhoto} onClick={() => setShow(true)} />
+          </div>
         </div>
         {show && (
           <div>
             {!showLink && (
-              <button onClick={addFileFunction} type="button">
+              <button className={style.bn5} onClick={addFileFunction} type="button">
                 Добавить файл
               </button>
             )}
             {showFile && (
               <div>
                 <input type="file" ref={refFile} />
-                <input
-                  type="text"
-                  placeholder="Добавьте описание"
-                  ref={refDescription}
-                />
-                <button type="button" onClick={addFileForFetch}>
+                <input className={style.input} type="text" placeholder="Добавьте описание" ref={refDescription} />
+                <button className={style.bn5} type="button" onClick={addFileForFetch}>
                   Отправить
                 </button>
               </div>
             )}
             {!showFile && (
-              <button type="button" onClick={addLinkFunction}>
+              <button className={style.bn5} type="button" onClick={addLinkFunction}>
                 Добавить ссылку
               </button>
             )}
             {showLink && (
               <div>
-                <input type="text" placeholder="Вставьте ссылку" ref={refUrl} />
-                <input
-                  type="text"
-                  placeholder="Добавьте описание"
-                  ref={refDescription}
-                />
-                <button type="button" onClick={addFileForFetch}>
+                <input className={style.input} type="text" placeholder="Вставьте ссылку" ref={refUrl} />
+                <input className={style.input} type="text" placeholder="Добавьте описание" ref={refDescription} />
+                <button className={style.bn5} type="button" onClick={addFileForFetch}>
                   Отправить
                 </button>
               </div>
             )}
             {showChangeTypeFile && (
-              <button type="button" onClick={changeTypeFunction}>
+              <button className={style.bn5} type="button" onClick={changeTypeFunction}>
                 Поменять тип файла
               </button>
             )}

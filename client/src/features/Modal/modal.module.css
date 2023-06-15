@@ -19,10 +19,14 @@
 }
 
 .modal__content {
-  display: flex;
-  padding: 30px;
-  border-radius: 12px;
-  background-color: white;
-  z-index: 2;
-  justify-content: center;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #a8a9b3;
+    text-decoration: underline;
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    width: 50vw;
+    z-index: 2;
+
 }

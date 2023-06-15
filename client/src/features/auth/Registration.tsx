@@ -125,7 +125,7 @@ function Registration(): JSX.Element {
   );
 
   return (
-    <div>
+    <div className={style.main}>
       <div className={style.containerForm}>
         <div className="login_card animate__animated animate__bounceInLeft">
           <img src={logo} alt="logo" />
