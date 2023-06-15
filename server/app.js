@@ -13,7 +13,6 @@ const subscribeRouter = require('./routes/api/subscription.routes');
 const initCoachRouter = require('./routes/api/initCoach.routes');
 const chartBarRouter = require('./routes/api/charbar.routes');
 
-
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 

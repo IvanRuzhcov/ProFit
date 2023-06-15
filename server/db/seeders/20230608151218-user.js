@@ -5,12 +5,11 @@ const {
   Certificate,
   Experience,
   File,
-  SportUser,
 } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up() {
     await User.bulkCreate(
       [
         {
@@ -21,7 +20,7 @@ module.exports = {
             'https://sun9-28.userapi.com/impg/SYZ2CF-J8sdkgqIU8A43nZ9okVkvzqcUZLV3MQ/AiyFfNv1RkM.jpg?size=403x604&quality=95&sign=b5bf4f0b4a807c2ff4f7e2430ae52a08&c_uniq_tag=Rkrsvel1skoxYVya9xzhF7i3K6cWaKoNJyI3XbSvk2g&type=album',
           password: await bcrypt.hash('1234', 5),
           email: 'vanya.ruzhcov@gmail.com',
-          status: 'coach',
+          status: 'sportsman',
           online: true,
           description: 'Я самый сильный ну типа ',
           city: 'Санкт-Петербург',
@@ -39,41 +38,6 @@ module.exports = {
       },
     );
 
-    await SportUser.bulkCreate([
-      {
-        sport_id: 2,
-        user_id: 1,
-      },
-      {
-        sport_id: 81,
-        user_id: 1,
-      },
-    ]);
-    await Certificate.bulkCreate([
-      {
-        user_id_cert: 1,
-        url_cert:
-          'https://fitness-pro.ru/upload/iblock/987/987eb0fd55f6f8ffb05b5f3b87c26604.jpg',
-      },
-    ]);
-    await Experience.bulkCreate([
-      {
-        user_id_exp: 1,
-        description: 'я работал там то там то',
-        date: '2018-2023',
-      },
-    ]);
-
-    await File.bulkCreate([
-      {
-        id: 1,
-        type: 'video',
-        url: 'https://www.youtube.com/watch?v=VSzEycJUBaY',
-        user_id_files: 1,
-        description: 'тут мы качаем преес',
-      },
-    ]);
-
     await User.bulkCreate(
       [
         {
@@ -84,7 +48,7 @@ module.exports = {
           name: 'Максим Бец',
           password: await bcrypt.hash('1234', 5),
           email: 'maxim.bes@gmail.com',
-          status: 'coach',
+          status: 'sportsman',
           online: true,
           description:
             'Я тут по приколу но могу как написать регу логу на редаксе тул кит !) ',
@@ -102,36 +66,6 @@ module.exports = {
         include: [Parametr],
       },
     );
-    await SportUser.bulkCreate([
-      {
-        sport_id: 38,
-        user_id: 1,
-      },
-    ]);
-    await Certificate.bulkCreate([
-      {
-        user_id_cert: 3,
-        url_cert:
-          'https://fitness-pro.ru/upload/iblock/987/987eb0fd55f6f8ffb05b5f3b87c26604.jpg',
-      },
-    ]);
-    await Experience.bulkCreate([
-      {
-        user_id_exp: 3,
-        description: 'я работал там то там то',
-        date: '2018-2023',
-      },
-    ]);
-
-    await File.bulkCreate([
-      {
-        id: 3,
-        type: 'video',
-        url: 'https://www.youtube.com/watch?v=OfmzNF4QFR8',
-        user_id_files: 3,
-        description: 'тут мы качаем преес',
-      },
-    ]);
 
     await User.bulkCreate(
       [
@@ -144,7 +78,7 @@ module.exports = {
           password: await bcrypt.hash('1234', 5),
           email: 'sofii@gmail.com',
           status: 'sportsman',
-          description: 'Я хочу стать сильной ',
+          description: 'Я прихожу покрасоваться и показать какая я красивая ',
           city: 'Санкт-Петербург',
           Parametrs: [
             {
@@ -163,8 +97,7 @@ module.exports = {
       [
         {
           id: 4,
-          profilePicture:
-            'blob:https://web.telegram.org/3bfd1e07-8e7e-4827-abca-612d30e01db0',
+          profilePicture: 'blob:https://web.telegram.org/3bfd1e07-8e7e-4827-abca-612d30e01db0',
           login: 'Konstantin',
           name: 'Константин ',
           password: await bcrypt.hash('1234', 5),
@@ -186,7 +119,7 @@ module.exports = {
     );
   },
 
-  async down(queryInterface, Sequelize) {
+  async down() {
     await User.destroy({ truncate: { cascade: true } });
     await Certificate.destroy({ truncate: { cascade: true } });
     await Experience.destroy({ truncate: { cascade: true } });

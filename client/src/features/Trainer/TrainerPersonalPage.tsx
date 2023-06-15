@@ -14,7 +14,7 @@ import { upSportsmen } from '../auth/authSlice';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const [showCertificates, setshowCertificates] = useState(false);
   const [showFormAdd, setShowFormAdd] = useState(false);
   const [showFormAddInfo, setShowFormAddInfo] = useState(false);
@@ -49,7 +49,6 @@ function TrainerPersonalPage(): JSX.Element {
     }
   }, [navigate, user]);
 
-
   return (
     <div className={styles.trener_container}>
       <div className={styles.trener_ava_name}>
@@ -64,7 +63,6 @@ function TrainerPersonalPage(): JSX.Element {
           <h2>Обо мне</h2>
           <div>
             <div>
-
               <div>
                 <h2>{user?.description}</h2>
                 <h2>{user?.city}</h2>
@@ -74,7 +72,7 @@ function TrainerPersonalPage(): JSX.Element {
                 <div>{sport.sport}</div>
               ))}
             </div> */}
-              {/* <div>
+                {/* <div>
               {user?.?.map((exp) => (
                 <div>
                   <p>{exp.date}</p>
@@ -86,7 +84,11 @@ function TrainerPersonalPage(): JSX.Element {
                 {user?.online && <h2>Принимаю онлайн</h2>}
                 {!showFormAdd && (
                   <div>
-                    <button className={styles.bn5} type="button" onClick={() => setShowFormAdd(true)}>
+                    <button
+                      className={styles.bn5}
+                      type="button"
+                      onClick={() => setShowFormAdd(true)}
+                    >
                       Добавить пост
                     </button>
                   </div>
@@ -97,7 +99,10 @@ function TrainerPersonalPage(): JSX.Element {
                   </Modal>
                 )}
                 <div>
-                  <button className={styles.bn5} type="button" onClick={() => {
+                  <button
+                    className={styles.bn5}
+                    type="button"
+                    onClick={() => {
                       setshowCertificates(!showCertificates);
                     }}
                   >
@@ -110,32 +115,34 @@ function TrainerPersonalPage(): JSX.Element {
                     >
                       <div>
                         {user?.Certificates?.map((el) => (
-                        <div>
-                          <img src={el.url_cert} alt="certificate" />
-                        </div>
-                      ))}
-                        <button className={styles.bn5} type="button">Cертификат</button>
+                          <div>
+                            <img src={el.url_cert} alt="certificate" />
+                          </div>
+                        ))}
+                        <button className={styles.bn5} type="button">
+                          Cертификат
+                        </button>
                       </div>
                     </Modal>
                   )}
                 </div>
-              <div>
-                {!showFormAddInfo && (
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => setShowFormAddInfo(true)}
+                <div>
+                  {!showFormAddInfo && (
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => setShowFormAddInfo(true)}
+                      >
+                        Редактировать профиль
+                      </button>
+                    </div>
+                  )}
+                  {showFormAddInfo && (
+                    <Modal
+                      active={showFormAddInfo}
+                      setActive={setShowFormAddInfo}
                     >
-                      Редактировать профиль
-                    </button>
-                  </div>
-                )}
-                {showFormAddInfo && (
-                  <Modal
-                    active={showFormAddInfo}
-                    setActive={setShowFormAddInfo}
-                  >
-                    <div className={styles.info_form_container}>
+                      <div className={styles.info_form_container}>
                         <div>
                           <div>
                             <input type="file" id="file" />
@@ -198,10 +205,10 @@ function TrainerPersonalPage(): JSX.Element {
                             Изменить
                           </button>
                         </div>
-
-                    </div>
-                  </Modal>
-                )}
+                      </div>
+                    </Modal>
+                  )}
+                </div>
               </div>
             </div>
           </div>
