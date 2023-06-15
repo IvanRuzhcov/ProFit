@@ -8,7 +8,6 @@ function TrenerList(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const coach = useSelector((store: RootState) => store.coach.trenerState);
-  console.log(coach);
 
   useEffect(() => {
     dispatch(initTrainer());

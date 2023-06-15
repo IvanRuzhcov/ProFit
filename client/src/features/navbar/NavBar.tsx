@@ -69,9 +69,7 @@ function NavBar(): JSX.Element {
     { name: 'Личный кабинет', href: checkUser },
     { name: 'Выход', href: '/', handleLogout },
   ];
-  const pages = [
-    { name: 'Coach', href: '/allCoach' },
-  ];
+  const pages = [{ name: 'Coach', href: '/allCoach' }];
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
@@ -80,24 +78,26 @@ function NavBar(): JSX.Element {
         sx={{ backgroundColor: '#000000', height: '80px' }}
       >
         <Toolbar disableGutters>
-          <Link to='/'><Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              fontSize: '2rem',
-              letterSpacing: '.3rem',
-              color: '#fbefbb',
-              textDecoration: 'none',
-            }}
-          >
-            ProFit
-          </Typography></Link>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                fontSize: '2rem',
+                letterSpacing: '.3rem',
+                color: '#fbefbb',
+                textDecoration: 'none',
+              }}
+            >
+              ProFit
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -130,7 +130,9 @@ function NavBar(): JSX.Element {
             >
               {pages.map((page) => (
                 <MenuItem key={page.href} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.href}</Typography>
+                 {user?.status === 'sportsman' && <Link to={page.href}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </Link>}
                 </MenuItem>
               ))}
             </Menu>
@@ -138,13 +140,13 @@ function NavBar(): JSX.Element {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Link to={page.href}>
-                <Button
+                {user?.status === 'sportsman' && <Button
                   key={page.href}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: '#fbefbb', display: 'block' }}
                 >
                   {page.name}
-                </Button>
+                </Button>}
               </Link>
             ))}
           </Box>
