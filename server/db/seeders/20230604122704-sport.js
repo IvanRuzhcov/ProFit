@@ -1,7 +1,7 @@
 const { Sport } = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up() {
     await Sport.bulkCreate([
       { id: 1, sport: 'Футбол' },
       { id: 2, sport: 'Баскетбол' },
@@ -41,6 +41,9 @@ module.exports = {
       { id: 36, sport: 'Киберспорт' },
       { id: 37, sport: 'Фитнес' },
       { id: 38, sport: 'Бодибилдинг' },
+      { id: 39, sport: 'Армлифтингу' },
+      { id: 40, sport: 'Блогер' },
+      { id: 41, sport: 'Культурист' },
       { id: 67, sport: 'Тхэквондо' },
       { id: 68, sport: 'Водное поло' },
       { id: 69, sport: 'Вольная борьба' },
@@ -74,7 +77,7 @@ module.exports = {
     ]);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down() {
     await Sport.destroy({ truncate: { cascade: true } });
   },
 };
