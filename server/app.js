@@ -30,6 +30,7 @@ app.use('/api', chartBarRouter);
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
+  // eslint-disable-next-line no-console
   console.error('Произошла ошибка', error);
   res.status(500).json({
     success: false,
@@ -41,4 +42,5 @@ app.use((error, req, res, _next) => {
 //   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 // });
 
+// eslint-disable-next-line no-console
 app.listen(PORT, () => console.log(`server started at ${PORT}`));

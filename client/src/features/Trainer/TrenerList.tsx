@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
-import { initTrainer } from './TrainerSlice';
-import TrainerCard from './TrainerCard';
+
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import TrainerCard from "./TrainerCard";
+import style from './style.module.css'
 import { Trainer } from './types/Trainer';
 
+
 function TrenerList(): JSX.Element {
-  const dispatch = useAppDispatch();
   const [login, setLogin] = useState('');
   const [findTrainer, setFindTrainer] = useState <Trainer>();
   const [findCity, setFindCity] = useState <Trainer>();
   const coach = useSelector((store: RootState) => store.coach.trenerState);
-  console.log(coach);
-  console.log(findTrainer);
+
 
 
   const getCoachByLogin: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -42,12 +42,11 @@ function TrenerList(): JSX.Element {
       <div className="">
         {findTrainer &&  <TrainerCard trainer={findTrainer} />}
       </div>
-      <div>
-        {coach.map((trainer) => (
-          <TrainerCard trainer={trainer} key={trainer.id} />
-        ))}
-      </div>
+       <div className={style.treners_cont}>
+    {coach.map((trainer)=> <TrainerCard trainer={trainer} key={trainer.id}/>)}
+  </div>
     </div>
+
   );
 }
 

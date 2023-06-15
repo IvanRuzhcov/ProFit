@@ -19,7 +19,7 @@ function Login(): JSX.Element {
   if(user){
     navigate('/')
   }
-  }, [])
+  }, [navigate, user])
 
   const handleSubmit = React.useCallback(
     async (event: React.FormEvent) => {
