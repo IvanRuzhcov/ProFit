@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
-import { initTrainer } from "./TrainerSlice";
+import { RootState } from "../../store";
 import TrainerCard from "./TrainerCard";
 
 function TrenerList(): JSX.Element {
-  const dispatch = useAppDispatch();
 
   const coach = useSelector((store: RootState) => store.coach.trenerState);
 
-  useEffect(() => {
-    dispatch(initTrainer());
-  }, [dispatch]);
 
   return (
   <div>

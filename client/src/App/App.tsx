@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
-import { Route, Routes, useParams } from 'react-router-dom';
-import './App.css';
-import { useSelector } from 'react-redux';
-import Registration from '../features/auth/Registration';
-import TrainerPersonalPage from '../features/Trainer/TrainerPersonalPage';
-import Login from '../features/auth/Login';
-import NavBar from '../features/navbar/NavBar';
-import { RootState, useAppDispatch } from '../store';
-import { verification } from '../features/auth/authSlice';
-import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
-import MainPage from '../features/MainPage/MainPage';
+import React, { useEffect } from "react";
+import { Route, Routes, useParams } from "react-router-dom";
+import "./App.css";
+import { useSelector } from "react-redux";
+import Registration from "../features/auth/Registration";
+import TrainerPersonalPage from "../features/Trainer/TrainerPersonalPage";
+import Login from "../features/auth/Login";
+import NavBar from "../features/Navbar/NavBar";
+import { RootState, useAppDispatch } from "../store";
+import { verification } from "../features/auth/authSlice";
+import SportsmenPage from "../features/SportsmenPage/SportsmenPage";
+import MainPage from "../features/MainPage/MainPage";
 
-import Chart from '../features/SportsmenPage/ChartBar';
-import TrenerList from '../features/Trainer/TrenerList';
-import TrainerBlog from '../features/Trainer/TrainerBlog';
+import Chart from "../features/SportsmenPage/ChartBar";
+import TrenerList from "../features/Trainer/TrenerList";
+import TrainerBlog from "../features/Trainer/TrainerBlog";
+import { initTrainer } from "../features/Trainer/TrainerSlice";
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(verification());
+    dispatch(initTrainer());
   }, [dispatch]);
 
   if (!authChecked) {
@@ -37,14 +39,13 @@ function App(): JSX.Element {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={<MainPage />}/>
+        <Route path="/" element={<MainPage />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
-        <Route path='/trainerpage' element={<TrainerPersonalPage />} />
-        <Route path='/allCoach' element={<TrenerList />}/>
-        <Route path='/trainerPageeee/:id' element={<TrainerBlog />}/>
-        <Route path='/sportsmanpage' element={ <SportsmenPage />} />
-
+        <Route path="/trainerpage" element={<TrainerPersonalPage />} />
+        <Route path="/allCoach" element={<TrenerList />} />
+        <Route path="/trainerBlog/:id" element={<TrainerBlog />} />
+        <Route path="/sportsmanpage" element={<SportsmenPage />} />
       </Routes>
     </>
   );

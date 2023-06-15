@@ -8,7 +8,7 @@ function TrainerCard({trainer}: {trainer:Trainer}):JSX.Element {
 const navigate = useNavigate()
 
 function handaleFailing():void{
-    navigate(`/trainerPageeee/${trainer.id!}`)
+    navigate(`/trainerBlog/${trainer.id!}`)
 }
 
     return (
