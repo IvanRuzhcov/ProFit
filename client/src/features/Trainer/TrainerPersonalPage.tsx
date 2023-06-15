@@ -214,7 +214,6 @@ function TrainerPersonalPage(): JSX.Element {
           </div>
         </div>
       </div>
-    </div>
     {user?.Files && (
         <div>
           {user.Files?.map((file) =>

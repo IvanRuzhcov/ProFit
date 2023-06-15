@@ -1,29 +1,31 @@
 import React from 'react'
-import { FaBeer } from 'react-icons/fa';
-import { FiInstagram, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi";
-import style from './footer.module.css'
+import { FiYoutube, FiTwitter, FiLinkedin, FiInstagram } from "react-icons/fi"
+import './footer.css'
 
 function Footer():JSX.Element {
   return (
-    <div className={style.footer}>
-      <div className={style.container}>
-       <div className={style.col}>
-         <h4>Social:</h4>
-         <p>Youtube</p>
-         <p>Twitter</p>
-         <p>Linkedin</p>
-         <p>Instagram</p>
-         
-       </div>
-       <div className={style.col}>
-       
-         <p className={style.icon}><FiYoutube /></p>
-         <p className={style.icon}><FiTwitter /></p>
-         <p className={style.icon}><FiLinkedin /></p>
-         <p className={style.icon}><FiInstagram /></p>
-       </div>
-      </div>
+    <div className="footer">
+      <article id="wrap">  
+      <h2 className='footer-text'>CONTACT with US:</h2>
+      <p className='p-icon'><FiInstagram/></p>
+      <p className='p-icon'><FiTwitter/></p>
+      <p className='p-icon'><FiLinkedin/></p>
+      <p className='p-icon'><FiYoutube/></p>
+      <h2 className='footer-text2' >2023 from Elbrus, SPB - All Rights Reserved</h2>
+	<article id="lightings">
+    	<section id="one">
+            <section id="two">
+                <section id="three">
+                    <section id="four">
+                        <section id="five"></section>
+                    </section>
+                </section>
+            </section>
+		</section>
+    </article>
+</article>
     </div>
+    
   )
 }
 

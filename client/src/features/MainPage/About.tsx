@@ -26,8 +26,7 @@ function About():JSX.Element {
             </div>
             <div className={style.grow5}>.</div>
             <div className={style.grow6}>.</div>
-            <div className={style.grow7}>.</div>
-            <div className={style.grow8}>.</div>  
+            <div className={style.grow7}>.</div>  
       </div>
     
   )
