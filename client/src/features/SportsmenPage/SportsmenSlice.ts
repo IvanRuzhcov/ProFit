@@ -8,6 +8,7 @@ const initialState: SportsmenState = {
   sportsmenState: [],
   statistic: [],
   chartbar: [],
+  subscribe: [],
   error: '',
 };
 
@@ -28,6 +29,16 @@ export const addStatisticsChartBar = createAsyncThunk(
   'sportsman/addStatisticsChartBar',
   (data: StatisticBarChart) => api.addStatisticsChartBarFetch(data)
 );
+
+export const initSubscr = createAsyncThunk(
+  'sportsman/initSubscr',
+  () => api.initSubscription()
+);
+
+// export const changeAvatar = createAsyncThunk(
+//   'sportsman/changeAvatar',
+//   (obj: FormData) => api.changeAvatarSportsmanFetch(obj)
+// );
 
 const sportsmenSlice = createSlice({
   name: 'sportsman',
@@ -55,13 +66,18 @@ const sportsmenSlice = createSlice({
       .addCase(chartInit.rejected, (state, action) => {
         state.error = action.error.message;
       })
-
+      
       .addCase(chartBarInit.fulfilled, (state, action) => {
         state.chartbar = action.payload;
       })
       .addCase(chartBarInit.rejected, (state, action) => {
         state.error = action.error.message;
       })
+
+      .addCase(initSubscr.fulfilled, (state, action) => {
+        state.subscribe = action.payload;
+      })
+
   },
 });
 export default sportsmenSlice.reducer;
