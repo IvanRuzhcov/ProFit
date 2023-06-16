@@ -9,6 +9,7 @@ const store = configureStore({
     auth: authSlice,
     user: SportsmenSlice,
     coach: trainerSlice
+
   },
 });
 

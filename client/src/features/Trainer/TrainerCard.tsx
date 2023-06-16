@@ -12,6 +12,7 @@ function handaleFailing():void{
     navigate(`/trainerBlog/${trainer.id!}`)
 }
 
+
     return (
         <div onClick={handaleFailing} className={style.container_trainerCard}>
             <div className={style.img_card}><img src={trainer.profilePicture}  alt="" /></div>
