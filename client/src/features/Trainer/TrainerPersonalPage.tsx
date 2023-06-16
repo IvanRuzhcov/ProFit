@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // AiOutlineCheckCircle
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import Modal from '../Modal/Modal';
 import { RootState, useAppDispatch } from '../../store';
 // import { style } from '@mui/system';
 import styles from './style.module.css';
-import { upSportsmen } from '../auth/authSlice';
+import { changeAvatar, upSportsmen } from '../auth/authSlice';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ function TrainerPersonalPage(): JSX.Element {
     sportsmen ? sportsmen.description : ''
   );
   const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
-
+  const refAvatar = useRef<HTMLInputElement>(null);
   const showForm = (value: boolean): void => {
     setShowFormAdd(value);
   };
@@ -49,6 +49,22 @@ function TrainerPersonalPage(): JSX.Element {
       navigate('/sportsmanpage');
     }
   }, [navigate, user]);
+
+const changeTrainerAvatar = (): void => {
+  const formData = new FormData();
+  if (refAvatar.current) {
+    if (refAvatar.current?.files && user) {
+      if (user.id) {
+        const url = refAvatar.current.files[0];
+        const { id } = user;
+        formData.append('url', url);
+        formData.append('id', String(id));
+        dispatch(changeAvatar(formData));
+      }
+    }
+  }
+  
+}
 
   return (
     <div className={styles.trener_container}>
@@ -153,13 +169,12 @@ function TrainerPersonalPage(): JSX.Element {
                       <div className={styles.info_form_container}>
                         <div>
                           <div>
-                            <input type="file" id="file" className={styles.bn5}/>
+                            <input type="file" id="file" className={styles.bn5} ref={refAvatar}/>
                           </div>
                           <div>
-                            <button type="button">Загрузить фото</button>
+                            <button className={styles.bn5} type="button" onClick={changeTrainerAvatar}>Загрузить фото</button>
                           </div>
                         </div>
-
                         <div>
                           <input
                             type="text"
