@@ -3,11 +3,10 @@ const bcrypt = require('bcrypt');
 const { User, Certificate, File } = require('../../db/models');
 
 authRouter.post('/register', async (req, res) => {
-  const {
-    login, email, password, status,
-  } = req.body;
+  const { login, email, password, status } = req.body;
   try {
     if (login && password && email && status) {
+      console.log(req.body);
       let user = await User.findOne({ where: { login } });
       const userEmail = await User.findOne({ where: { email } });
       if (!user && !userEmail) {
@@ -25,9 +24,16 @@ authRouter.post('/register', async (req, res) => {
         res.status(201).json({
           id: user.id,
           login: user.login,
+          name: user.name,
           email: user.email,
           status: user.status,
+          online: user.online,
+          description: user.description,
+          city: user.city,
+          vertification: user.vertification,
           profilePicture: user.profilePicture,
+          Certificates: user.Certificates,
+          Files: user.Files,
         });
       } else {
         res.status(400).json({ message: 'Такой пользователь уже существует' });
@@ -36,6 +42,7 @@ authRouter.post('/register', async (req, res) => {
       res.status(400).json({ message: 'Заполните все поля' });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
@@ -44,6 +51,8 @@ authRouter.post('/login', async (req, res) => {
   const { login, password } = req.body;
   const existingUser = await User.findOne({
     where: { login },
+    include: [{ model: Certificate }, { model: File }],
+    order: [[File, 'createdAt', 'ASC']],
   });
 
   // проверка что пользователь есть и пароли совпадают
@@ -62,6 +71,7 @@ authRouter.post('/login', async (req, res) => {
       vertification: existingUser.vertification,
       profilePicture: existingUser.profilePicture,
       Files: existingUser.Files,
+      Certificates: existingUser.Certificates,
     });
   } else {
     res.status(401).json({
@@ -74,7 +84,10 @@ authRouter.get('/verification', async (req, res) => {
   if (req.session.userId) {
     const userVer = await User.findOne({
       where: { id: req.session.userId },
-      include: [{ model: Certificate }, { model: File }],
+      include: [
+        { model: Certificate },
+        { model: File, order: [['createdAt', 'ASC']] },
+      ],
     });
     res.json({
       isLoggedIn: true,

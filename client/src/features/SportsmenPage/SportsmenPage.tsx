@@ -71,7 +71,7 @@ function SportsmenPage(): JSX.Element {
             <p className={style.heading}>Personal cabinet</p>
             <p className={style.para}>{sportsmen?.name}</p>
             <p className={style.para}>{sportsmen?.description}</p>
-            <button className={style.btn} onClick={handalUpdata} type="button">
+            <button className={style.btn5} onClick={handalUpdata} type="button">
               Редактировать
             </button>
           </div>
@@ -97,6 +97,7 @@ function SportsmenPage(): JSX.Element {
                 <button type="button" onClick={uploadAvatarSportsmen} className={style.btn_upd}>
                   Загрузить фото
                 </button>
+
               </div>
             </div>
 
@@ -143,7 +144,7 @@ function SportsmenPage(): JSX.Element {
 
             <div>
               <button
-                className={style.btn_upd}
+                className={style.btn5}
                 type="button"
                 onClick={handlerUpData}
               >
