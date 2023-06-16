@@ -42,8 +42,9 @@ export async function chartInitBarFetch(): Promise<ChartBar[]> {
   return data;
 }
 
-export async function addStatisticsChartBarFetch(data: StatisticBarChart): Promise<SportsmenState> {
-    
+export async function addStatisticsChartBarFetch(
+  data: StatisticBarChart
+): Promise<SportsmenState> {
   const res = await fetch('/api/chartbar', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -55,6 +56,14 @@ export async function addStatisticsChartBarFetch(data: StatisticBarChart): Promi
   }
   const result = await res.json();
   console.log(result);
-  
+
   return result;
 }
+
+export const changeAvatarSportsmanFetch = async (
+  obj: FormData
+): Promise<Sportsmen> => {
+  const res = await fetch(`/api/sportsman`, { method: 'PUT', body: obj });
+  const data = await res.json();
+  return data;
+};

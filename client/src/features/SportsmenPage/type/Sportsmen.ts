@@ -20,3 +20,8 @@ export type State = {
   updateSportsmen: SportsmenUp[];
   error: string | undefined;
 };
+
+
+// export type Avatar = {
+//   profilePicture: string
+// }
