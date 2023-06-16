@@ -13,7 +13,6 @@ export const addFileTrainerFetch = async (
     body: obj,
   });
   const data = await res.json();
-  console.log(data);
   return data;
 };
 

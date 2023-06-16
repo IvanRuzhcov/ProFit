@@ -4,7 +4,8 @@ import RegisterData from './types/RegisterData';
 import * as api from './api';
 import Credentials from './types/Credentials';
 import * as trainerApi from '../Trainer/api';
-import User from "./types/User";
+import * as sportsmanApi from '../SportsmenPage/api';
+import User from './types/User';
 
 // здесь не только сам юзер, но и его файлы, протипизировано в стейте тоже
 const initialState: AuthState = {
@@ -16,12 +17,12 @@ const initialState: AuthState = {
   fileError: '',
 };
 
-export const verification = createAsyncThunk("auth/verification", () =>
+export const verification = createAsyncThunk('auth/verification', () =>
   api.getUser()
 );
 
 export const upSportsmen = createAsyncThunk(
-  "sportsman/updata",
+  'sportsman/updata',
   (action: User) => api.apiUpdatSportsmetFeth(action)
 );
 
@@ -31,10 +32,10 @@ export const upSportsmen = createAsyncThunk(
 // );
 
 export const register = createAsyncThunk(
-  "auth/registerFetch",
+  'auth/registerFetch',
   async (data: RegisterData) => {
     if (data.password !== data.passwordRepeat) {
-      throw new Error("Пароли не совпадают!");
+      throw new Error('Пароли не совпадают!');
     }
     if (
       !data.login.trim() ||
@@ -49,10 +50,10 @@ export const register = createAsyncThunk(
 );
 
 export const loginJoin = createAsyncThunk(
-  "auth/loginFetch",
+  'auth/loginFetch',
   async (credentials: Credentials) => {
     if (!credentials.login.trim() || !credentials.password.trim()) {
-      throw new Error("Не все поля заполнены!");
+      throw new Error('Не все поля заполнены!');
     }
 
     return api.loginFetch(credentials);
@@ -71,10 +72,13 @@ export const uploadUrlTrainer = createAsyncThunk(
   (obj: FormData) => trainerApi.addUrlTrainerFetch(obj)
 );
 
-
+export const changeAvatar = createAsyncThunk(
+  'sportsman/changePicture',
+  (obj: FormData) => sportsmanApi.changeAvatarSportsmanFetch(obj)
+);
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     resetLoginFormError: (state) => {
@@ -113,9 +117,12 @@ const authSlice = createSlice({
         state.user = undefined;
       })
       .addCase(uploadFileTrainer.fulfilled, (state, action) => {
-      if (state.user && state.user.Files){
-        state.user={...state.user,Files:[...state.user.Files,action.payload]}
-      }
+        if (state.user && state.user.Files) {
+          state.user = {
+            ...state.user,
+            Files: [...state.user.Files, action.payload],
+          };
+        }
         state.fileError = '';
       })
       .addCase(uploadFileTrainer.rejected, (state, action) => {
@@ -130,7 +137,11 @@ const authSlice = createSlice({
       .addCase(upSportsmen.fulfilled, (state, action) => {
         state.user = action.payload;
       })
-      
+      .addCase(changeAvatar.fulfilled, (state, action) => {
+        if (state.user && state.user?.profilePicture) {
+          state.user.profilePicture = action.payload.profilePicture;
+        }
+      })
   },
 });
 
