@@ -22,6 +22,8 @@ function SportsmenPage(): JSX.Element {
   );
   const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
 
+const coachSub = useSelector((store:RootState)=> store.user.subscribe)
+
   useEffect(() => {
   if(user?.status === 'coach'){
     navigate('/trainerpage')
@@ -41,6 +43,7 @@ function SportsmenPage(): JSX.Element {
     setModalUpdat(!modalUpdat);
   }
 
+  
  
   return (
     <div className={style.sport_container}>
@@ -137,6 +140,7 @@ function SportsmenPage(): JSX.Element {
           </div>
         </Modal>
       )}
+      
     </div>
   );
 }

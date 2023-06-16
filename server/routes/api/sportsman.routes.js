@@ -1,5 +1,5 @@
 const sportsmanRouter = require('express').Router();
-const { Parametr } = require('../../db/models');
+const { Parametr, Subscription, User } = require('../../db/models');
 
 sportsmanRouter.post('/sportsman', async (req, res) => {
   const { weight } = req.body;
@@ -27,6 +27,19 @@ sportsmanRouter.get('/sportsman', async (req, res) => {
     });
     res.json(statistic);
   } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+sportsmanRouter.get('/sportsman/subscription', async (req, res) => {
+  const { userId } = req.session;
+  try {
+    const statistic = await User.findOne({
+      where: { id: userId },
+      include: ['coach'],
+    });
+    res.json(statistic);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
