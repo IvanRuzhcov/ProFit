@@ -19,6 +19,11 @@ export const addSubscribeTr = createAsyncThunk(
   (userId: CoachId) => api.addSubscribe(userId)
 );
 
+export const initPost = createAsyncThunk(
+  "trainer/addSubscribe",
+  (userId: CoachId) => api.addSubscribe(userId)
+);
+
 const trainerSlice = createSlice({
   name: "trainer",
   initialState,

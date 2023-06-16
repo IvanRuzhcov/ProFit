@@ -18,7 +18,7 @@
 
 .grow1 { 
   display: flex;
-  padding: 25px;
+  padding-left: 25px;
   margin-left: 10px;
   margin-right: 10px;
   width: 450px;
