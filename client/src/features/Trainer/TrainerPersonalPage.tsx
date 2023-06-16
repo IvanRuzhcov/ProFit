@@ -54,7 +54,7 @@ function TrainerPersonalPage(): JSX.Element {
     <div className={styles.trener_container}>
       <div className={styles.trener_ava_name}>
         <div className={styles.img_container}>
-          <img src={user?.profilePicture} alt="avatar" />
+          <img src={user?.profilePicture} alt="avatar" className={styles.img_ava_trainer}/>
         </div>
         <div className={styles.info_trainer}>
           <div className={styles.name_trainer}>

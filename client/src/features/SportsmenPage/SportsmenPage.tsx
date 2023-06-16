@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
@@ -6,13 +6,14 @@ import ChartLine from './ChartLine';
 import ChartBar from './ChartBar';
 import style from './SportsmenPage.module.css';
 import Modal from '../Modal/Modal';
-import { upSportsmen } from '../auth/authSlice';
+import { upSportsmen, changeAvatar } from '../auth/authSlice';
 import SliderSportsmen from './SliderSportsmen';
+// import {  } from '../auth/authSlice';
 
 function SportsmenPage(): JSX.Element {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const user = useSelector((state: RootState) => state.auth.user)
+  const user = useSelector((state: RootState) => state.auth.user);
   const sportsmen = useSelector((store: RootState) => store.auth.user);
   const [modalUpdat, setModalUpdat] = useState(false);
   const [name, setName] = useState(sportsmen ? sportsmen.name : '');
@@ -24,11 +25,13 @@ function SportsmenPage(): JSX.Element {
 
 const coachSub = useSelector((store:RootState)=> store.user.subscribe)
 
+  const refAvatar = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
-  if(user?.status === 'coach'){
-    navigate('/trainerpage')
-  }
-  }, [navigate, user])
+    if (user?.status === 'coach') {
+      navigate('/trainerpage');
+    }
+  }, [navigate, user]);
 
   function handalUpdata(): void {
     setModalUpdat(() => !modalUpdat);
@@ -43,8 +46,21 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
     setModalUpdat(!modalUpdat);
   }
 
-  
- 
+  const uploadAvatarSportsmen = (): void => {
+    const formData = new FormData();
+    if (refAvatar.current) {
+      if (refAvatar.current?.files && user) {
+        if (user.id) {
+          const url = refAvatar.current.files[0];
+          const { id } = user;
+          formData.append('url', url);
+          formData.append('id', String(id));
+          dispatch(changeAvatar(formData));
+        }
+      }
+    }
+    
+  };
   return (
     <div className={style.sport_container}>
       <div className={style.main}>
@@ -60,7 +76,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
             <p className={style.heading}>Personal cabinet</p>
             <p className={style.para}>{sportsmen?.name}</p>
             <p className={style.para}>{sportsmen?.description}</p>
-            <button className={style.btn} onClick={handalUpdata} type="button">
+            <button className={style.btn5} onClick={handalUpdata} type="button">
               Редактировать
             </button>
           </div>
@@ -79,12 +95,15 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
         <Modal active={modalUpdat} setActive={setModalUpdat}>
           <div className={style.modal}>
             <div>
-
-              <div><input type="file" id='file'  /></div>
               <div>
-              <button type="button">Загрузить фото</button>
+                <input type="file" id="file" ref={refAvatar} style={{borderRadius: '10px'}}/>
               </div>
+              <div>
+                <button type="button" onClick={uploadAvatarSportsmen} className={style.btn_upd}>
+                  Загрузить фото
+                </button>
 
+              </div>
             </div>
 
             <div>
@@ -130,7 +149,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
 
             <div>
               <button
-                className={style.btn_upd}
+                className={style.btn5}
                 type="button"
                 onClick={handlerUpData}
               >

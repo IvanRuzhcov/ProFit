@@ -21,3 +21,9 @@ export type State = {
   error: string | undefined;
 };
 
+
+
+// export type Avatar = {
+//   profilePicture: string
+// }
+

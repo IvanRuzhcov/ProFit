@@ -33,6 +33,11 @@ export const initSubscr = createAsyncThunk('sportsman/initSubscr', () =>
   api.initSubscription()
 );
 
+// export const changeAvatar = createAsyncThunk(
+//   'sportsman/changeAvatar',
+//   (obj: FormData) => api.changeAvatarSportsmanFetch(obj)
+// );
+
 const sportsmenSlice = createSlice({
   name: 'sportsman',
   initialState,
@@ -68,7 +73,6 @@ const sportsmenSlice = createSlice({
       })
 
       .addCase(initSubscr.fulfilled, (state, action) => {
-       
         if (state.subscribe.coach)
           state.subscribe.coach = state.subscribe?.coach
             ? action.payload
