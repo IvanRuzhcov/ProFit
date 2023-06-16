@@ -22,6 +22,8 @@ export type State = {
 };
 
 
+
 // export type Avatar = {
 //   profilePicture: string
 // }
+

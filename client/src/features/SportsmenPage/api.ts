@@ -3,6 +3,7 @@ import { Sportsmen } from './type/Sportsmen';
 import StatisticLineChart from './type/StatisticLineCart';
 import { ChartBar, Statistic } from './type/Statistic';
 import StatisticBarChart from './type/StatisticBarCart';
+import { Subscribe } from './type/Subscribe';
 
 export async function apiInitSportsmen(): Promise<Sportsmen[]> {
   const res = await fetch('/api/auth/verification');
@@ -60,6 +61,12 @@ export async function addStatisticsChartBarFetch(
   return result;
 }
 
+export async function initSubscription(): Promise<Subscribe[]> {
+  const res = await fetch('/api/sportsman/subscription')
+  const result = await res.json();
+  return result;
+}
+
 export const changeAvatarSportsmanFetch = async (
   obj: FormData
 ): Promise<Sportsmen> => {
@@ -67,3 +74,4 @@ export const changeAvatarSportsmanFetch = async (
   const data = await res.json();
   return data;
 };
+

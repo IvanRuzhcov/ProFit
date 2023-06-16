@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Comment,
       File,
       Chat,
+      Subscription,
     }) {
       this.hasMany(ParameterChartBar, { foreignKey: 'user_id_ChartBar' });
       this.hasMany(Parametr, { foreignKey: 'user_id_param' });
@@ -26,6 +27,20 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(File, { foreignKey: 'user_id_files' });
       this.hasMany(Chat, { foreignKey: 'idUserSender' });
       this.hasMany(Chat, { foreignKey: 'idUserReciever' });
+
+      this.belongsToMany(User, {
+        through: Subscription,
+        foreignKey: 'coach_id',
+        otherKey: 'sportsmen_id',
+        as: 'sportsmen',
+      });
+
+      this.belongsToMany(User, {
+        through: Subscription,
+        foreignKey: 'sportsmen_id',
+        otherKey: 'coach_id',
+        as: 'coach',
+      });
     }
   }
   User.init(
@@ -71,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'User',
-    },
+    }
   );
 
   return User;

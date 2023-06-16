@@ -22,7 +22,11 @@ function SportsmenPage(): JSX.Element {
     sportsmen ? sportsmen.description : ''
   );
   const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
+
+const coachSub = useSelector((store:RootState)=> store.user.subscribe)
+
   const refAvatar = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (user?.status === 'coach') {
       navigate('/trainerpage');
@@ -41,6 +45,7 @@ function SportsmenPage(): JSX.Element {
 
     setModalUpdat(!modalUpdat);
   }
+
   const uploadAvatarSportsmen = (): void => {
     const formData = new FormData();
     if (refAvatar.current) {
@@ -154,6 +159,7 @@ function SportsmenPage(): JSX.Element {
           </div>
         </Modal>
       )}
+      
     </div>
   );
 }

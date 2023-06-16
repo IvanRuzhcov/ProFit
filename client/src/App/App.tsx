@@ -16,6 +16,7 @@ import TrainerBlog from "../features/Trainer/TrainerBlog";
 import { initTrainer } from "../features/Trainer/TrainerSlice";
 import Footer from '../features/Footer/Footer';
 import Page404 from "../features/404/Page404";
+import { initSubscr } from "../features/SportsmenPage/SportsmenSlice";
 
 
 function App(): JSX.Element {
@@ -27,7 +28,9 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(verification());
     dispatch(initTrainer());
+    dispatch(initSubscr())
   }, [dispatch]);
+
 
   if (!authChecked) {
     return (
