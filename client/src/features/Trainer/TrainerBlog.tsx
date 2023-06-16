@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AiOutlineCheckCircle } from "react-icons/ai";
@@ -11,14 +11,19 @@ import styles from "./style.module.css";
 function TrainerBlog(): JSX.Element {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  
 
   const user = useSelector((store: RootState) => store.coach.trenerState);
-
+  
   const coach = user.filter((el) => el.id === Number(id));
 
   function handelsubscribe(): void {
     dispatch(addSubscribeTr(Number(id)));
   }
+
+  // useEffect(() => {
+  //   dispatch()
+  // })
 
   return (
     <div>
