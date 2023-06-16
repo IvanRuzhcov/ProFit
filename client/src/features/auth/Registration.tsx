@@ -164,16 +164,16 @@ function Registration(): JSX.Element {
               onChange={handlePasswordRepeatChange}
             />
             <div className={style.select_status}>
-              <Box sx={{ minWidth: 120 }}>
+              <Box sx={{ minWidth: 120, }}>
                 <FormControl
                   fullWidth
                   sx={{
                     '& label.Mui-focused': {
-                      color: 'black',
+                      color: 'white',
                     },
                   }}
                 >
-                  <InputLabel id="demo-multiple-name-label">
+                  <InputLabel id="demo-multiple-name-label" >
                     Выберите статус
                   </InputLabel>
                   <Select
@@ -193,6 +193,7 @@ function Registration(): JSX.Element {
                         '&.Mui-focused fieldset': {
                           borderColor: '#9e9e9e',
                         },
+                        color: 'white'
                       },
                     }}
                   >
