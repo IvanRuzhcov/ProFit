@@ -44,8 +44,8 @@ body {
 }
 
 .img_container {
-  width: 350px;
-  height: 350px;
+  min-width: 350px;
+  min-height: 350px;
   overflow: hidden;
   border-radius: 50%;
   margin-right: 30px;

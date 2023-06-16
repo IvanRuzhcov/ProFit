@@ -7,7 +7,6 @@ import styles from './style.module.css';
 function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
-  console.log(file, 'ffffffffffffff');
 
   useEffect(() => {
     refDiv.current?.addEventListener('click', showFunction);
