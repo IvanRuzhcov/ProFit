@@ -38,6 +38,7 @@ function TrainerBlog(): JSX.Element {
                 <div>
                   <div>
                     <div>
+                      
                       <h2>{coach[0].description}</h2>
                       <h2>{coach[0].city}</h2>
                       {coach[0].online && <h2>Принимаю онлайн</h2>}

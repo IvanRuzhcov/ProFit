@@ -1,3 +1,4 @@
+import { Subscribe } from "../../SportsmenPage/type/Subscribe";
 import { FileTrainer } from "../../Trainer/types/FileTrainer";
 
 export interface Certificate {
@@ -17,7 +18,7 @@ export default interface User {
   city: string;
   vertification?: boolean;
   profilePicture?:string;
-
+  coach?: Subscribe[]
   Certificates?: Certificate[] ;
   Files?: FileTrainer[];
 }
