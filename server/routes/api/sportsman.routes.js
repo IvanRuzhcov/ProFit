@@ -39,7 +39,7 @@ sportsmanRouter.get('/sportsman/subscription', async (req, res) => {
       where: { id: userId },
       include: ['coach'],
     });
-    res.json(statistic);
+    res.json(statistic.coach);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });

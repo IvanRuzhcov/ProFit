@@ -85,6 +85,7 @@ const changeTrainerAvatar = (): void => {
             <div>
               <div>
                 <div>
+                  <h1 className={styles.name_trainer}>{user?.name}</h1>
                 <h2 className={styles.info_trainer_main}>{user?.description}</h2>
                 <h2 className={styles.city_trainer_main}>Город: {user?.city}</h2>
                 {/* <div>
@@ -240,7 +241,7 @@ const changeTrainerAvatar = (): void => {
       </div>
       {user?.Files && (
         <div className={styles.container_post}>
-
+          
           {user.Files?.map((file) =>
             file.type === 'video' ? (
               <VideoLineTrainer key={file.id} file={file} />
