@@ -29,10 +29,16 @@ export const addStatisticsChartBar = createAsyncThunk(
   'sportsman/addStatisticsChartBar',
   (data: StatisticBarChart) => api.addStatisticsChartBarFetch(data)
 );
+
 export const initSubscr = createAsyncThunk(
   'sportsman/initSubscr',
   () => api.initSubscription()
 );
+
+// export const changeAvatar = createAsyncThunk(
+//   'sportsman/changeAvatar',
+//   (obj: FormData) => api.changeAvatarSportsmanFetch(obj)
+// );
 
 const sportsmenSlice = createSlice({
   name: 'sportsman',
@@ -71,6 +77,7 @@ const sportsmenSlice = createSlice({
       .addCase(initSubscr.fulfilled, (state, action) => {
         state.subscribe = action.payload;
       })
+
   },
 });
 export default sportsmenSlice.reducer;

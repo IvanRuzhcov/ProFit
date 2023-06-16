@@ -110,6 +110,7 @@ function ChartLine(): JSX.Element {
         <div className={styles.lineinput_btn_center}>
           <div>
             <input
+              className={styles.input}
               type="number"
               onChange={(event) => setWeight(event.target.value)}
               min = "20" 
@@ -121,7 +122,7 @@ function ChartLine(): JSX.Element {
           </div>
           <br />
           <div>
-            <button type="submit">Отправить</button>
+            <button className={styles.btn5} type="submit">Отправить</button>
           </div>
         </div>
       </form>
