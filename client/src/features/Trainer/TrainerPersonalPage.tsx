@@ -11,6 +11,7 @@ import { RootState, useAppDispatch } from '../../store';
 // import { style } from '@mui/system';
 import styles from './style.module.css';
 import { changeAvatar, upSportsmen } from '../auth/authSlice';
+import { style } from '@mui/system';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
@@ -249,6 +250,7 @@ const changeTrainerAvatar = (): void => {
           )}
         </div>
       )}
+      <div className={styles.empty}>.</div>
     </div>
   );
 }
