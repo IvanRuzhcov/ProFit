@@ -23,8 +23,9 @@ function TrenerList(): JSX.Element {
 
   return (
     <div className="">
-      <div className="">
+      <div className={style.cont_in}>
         <input
+          className={style.input_tr}
           type="text"
           placeholder="Введите логин"
           onChange={(e) => setLogin(e.target.value)}
@@ -34,7 +35,7 @@ function TrenerList(): JSX.Element {
           placeholder="Введите логин"
           onChange={(e) => setFindCity(e.target.value)}
         /> */}
-        <button onClick={getCoachByLogin} type="button">
+        <button className={style.bn5} onClick={getCoachByLogin} type="button">
           Найти
         </button>
       </div>
