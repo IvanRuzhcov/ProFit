@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import User from '../../auth/types/User';
 
 export type Subscribe = {
