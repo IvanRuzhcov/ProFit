@@ -181,7 +181,7 @@
   margin-right: 10px;
   cursor: pointer;
   outline: none;
-  border: none;
+  border: 1px solid #f68251;
   background-color: #232423;
   padding: 0.3em 1.2em;
   border-radius: 30px;
@@ -499,3 +499,4 @@
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
 }
+
