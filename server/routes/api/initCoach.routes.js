@@ -1,10 +1,12 @@
 const initCoachRouter = require('express').Router();
-const { User } = require('../../db/models');
+const { User, File, Certificate } = require('../../db/models');
 
 initCoachRouter.get('/coach', async (req, res) => {
   try {
     const statistic = await User.findAll({
       where: { status: 'coach' },
+      include: [{ model: File }, { model: Certificate }],
+      order: [[File, 'createdAt', 'ASC']],
     });
     res.json(statistic);
   } catch (error) {
