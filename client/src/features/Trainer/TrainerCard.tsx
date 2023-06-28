@@ -8,6 +8,7 @@ function TrainerCard({trainer}: {trainer:Trainer}):JSX.Element {
 const navigate = useNavigate()
 
 function handaleFailing():void{
+    window.scrollTo(0, 0)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     navigate(`/trainerBlog/${trainer.id!}`)
 }

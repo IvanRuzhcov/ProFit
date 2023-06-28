@@ -3,7 +3,6 @@ import { SportsmenState } from './type/SportsmenState';
 import StatisticLineChart from './type/StatisticLineCart';
 import * as api from './api';
 import StatisticBarChart from './type/StatisticBarCart';
-
 const initialState: SportsmenState = {
   sportsmenState: [],
   statistic: [],

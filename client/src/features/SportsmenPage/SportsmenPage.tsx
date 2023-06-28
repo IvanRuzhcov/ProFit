@@ -90,6 +90,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
           <ChartBar />
         </div>
       </div>
+      <div className={style.title_sub}>Подписки</div>
       <SliderSportsmen />
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>

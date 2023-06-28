@@ -291,3 +291,63 @@ body {
   );
   animation: background 3s linear infinite;
 }
+
+.container_trainerCard{
+  margin-top: 20px;
+  display: flex;
+  border: 2px solid black;
+  width: 250px;
+  border-radius: 25px;
+  padding: 15px;
+  background: #4a4a4f;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid #ffffff2e;
+  flex-direction: column;
+  align-items: center;
+}
+.container_trainerCard:hover{
+transform: scale(1.013);
+box-shadow: 0 0 25px 0 #f98f62
+}
+.container_trainerCard:active{
+  transform: scale(0.98);
+}
+
+.container_sub_trainer{
+  display: flex;
+    width: 900px;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.img_photo_trainer{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.img_container_sub{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items:center;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #fbefbb;
+}
+.name_trainer_sub{
+  padding: 5px 15px 5px 15px;
+  border: 1px solid #f68251 ;
+  /* background-color:#f5c350; */
+  border-radius: 30px;
+  color:white
+}
+.title_sub{
+  color: white;
+  font-size: 30px;
+  margin-top: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
