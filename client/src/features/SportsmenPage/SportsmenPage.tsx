@@ -68,7 +68,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
           <img
             src={sportsmen?.profilePicture}
             className={style.img_sportsmen}
-            alt=""
+            alt="avatar"
           />
         </div>
         <div className={style.card}>

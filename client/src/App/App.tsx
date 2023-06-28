@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import { useSelector } from "react-redux";
-import Registration from "../features/auth/Registration";
-import TrainerPersonalPage from "../features/Trainer/TrainerPersonalPage";
-import Login from "../features/auth/Login";
-import NavBar from "../features/navbar/NavBar";
-import { RootState, useAppDispatch } from "../store";
-import { verification } from "../features/auth/authSlice";
-import SportsmenPage from "../features/SportsmenPage/SportsmenPage";
-import MainPage from "../features/MainPage/MainPage";
-import Chart from "../features/SportsmenPage/ChartBar";
-import TrenerList from "../features/Trainer/TrenerList";
-import TrainerBlog from "../features/Trainer/TrainerBlog";
-import { initTrainer } from "../features/Trainer/TrainerSlice";
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { useSelector } from 'react-redux';
+import Registration from '../features/auth/Registration';
+import TrainerPersonalPage from '../features/Trainer/TrainerPersonalPage';
+import Login from '../features/auth/Login';
+import NavBar from '../features/navbar/NavBar';
+import { RootState, useAppDispatch } from '../store';
+import { verification } from '../features/auth/authSlice';
+import SportsmenPage from '../features/SportsmenPage/SportsmenPage';
+import MainPage from '../features/MainPage/MainPage';
+import Chart from '../features/SportsmenPage/ChartBar';
+import TrenerList from '../features/Trainer/TrenerList';
+import TrainerBlog from '../features/Trainer/TrainerBlog';
+import { initTrainer } from '../features/Trainer/TrainerSlice';
 import Footer from '../features/Footer/Footer';
-import Page404 from "../features/404/Page404";
-import { initSubscr } from "../features/SportsmenPage/SportsmenSlice";
-
+import Page404 from '../features/404/Page404';
+import { initSubscr } from '../features/SportsmenPage/SportsmenSlice';
+import { CircularProgress, Stack } from '@mui/material';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -28,14 +28,15 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(verification());
     dispatch(initTrainer());
-    dispatch(initSubscr())
+    dispatch(initSubscr());
   }, [dispatch]);
-
 
   if (!authChecked) {
     return (
       <div className="spinner-border text-primary" role="status">
-        <span className="visually-hidden">Loading...</span>
+        <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+          <CircularProgress disableShrink color="warning" size={80} />
+        </Stack>
       </div>
     );
   }
@@ -53,7 +54,7 @@ function App(): JSX.Element {
         <Route path="/sportsmanpage" element={<SportsmenPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

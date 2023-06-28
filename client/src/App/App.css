@@ -11,6 +11,13 @@
     overflow: hidden;
 }
 
+.spinner-border {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes typing {
     from {
         width: 0;

@@ -140,7 +140,7 @@ function NavBar(): JSX.Element {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to={page.href}>
+              <Link to={page.href} key={page.href}>
                 {user?.status === 'sportsman' && (
                   <Button
                     key={page.href}

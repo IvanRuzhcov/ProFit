@@ -20,7 +20,6 @@ function TrainerPersonalPage(): JSX.Element {
   const [showFormAdd, setShowFormAdd] = useState(false);
   const [showFormAddInfo, setShowFormAddInfo] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  
 
   const sportsmen = useSelector((store: RootState) => store.auth.user);
   const [modalUpdat, setModalUpdat] = useState(false);
@@ -51,27 +50,30 @@ function TrainerPersonalPage(): JSX.Element {
     }
   }, [navigate, user]);
 
-const changeTrainerAvatar = (): void => {
-  const formData = new FormData();
-  if (refAvatar.current) {
-    if (refAvatar.current?.files && user) {
-      if (user.id) {
-        const url = refAvatar.current.files[0];
-        const { id } = user;
-        formData.append('url', url);
-        formData.append('id', String(id));
-        dispatch(changeAvatar(formData));
+  const changeTrainerAvatar = (): void => {
+    const formData = new FormData();
+    if (refAvatar.current) {
+      if (refAvatar.current?.files && user) {
+        if (user.id) {
+          const url = refAvatar.current.files[0];
+          const { id } = user;
+          formData.append('url', url);
+          formData.append('id', String(id));
+          dispatch(changeAvatar(formData));
+        }
       }
     }
-  }
-  
-}
+  };
 
   return (
     <div className={styles.trener_container}>
       <div className={styles.trener_ava_name}>
         <div className={styles.img_container}>
-          <img src={user?.profilePicture} alt="avatar" className={styles.img_ava_trainer}/>
+          <img
+            src={user?.profilePicture}
+            alt="avatar"
+            className={styles.img_ava_trainer}
+          />
         </div>
         <div className={styles.info_trainer}>
           <div className={styles.name_trainer}>
@@ -86,15 +88,19 @@ const changeTrainerAvatar = (): void => {
               <div>
                 <div>
                   <h1 className={styles.name_trainer}>{user?.name}</h1>
-                <h2 className={styles.info_trainer_main}>{user?.description}</h2>
-                <h2 className={styles.city_trainer_main}>Город: {user?.city}</h2>
-                {/* <div>
+                  <h2 className={styles.info_trainer_main}>
+                    {user?.description}
+                  </h2>
+                  <h2 className={styles.city_trainer_main}>
+                    Город: {user?.city}
+                  </h2>
+                  {/* <div>
 
               {user?.map((sport) => (
                 <div>{sport.sport}</div>
               ))}
             </div> */}
-                {/* <div>
+                  {/* <div>
               {user?.?.map((exp) => (
                 <div>
                   <p>{exp.date}</p>
@@ -103,7 +109,14 @@ const changeTrainerAvatar = (): void => {
               ))}
             </div> */}
 
-               <div className="">{user?.online && <h2 className={styles.online_trainer_main}>Принимаю онлайн</h2>}</div></div> 
+                  <div className="">
+                    {user?.online && (
+                      <h2 className={styles.online_trainer_main}>
+                        Принимаю онлайн
+                      </h2>
+                    )}
+                  </div>
+                </div>
                 <div className={styles.container_btn_trainer_info}>
                   {!showFormAdd && (
                     <div>
@@ -169,66 +182,78 @@ const changeTrainerAvatar = (): void => {
                       setActive={setShowFormAddInfo}
                     >
                       <div className={styles.info_form_container}>
-                        <div>
+                        <div className={styles.dowland_file}>
                           <div>
-                            <input type="file" id="file" className={styles.bn5} ref={refAvatar}/>
+                            <input
+                              type="file"
+                              id="file"
+                              className={styles.bn5}
+                              ref={refAvatar}
+                            />
                           </div>
                           <div>
-                            <button className={styles.bn5} type="button" onClick={changeTrainerAvatar}>Загрузить фото</button>
+                            <button
+                              className={styles.bn5}
+                              type="button"
+                              onClick={changeTrainerAvatar}
+                            >
+                              Загрузить фото
+                            </button>
                           </div>
                         </div>
-                        <div>
-                          <input
-                            type="text"
-                            className={styles.input}
-                            placeholder="Изменить/добавить имя"
-                            defaultValue={sportsmen?.name}
-                            onChange={(event) => setName(event.target.value)}
-                            value={name}
-                          />
-                        </div>
+                        <div className={styles.input_edit_container}>
+                          <div>
+                            <input
+                              type="text"
+                              className={styles.input_edit}
+                              placeholder="Изменить/добавить имя"
+                              defaultValue={sportsmen?.name}
+                              onChange={(event) => setName(event.target.value)}
+                              value={name}
+                            />
+                          </div>
 
-                        <div>
-                          <input
-                            type="email"
-                            className={styles.input}
-                            onChange={(event) => setEmail(event.target.value)}
-                            value={email}
-                            defaultValue={sportsmen?.email}
-                            placeholder="Изменить/добавить почту"
-                          />
-                        </div>
+                          <div>
+                            <input
+                              type="email"
+                              className={styles.input_edit}
+                              onChange={(event) => setEmail(event.target.value)}
+                              value={email}
+                              defaultValue={sportsmen?.email}
+                              placeholder="Изменить/добавить почту"
+                            />
+                          </div>
 
-                        <div>
-                          <input
-                            type="text"
-                            className={styles.input}
-                            onChange={(event) =>
-                              setDescription(event.target.value)
-                            }
-                            value={description}
-                            placeholder="Изменить/добавить Описание"
-                          />
-                        </div>
+                          <div>
+                            <textarea
+                              className={styles.input_edit_textarea}
+                              onChange={(event) =>
+                                setDescription(event.target.value)
+                              }
+                              value={description}
+                              placeholder="Изменить/добавить Описание"
+                            />
+                          </div>
 
-                        <div>
-                          <input
-                            type="text"
-                            className={styles.input}
-                            onChange={(event) => setCity(event.target.value)}
-                            value={city}
-                            placeholder="Изменить/добавить Город"
-                          />
-                        </div>
+                          <div>
+                            <input
+                              type="text"
+                              className={styles.input_edit}
+                              onChange={(event) => setCity(event.target.value)}
+                              value={city}
+                              placeholder="Изменить/добавить Город"
+                            />
+                          </div>
 
-                        <div>
-                          <button
-                            className={styles.bn5}
-                            type="button"
-                            onClick={handlerUpData}
-                          >
-                            Изменить
-                          </button>
+                          <div>
+                            <button
+                              className={styles.bn5}
+                              type="button"
+                              onClick={handlerUpData}
+                            >
+                              Изменить
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </Modal>
@@ -241,7 +266,6 @@ const changeTrainerAvatar = (): void => {
       </div>
       {user?.Files && (
         <div className={styles.container_post}>
-          
           {user.Files?.map((file) =>
             file.type === 'video' ? (
               <VideoLineTrainer key={file.id} file={file} />
