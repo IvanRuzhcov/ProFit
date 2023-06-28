@@ -68,6 +68,7 @@
 
 .find_trainer {
   display: flex;
+  align-items: center;
 }
 
 .treners_cont {
@@ -418,7 +419,6 @@
 
 .btn_coach {
   margin-left: 25px;
-  margin-top: 3px;
   height: 48px;
   border-radius: 12px;
   padding: 0.8em 2em;

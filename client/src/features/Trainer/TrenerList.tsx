@@ -21,8 +21,8 @@ function TrenerList(): JSX.Element {
     );
     if (res[0]) {
       setFindTrainer(res[0]);
-    }
-    setFindFlag(true);
+   setFindFlag(true); 
+  }
     setLogin('');
   };
 
@@ -46,7 +46,7 @@ function TrenerList(): JSX.Element {
           </form>
 
           <div className="">
-            {findTrainer &&  (
+            {findTrainer && (
               <div className="">
                 {' '}
                 <TrainerCard trainer={findTrainer} />{' '}
