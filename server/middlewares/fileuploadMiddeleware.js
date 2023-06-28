@@ -2,6 +2,7 @@ const path = require('path');
 const util = require('util');
 
 const storage = async (file) => {
+  console.log('file', file);
   const fileName = file.name;
   const size = file.data.length;
   const extension = path.extname(fileName);

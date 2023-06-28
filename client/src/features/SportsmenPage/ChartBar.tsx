@@ -109,7 +109,7 @@ function ChartBar(): JSX.Element {
       <form onSubmit={handleAddInputChart}>
         <div className={styles.barinput_btn_center}>
           <div>
-            <input className={styles.input}
+            <input className={styles.input_time}
               type="time"
               placeholder="Продолжительность тренировки"
               value={time}

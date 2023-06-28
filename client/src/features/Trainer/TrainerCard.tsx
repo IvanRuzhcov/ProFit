@@ -15,7 +15,7 @@ function handaleFailing():void{
 
     return (
         <div onClick={handaleFailing} className={style.container_trainerCard}>
-            <div className={style.img_card}><img src={trainer.profilePicture}  alt="" /></div>
+            <div className={style.img_card}><img src={trainer.profilePicture}  alt="avatar" className={style.img_sportsmen}/></div>
             <div className={style.info_card}>
             <div className={style.name_card}><h2>@{trainer.login}</h2></div>
               <div className={style.name_card}><h2>{trainer.name}</h2></div>

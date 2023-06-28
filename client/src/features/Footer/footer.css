@@ -16,10 +16,11 @@
 }
 
 .footer-text2 {
-	margin-left: 600px;
-	color: #7d7d7d;
-	font-family: 'Bruno Ace SC', cursive;
-	font-size: 22px;
+  display: flex;
+  color: #7d7d7d;
+  font-family: 'Bruno Ace SC', cursive;
+  font-size: 22px;
+  justify-content: center;
 }
 
 .p-icon {

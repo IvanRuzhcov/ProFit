@@ -1,34 +1,45 @@
-import React from 'react'
-import { FiYoutube, FiTwitter, FiLinkedin, FiInstagram } from "react-icons/fi"
-import './footer.css'
+import React from 'react';
+import { FiYoutube, FiTwitter, FiLinkedin, FiInstagram } from 'react-icons/fi';
+import './footer.css';
 
-function Footer():JSX.Element {
+function Footer(): JSX.Element {
   return (
     <div className="footer">
-      <article id="wrap">  
-      <h2 className='footer-text'>CONTACT with US:</h2>
-      <div className='footer_card'>
-      <p className='p-icon'><FiInstagram/></p>
-      <p className='p-icon'><FiTwitter/></p>
-      <p className='p-icon'><FiLinkedin/></p>
-      <p className='p-icon'><FiYoutube/></p>
-      </div>
-      <h2 className='footer-text2' >2023 from Elbrus, SPB - All Rights Reserved</h2>
-	<article id="lightings">
-    	<section id="one">
+      <article id="wrap">
+        <div className="contact-container">
+          <h2 className="footer-text">CONTACT with US:</h2>
+          <div className="footer_card">
+            <p className="p-icon">
+              <FiInstagram />
+            </p>
+            <p className="p-icon">
+              <FiTwitter />
+            </p>
+            <p className="p-icon">
+              <FiLinkedin />
+            </p>
+            <p className="p-icon">
+              <FiYoutube />
+            </p>
+          </div>
+          <h2 className="footer-text2">
+            2022 from Teams, SPB - All Rights Reserved
+          </h2>
+        </div>
+        <article id="lightings">
+          <section id="one">
             <section id="two">
-                <section id="three">
-                    <section id="four">
-                        <section id="five" />
-                    </section>
+              <section id="three">
+                <section id="four">
+                  <section id="five" />
                 </section>
+              </section>
             </section>
-		</section>
-    </article>
-</article>
+          </section>
+        </article>
+      </article>
     </div>
-    
-  )
+  );
 }
 
-export default Footer
+export default Footer;
