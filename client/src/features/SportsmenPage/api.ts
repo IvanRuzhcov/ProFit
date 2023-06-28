@@ -62,7 +62,7 @@ export async function addStatisticsChartBarFetch(
 }
 
 export async function initSubscription(): Promise<Subscribe[]> {
-  const res = await fetch('/api/sportsman/subscription')
+  const res = await fetch('/api/sportsman/subscription');
   const result = await res.json();
   return result;
 }
@@ -74,4 +74,3 @@ export const changeAvatarSportsmanFetch = async (
   const data = await res.json();
   return data;
 };
-

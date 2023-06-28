@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { RootState, useAppDispatch } from '../../store';
 import { addSubscribeTr } from './TrainerSlice';
@@ -10,6 +10,12 @@ import styles from './style.module.css';
 
 function TrainerBlog(): JSX.Element {
   const { id } = useParams();
+  const coachSub = useSelector((store: RootState) => store.user.subscribe);
+
+  const { coach: slides } = coachSub ?? {};
+
+  const subCoach = slides?.filter((el)=> el.id === Number(id) )
+  
   const dispatch = useAppDispatch();
 
   const user = useSelector((store: RootState) => store.coach.trenerState);
@@ -20,11 +26,8 @@ function TrainerBlog(): JSX.Element {
 
   function handelsubscribe(): void {
     dispatch(addSubscribeTr(Number(id)));
+    window.location.reload()
   }
-
-  // useEffect(() => {
-  //   dispatch()
-  // })
 
   return (
     <div>
@@ -48,18 +51,31 @@ function TrainerBlog(): JSX.Element {
                 <div>
                   <div>
                     <div>
-                      
                       <h2>{coach[0].description}</h2>
-                      <h2 className={styles.info_trainer_main}>Город: {coach[0].city}</h2>
-                      {coach[0].online && <h2 className={styles.info_trainer_main}>Принимаю онлайн</h2>}
+                      <h2 className={styles.info_trainer_main}>
+                        Город: {coach[0].city}
+                      </h2>
+                      {coach[0].online && (
+                        <h2 className={styles.info_trainer_main}>
+                          Принимаю онлайн
+                        </h2>
+                      )}
                       <div className={`${styles.btn_margin} `}>
-                      <button
-                        type="button"
-                        onClick={handelsubscribe}
-                        className={`${styles.btn_upd} `}
-                      >
-                        Подписаться
-                      </button></div>
+                     { !subCoach![0] ? 
+                        (<button
+                          type="button"
+                          onClick={handelsubscribe}
+                          className={`${styles.btn_upd} `}
+                        >
+                          Подписаться
+                        </button>) : (<button
+                          type="button"
+                          onClick={handelsubscribe}
+                          className={`${styles.btn_upd} `}
+                        >
+                          Отписаться 
+                        </button>)
+                     } </div>
                     </div>
                   </div>
                 </div>
