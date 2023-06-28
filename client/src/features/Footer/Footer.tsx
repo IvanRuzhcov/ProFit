@@ -1,33 +1,23 @@
-import React from 'react';
-import { FiYoutube, FiTwitter, FiLinkedin, FiInstagram } from 'react-icons/fi';
-import './footer.css';
+
+import React from 'react'
+import { FiYoutube, FiTwitter, FiInstagram } from "react-icons/fi"
+import { SlSocialVkontakte } from "react-icons/sl"
+import './footer.css'
 
 function Footer(): JSX.Element {
   return (
     <div className="footer">
-      <article id="wrap">
-        <div className="contact-container">
-          <h2 className="footer-text">CONTACT with US:</h2>
-          <div className="footer_card">
-            <p className="p-icon">
-              <FiInstagram />
-            </p>
-            <p className="p-icon">
-              <FiTwitter />
-            </p>
-            <p className="p-icon">
-              <FiLinkedin />
-            </p>
-            <p className="p-icon">
-              <FiYoutube />
-            </p>
-          </div>
-          <h2 className="footer-text2">
-            2022 from Teams, SPB - All Rights Reserved
-          </h2>
-        </div>
-        <article id="lightings">
-          <section id="one">
+      <article id="wrap">  
+      <h2 className='footer-text'>Наши контакты:</h2>
+      <div className='footer_card'>
+        <p className='p-icon'><SlSocialVkontakte/></p>  
+        <p className='p-icon'><FiInstagram/></p>
+        <p className='p-icon'><FiTwitter/></p>
+        <p className='p-icon'><FiYoutube/></p>
+      </div>
+      <h2 className='footer-text2' > ©2021-2023 Все права защищены.</h2>
+	<article id="lightings">
+    	<section id="one">
             <section id="two">
               <section id="three">
                 <section id="four">
