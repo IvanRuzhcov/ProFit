@@ -1,9 +1,10 @@
+
 import React from 'react'
 import { FiYoutube, FiTwitter, FiInstagram } from "react-icons/fi"
 import { SlSocialVkontakte } from "react-icons/sl"
 import './footer.css'
 
-function Footer():JSX.Element {
+function Footer(): JSX.Element {
   return (
     <div className="footer">
       <article id="wrap">  
@@ -18,18 +19,17 @@ function Footer():JSX.Element {
 	<article id="lightings">
     	<section id="one">
             <section id="two">
-                <section id="three">
-                    <section id="four">
-                        <section id="five" />
-                    </section>
+              <section id="three">
+                <section id="four">
+                  <section id="five" />
                 </section>
+              </section>
             </section>
-		</section>
-    </article>
-</article>
+          </section>
+        </article>
+      </article>
     </div>
-    
-  )
+  );
 }
 
-export default Footer
+export default Footer;

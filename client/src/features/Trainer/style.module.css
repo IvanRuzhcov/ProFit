@@ -19,7 +19,7 @@
   justify-content: center;
 }
 
-.input {
+/* .input {
   width: 400px;
   max-width: 320px;
   height: 45px;
@@ -43,7 +43,7 @@
 
 .input:focus {
   border: 2px solid grey;
-}
+} */
 
 .btn {
   border-radius: 999px;
@@ -67,7 +67,7 @@
 }
 
 .find_trainer {
- display: flex;
+  display: flex;
 }
 
 .treners_cont {
@@ -119,12 +119,12 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
   color: #d7d7d7;
-  
 }
 
 .info_card {
   margin: 8px;
 }
+
 .trener_container {
   width: 100%;
   height: 100%;
@@ -138,8 +138,16 @@
   justify-content: center;
   width: 100%;
   align-items: center;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.img_sportsmen {
+  display: flex;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .info_trainer {
@@ -147,7 +155,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 100px;
+  margin-left: 40px;
   max-width: 700px;
   max-height: 500px;
   gap: 10px;
@@ -173,12 +181,18 @@
 }
 
 .img_container {
-  width: 370px;
-  height: 370px;
+  width: 350px;
+  height: 350px;
   overflow: hidden;
   border-radius: 50%;
   margin: 30px;
   border: 3px solid #d7d7d7;
+}
+
+.img_ava_trainer {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .bn5 {
@@ -262,7 +276,6 @@
   padding: 12px;
   border-radius: 12px;
   border: 1.5px solid lightgrey;
-
   outline: none;
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
@@ -280,6 +293,51 @@
 
 .input:focus {
   border: 2px solid grey;
+}
+
+.input_edit {
+  width: 100%;
+  /* max-width: 300px; */
+  height: 45px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid lightgrey;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
+}
+
+.input_edit_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input_edit:hover {
+  border: 2px solid lightgrey;
+
+  box-shadow: 0px 0px 20px -17px;
+}
+
+.input_edit:active {
+  transform: scale(0.95);
+}
+
+.input_edit:focus {
+  border: 2px solid grey;
+}
+
+.input_edit_textarea {
+  width: 100%;
+  /* max-width: 300px; */
+  height: 150px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid lightgrey;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
 }
 
 .inputs {
@@ -329,6 +387,12 @@
 .inputs:checked ~ .inputs,
 .inputs:checked ~ .inputs:active {
   background-position: 0 -24px;
+}
+
+.dowland_file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn_upd {
@@ -381,7 +445,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 400px;
+}
+
+.dowland_photo_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .radio_input {
@@ -505,4 +574,3 @@
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
 }
-

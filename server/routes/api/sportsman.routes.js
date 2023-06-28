@@ -49,13 +49,13 @@ sportsmanRouter.get('/sportsman/subscription', async (req, res) => {
 sportsmanRouter.put('/sportsman', async (req, res) => {
   // const { weight } = req.body;
   // const { userId } = req.session;
+  // const { idSportsman } = req.params;
   const { url } = req.files;
   const { id } = req.body;
-  // const { idSportsman } = req.params;
-  // console.log(url);
   try {
     if (url) {
       const newUrl = await fileuploadMiddeleware(url);
+      console.log(newUrl);
       const user = await User.findOne({ where: { id } });
       user.profilePicture = newUrl;
       user.save();

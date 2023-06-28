@@ -8,9 +8,10 @@ import { Trainer } from './types/Trainer';
 function TrenerList(): JSX.Element {
   const [login, setLogin] = useState('');
   const [findFlag, setFindFlag] = useState(false);
-  const [findTrainer, setFindTrainer] = useState<Trainer>();
+  const [findTrainer, setFindTrainer] = useState<Trainer | null>();
   const [findCity, setFindCity] = useState<Trainer>();
   const coach = useSelector((store: RootState) => store.coach.trenerState);
+
 
   const getCoachByLogin: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -45,14 +46,17 @@ function TrenerList(): JSX.Element {
           </form>
 
           <div className="">
-            {findTrainer && findFlag && (
+            {findTrainer &&  (
               <div className="">
                 {' '}
                 <TrainerCard trainer={findTrainer} />{' '}
                 <button
                   type="button"
                   className={style.btn_coach}
-                  onClick={() => setFindFlag(!findFlag)}
+                  onClick={() => {
+                    setFindFlag(!findFlag);
+                    setFindTrainer(null);
+                  }}
                 >
                   Назад
                 </button>

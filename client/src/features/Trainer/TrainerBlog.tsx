@@ -14,7 +14,6 @@ function TrainerBlog(): JSX.Element {
 
   const user = useSelector((store: RootState) => store.coach.trenerState);
   const user2 = useSelector((store: RootState) => store.coach.trenerState);
-  console.log('====>>>>', user2);
 
   const coach = user.filter((el) => el.id === Number(id));
 
@@ -33,7 +32,7 @@ function TrainerBlog(): JSX.Element {
           <div className={styles.trener_container}>
             <div className={styles.trener_ava_name}>
               <div className={styles.img_container}>
-                <img src={coach[0].profilePicture} alt="" />
+                <img src={coach[0].profilePicture} alt="avatar" className={styles.img_sportsmen}/>
               </div>
               <div className={styles.info_trainer}>
                 <div>
