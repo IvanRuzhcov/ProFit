@@ -7,9 +7,11 @@ import { addSubscribeTr } from './TrainerSlice';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import styles from './style.module.css';
+import { initSubscr } from '../SportsmenPage/SportsmenSlice';
 
 function TrainerBlog(): JSX.Element {
   const { id } = useParams();
+  const [flag, setFlag] = useState(0)
   const coachSub = useSelector((store: RootState) => store.user.subscribe);
 
   const { coach: slides } = coachSub ?? {};
@@ -25,8 +27,16 @@ function TrainerBlog(): JSX.Element {
 
   function handelsubscribe(): void {
     dispatch(addSubscribeTr(Number(id)));
-    window.location.reload()
+    // window.location.reload()
+    setFlag((prev) => prev + 1)
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(initSubscr())
+    }, 20);
+     
+  }, [flag]);
 
   return (
     <div>

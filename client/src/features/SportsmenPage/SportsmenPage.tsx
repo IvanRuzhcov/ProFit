@@ -8,6 +8,7 @@ import style from './SportsmenPage.module.css';
 import Modal from '../Modal/Modal';
 import { upSportsmen, changeAvatar } from '../auth/authSlice';
 import SliderSportsmen from './SliderSportsmen';
+import { initSubscr } from './SportsmenSlice';
 // import {  } from '../auth/authSlice';
 
 function SportsmenPage(): JSX.Element {
@@ -31,7 +32,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
     if (user?.status === 'coach') {
       navigate('/trainerpage');
     }
-  }, [navigate, user]);
+  }, [dispatch, navigate, user]);
 
   function handalUpdata(): void {
     setModalUpdat(() => !modalUpdat);
