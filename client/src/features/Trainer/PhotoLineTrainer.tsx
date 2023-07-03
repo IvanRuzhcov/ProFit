@@ -5,13 +5,16 @@ import ModalWindowPhoto from './ModalWindowPhoto';
 import Modal from '../Modal/Modal';
 import { FileTrainer } from './types/FileTrainer';
 import styles from './style.module.css';
-import { useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
 import { deletePost } from '../auth/authSlice';
+import { useSelector } from 'react-redux';
 
 function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
+  const user = useSelector((store: RootState) => store.auth.user);
 
   const delPost: React.MouseEventHandler<HTMLButtonElement> = (): void => {
     dispatch(deletePost(file.id));
@@ -28,18 +31,37 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   return (
     <div ref={refDiv} className={styles.post_container}>
       <div className={styles.delete_icon_container}>
-        <Tooltip title="Удалить запись">
-          <IconButton
-            aria-label="delete"
-            size="large"
-            onClick={delPost}
-            className={styles.delete_icon}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      </div>
+        {user?.status === 'coach' ? (
+          <Tooltip title="Удалить запись">
+            <IconButton
+              aria-label="delete"
+              size="large"
+              onClick={() => setShowModalDelete(true)}
+              className={styles.delete_icon}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ):(<div className={styles.fake_div}/> )}
 
+        {showModalDelete && (
+          <Modal active={showModalDelete} setActive={setShowModalDelete}>
+            <div className="">
+              <div className={styles.text_delete_modal}>Удалить запись?</div>
+              <button
+                type="button"
+                className={styles.bn5}
+                onClick={() => setShowModalDelete(false)}
+              >
+                Оставить
+              </button>
+              <button className={styles.bn5} type="button" onClick={delPost}>
+                Удалить
+              </button>
+            </div>
+          </Modal>
+        )}
+      </div>
       <img src={file.url} alt="my photos" className={styles.img_post} />
       <div className={styles.soft_text_post}>
         {!show && (

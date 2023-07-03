@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useSelector } from 'react-redux';
 import ModalWindowVideo from './ModalWindowVideo';
 import Modal from '../Modal/Modal';
 import { FileTrainer } from './types/FileTrainer';
 import styles from './style.module.css';
 import { deletePost } from '../auth/authSlice';
-import { useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
 
 function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
+
+  const user = useSelector((store: RootState) => store.auth.user);
 
   useEffect(() => {
     refDiv.current?.addEventListener('click', showFunction);
@@ -28,16 +32,26 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   return (
     <div className={styles.post_container}>
       <div className={styles.delete_icon_container}>
-        <Tooltip title="Удалить запись">
-          <IconButton
-            aria-label="delete"
-            size="large"
-            onClick={delPost}
-            className={styles.delete_icon}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+      {user?.status === 'coach' ? (
+          <Tooltip title="Удалить запись">
+            <IconButton
+              aria-label="delete"
+              size="large"
+              onClick={() => setShowModalDelete(true)}
+              className={styles.delete_icon}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ):(<div className={styles.fake_div}/> )}
+        {showModalDelete && (
+          <Modal active={showModalDelete} setActive={setShowModalDelete}>
+            <div className="">
+              <div className={styles.text_delete_modal}>Удалить запись?</div>
+              <button type='button' className={styles.bn5} onClick={() => setShowModalDelete(false)}>Оставить</button><button className={styles.bn5} type='button' onClick={delPost}>Удалить</button>
+            </div>
+          </Modal>
+        )}
       </div>
       <div ref={refDiv}>
         <video className={styles.img_post}

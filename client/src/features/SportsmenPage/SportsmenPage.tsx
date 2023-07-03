@@ -96,7 +96,6 @@ function SportsmenPage(): JSX.Element {
           <ChartBar />
         </div>
       </div>
-      <div className={style.title_sub}>Подписки</div>
       <SliderSportsmen />
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>

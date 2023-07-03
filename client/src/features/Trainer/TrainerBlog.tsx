@@ -13,16 +13,15 @@ function TrainerBlog(): JSX.Element {
   const { id } = useParams();
   const [flag, setFlag] = useState(0)
   const coachSub = useSelector((store: RootState) => store.user.subscribe);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const { coach: slides } = coachSub ?? {};
 
   const subCoach = slides?.filter((el)=> el.id === Number(id) )
   
-  const dispatch = useAppDispatch();
-
   const user = useSelector((store: RootState) => store.coach.trenerState);
-  const user2 = useSelector((store: RootState) => store.coach.trenerState);
-
+  const user2 = useSelector((store: RootState) => store.auth.user);
   const coach = user.filter((el) => el.id === Number(id));
 
   function handelsubscribe(): void {
@@ -36,6 +35,12 @@ function TrainerBlog(): JSX.Element {
       dispatch(initSubscr())
     }, 50);
   }, [flag]);
+
+  useEffect(() => {
+    if (user2?.status === 'coach') {
+      navigate('/sportsmanpage');
+    }
+  }, [navigate,user2]);
 
   return (
     <div>

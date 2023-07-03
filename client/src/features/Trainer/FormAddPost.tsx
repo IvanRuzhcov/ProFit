@@ -16,7 +16,7 @@ function FormAddPost({
   const [showChangeTypeFile, setShowChangeTypeFile] = useState(false);
   const refPhoto = useRef<HTMLInputElement>(null);
   const refVideo = useRef<HTMLInputElement>(null);
-  const refDescription = useRef<HTMLInputElement>(null);
+  const refDescription = useRef<HTMLTextAreaElement>(null);
   const refFile = useRef<HTMLInputElement>(null);
   const refUrl = useRef<HTMLInputElement>(null);
 
@@ -110,9 +110,8 @@ function FormAddPost({
               <div className={style.upload_file}>
                 <input type="file" ref={refFile} className={style.input_files}/>
                 <div className="">
-                  <input
+                  <textarea
                     className={style.input_post}
-                    type="text"
                     placeholder="Добавьте описание"
                     ref={refDescription}
                   />
