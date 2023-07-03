@@ -50,7 +50,7 @@ authRouter.post('/login', async (req, res) => {
   const existingUser = await User.findOne({
     where: { login },
     include: [{ model: Certificate }, { model: File }],
-    order: [[File, 'createdAt', 'ASC']],
+    order: [[File, 'createdAt', 'DESC']],
   });
 
   // проверка что пользователь есть и пароли совпадают
@@ -82,10 +82,8 @@ authRouter.get('/verification', async (req, res) => {
   if (req.session.userId) {
     const userVer = await User.findOne({
       where: { id: req.session.userId },
-      include: [
-        { model: Certificate },
-        { model: File, order: [['createdAt', 'ASC']] },
-      ],
+      include: [{ model: Certificate }, { model: File }],
+      order: [[File, 'createdAt', 'DESC']],
     });
     res.json({
       isLoggedIn: true,

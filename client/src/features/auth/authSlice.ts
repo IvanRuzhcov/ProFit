@@ -126,7 +126,7 @@ const authSlice = createSlice({
         if (state.user && state.user.Files) {
           state.user = {
             ...state.user,
-            Files: [...state.user.Files, action.payload],
+            Files: [action.payload, ...state.user.Files ],
           };
         }
         state.fileError = '';
