@@ -7,6 +7,7 @@ const fileuploadMiddeleware = require('../../middlewares/fileuploadMiddeleware')
 router.post('/file', async (req, res) => {
   try {
     const { url } = req.files;
+    console.log(url);
     const { type, description } = req.body;
     const newUrl = await fileuploadMiddeleware(url);
     const file = await File.create({
@@ -25,6 +26,7 @@ router.post('/file', async (req, res) => {
       file: file.file,
     });
   } catch (error) {
+    console.log(error);
     // eslint-disable-next-line no-console
     res.status(500).json(console.log(error.message));
   }

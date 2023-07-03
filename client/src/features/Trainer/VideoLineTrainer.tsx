@@ -20,13 +20,11 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     <div className={styles.post_container}>
       <div ref={refDiv}>
         <video
-          src="https://www.youtube.com/embed/nkyUArFHIgI"
+          src={file.url}
           width="600px"
           height="300px"
-          autoPlay
-          loop
-          muted
           playsInline
+          controls
         >
           <track
             src="captions_en.vtt"

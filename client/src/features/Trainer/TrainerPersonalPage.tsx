@@ -11,7 +11,6 @@ import { RootState, useAppDispatch } from '../../store';
 // import { style } from '@mui/system';
 import styles from './style.module.css';
 import { changeAvatar, upSportsmen } from '../auth/authSlice';
-import { style } from '@mui/system';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
@@ -96,20 +95,7 @@ function TrainerPersonalPage(): JSX.Element {
                   <h2 className={styles.city_trainer_main}>
                     Город: {user?.city}
                   </h2>
-                  {/* <div>
-
-              {user?.map((sport) => (
-                <div>{sport.sport}</div>
-              ))}
-            </div> */}
-                  {/* <div>
-              {user?.?.map((exp) => (
-                <div>
-                  <p>{exp.date}</p>
-                  <p>{exp.description}</p>
-                </div>
-              ))}
-            </div> */}
+                 
 
                   <div className="">
                     {user?.online && (

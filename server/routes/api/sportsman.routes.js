@@ -1,6 +1,6 @@
 const sportsmanRouter = require('express').Router();
 
-const { Parametr,Subscription, User } = require('../../db/models');
+const { Parametr, Subscription, User } = require('../../db/models');
 const fileuploadMiddeleware = require('../../middlewares/fileuploadMiddeleware');
 
 sportsmanRouter.post('/sportsman', async (req, res) => {
@@ -52,12 +52,12 @@ sportsmanRouter.put('/sportsman', async (req, res) => {
   // const { userId } = req.session;
   // const { idSportsman } = req.params;
   const { url } = req.files;
-  console.log('===============>>>>>>>>>>>');
+  // console.log('===============>>>>>>>>>>>');
   const { id } = req.body;
   try {
     if (url) {
       const newUrl = await fileuploadMiddeleware(url);
-      console.log(newUrl);
+      // console.log(newUrl);
       const user = await User.findOne({ where: { id } });
       user.profilePicture = newUrl;
       user.save();

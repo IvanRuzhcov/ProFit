@@ -56,6 +56,7 @@ function FormAddPost({
           const description = refDescription.current.value;
           formData.append('type', type);
           // assert(url);
+          console.log(url);
           formData.append('url', url);
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
@@ -64,6 +65,7 @@ function FormAddPost({
         } else if (refUrl.current?.value) {
           const type = 'video';
           const url = refUrl.current?.value;
+          
           const description = refDescription.current.value;
           formData.append('type', type);
           formData.append('url', url);
@@ -80,6 +82,7 @@ function FormAddPost({
           const description = refDescription.current.value;
           formData.append('type', type);
           formData.append('url', url);
+          console.log(url);
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
           showForm(false);
