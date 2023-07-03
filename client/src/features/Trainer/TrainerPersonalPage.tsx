@@ -106,7 +106,6 @@ function TrainerPersonalPage(): JSX.Element {
                   </div>
                 </div>
                 <div className={styles.container_btn_trainer_info}>
-                  {!showFormAdd && (
                     <div>
                       <button
                         className={styles.bn5}
@@ -116,7 +115,6 @@ function TrainerPersonalPage(): JSX.Element {
                         Добавить пост
                       </button>
                     </div>
-                  )}
                   {showFormAdd && (
                     <Modal active={showFormAdd} setActive={setShowFormAdd}>
                       <FormAddPost showForm={showForm} />

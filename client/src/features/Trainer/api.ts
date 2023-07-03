@@ -1,6 +1,6 @@
 
 
-import { FileTrainer } from "./types/FileTrainer";
+import { FileTrainer, FileTrainerId } from "./types/FileTrainer";
 import { CoachId, Subscribe } from "./types/Subscribe";
 import { Trainer } from "./types/Trainer";
 
@@ -27,6 +27,14 @@ export const addUrlTrainerFetch = async (
   return data;
 };
 
+export async function deletePostFetch(postId: FileTrainerId):Promise<number> {
+  const res = await fetch(`/api/trainerpage/${postId}`, {
+    method: "DELETE",
+    headers: { "Content-type": "application/json" },
+  })
+  const data = await res.json();
+  return data;
+}
 
 export const addSubscribe = async (userId: CoachId): Promise<Subscribe[]> => {
   const res = await fetch("/api/subscribe", {
@@ -38,10 +46,10 @@ export const addSubscribe = async (userId: CoachId): Promise<Subscribe[]> => {
   return data;
 };
 
-
-
 export async function initTrainerFeth(): Promise<Trainer[]> {
   const res = await fetch("/api/coach");
   const data = await res.json();
   return data;
 }
+
+

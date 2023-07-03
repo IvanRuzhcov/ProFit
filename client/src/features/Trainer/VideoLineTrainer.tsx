@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { IconButton, Tooltip } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ModalWindowVideo from './ModalWindowVideo';
 import Modal from '../Modal/Modal';
 import { FileTrainer } from './types/FileTrainer';
 import styles from './style.module.css';
+import { deletePost } from '../auth/authSlice';
+import { useAppDispatch } from '../../store';
 
 function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     refDiv.current?.addEventListener('click', showFunction);
@@ -15,9 +20,25 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const showFunction = (): void => {
     setShow(true);
   };
+  
+  const delPost: React.MouseEventHandler<HTMLButtonElement> = (): void => {
+    dispatch(deletePost(file.id));
+  };
 
   return (
     <div className={styles.post_container}>
+      <div className={styles.delete_icon_container}>
+        <Tooltip title="Удалить запись">
+          <IconButton
+            aria-label="delete"
+            size="large"
+            onClick={delPost}
+            className={styles.delete_icon}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
       <div ref={refDiv}>
         <video className={styles.img_post}
           src={file.url}

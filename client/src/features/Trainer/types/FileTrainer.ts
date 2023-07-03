@@ -5,3 +5,5 @@ export type FileTrainer = {
     user_id_files: number,
     description: string,
 }
+
+export type FileTrainerId = FileTrainer['id']
