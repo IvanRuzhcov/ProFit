@@ -47,9 +47,10 @@ router.post('/url', async (req, res) => {
 });
 
 router.delete('/:deletepost', async (req, res) => {
+  const idUser = req.session.userId;
   try {
     const postDel = await File.destroy({
-      where: { id: req.params.deletepost },
+      where: { id: req.params.deletepost, user_id_files: idUser },
     });
     if (postDel) {
       res.status(200).json(Number(req.params.deletepost));
