@@ -10,7 +10,6 @@ function FormAddPost({
   showForm: (value: boolean) => void;
 }): JSX.Element {
   const dispatch = useAppDispatch();
-  const [show, setShow] = useState(false);
   const [showFile, setShowFile] = useState(false);
   const [showLink, setShowLink] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
@@ -31,10 +30,7 @@ function FormAddPost({
     setShowChangeTypeFile(true);
     setShowBtn(true);
   };
-  const addLinkFunction = (): void => {
-    setShowLink(true);
-    setShowChangeTypeFile(true);
-  };
+  
   const changeTypeFunction = (): void => {
     setShowChangeTypeFile(false);
     resetShowFileLink();
@@ -61,17 +57,6 @@ function FormAddPost({
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
           showForm(false);
-          // добавляет ссылку
-        } else if (refUrl.current?.value) {
-          const type = 'video';
-          const url = refUrl.current?.value;
-          
-          const description = refDescription.current.value;
-          formData.append('type', type);
-          formData.append('url', url);
-          formData.append('description', description);
-          dispatch(uploadUrlTrainer(formData));
-          showForm(false);
         }
         // если пользователь добавляет фото
       } else if (refPhoto.current?.checked) {
@@ -86,17 +71,7 @@ function FormAddPost({
           formData.append('description', description);
           dispatch(uploadFileTrainer(formData));
           showForm(false);
-        } else if (refUrl.current?.value) {
-          // добавляет именно ссылку
-          const type = 'photo';
-          const url = refUrl.current?.value;
-          const description = refDescription.current.value;
-          formData.append('type', type);
-          formData.append('url', url);
-          formData.append('description', description);
-          dispatch(uploadUrlTrainer(formData));
-          showForm(false);
-        }
+        } 
       }
     }
   };
@@ -116,7 +91,7 @@ function FormAddPost({
               type="radio"
               name="type"
               value="video"
-              onClick={() => setShow(true)}
+              onClick={addFileFunction}
               ref={refVideo}
             />
             Фото:{' '}
@@ -126,21 +101,13 @@ function FormAddPost({
               name="type"
               value="photo"
               ref={refPhoto}
-              onClick={() => setShow(true)}
+              onClick={addFileFunction}
             />
           </div>
         </div>
-        {show && (
+        
           <div>
-            {!showLink && !showBtn && (
-              <button
-                className={style.bn5}
-                onClick={addFileFunction}
-                type="button"
-              >
-                Добавить файл
-              </button>
-            )}
+            
             {showFile && (
               <div className={style.upload_file}>
                 <input type="file" ref={refFile} className={style.input_files}/>
@@ -154,38 +121,7 @@ function FormAddPost({
                 </div>
               </div>
             )}
-            {!showFile && (
-              <button
-                className={style.bn5}
-                type="button"
-                onClick={addLinkFunction}
-              >
-                Добавить ссылку
-              </button>
-            )}
-            {showLink && (
-              <div className={style.file_push}>
-                <input
-                  className={style.input}
-                  type="text"
-                  placeholder="Вставьте ссылку"
-                  ref={refUrl}
-                />
-                <input
-                  className={style.input}
-                  type="text"
-                  placeholder="Добавьте описание"
-                  ref={refDescription}
-                />
-                <button
-                  className={style.bn5}
-                  type="button"
-                  onClick={addFileForFetch}
-                >
-                  Отправить
-                </button>
-              </div>
-            )}
+            
             {showChangeTypeFile && (
               <div className={style.btn_check}>
                 <button
@@ -205,7 +141,6 @@ function FormAddPost({
               </div>
             )}
           </div>
-        )}
       </form>
     </div>
   );

@@ -19,10 +19,8 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   return (
     <div className={styles.post_container}>
       <div ref={refDiv}>
-        <video
+        <video className={styles.img_post}
           src={file.url}
-          width="600px"
-          height="300px"
           playsInline
           controls
         >
