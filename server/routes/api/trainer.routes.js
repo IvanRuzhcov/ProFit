@@ -7,7 +7,6 @@ const fileuploadMiddeleware = require('../../middlewares/fileuploadMiddeleware')
 router.post('/file', async (req, res) => {
   try {
     const { url } = req.files;
-    console.log(url);
     const { type, description } = req.body;
     const newUrl = await fileuploadMiddeleware(url);
     const file = await File.create({
@@ -26,7 +25,6 @@ router.post('/file', async (req, res) => {
       file: file.file,
     });
   } catch (error) {
-    console.log(error);
     // eslint-disable-next-line no-console
     res.status(500).json(console.log(error.message));
   }
@@ -45,6 +43,23 @@ router.post('/url', async (req, res) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     res.status(500).json(console.log(error.message));
+  }
+});
+
+router.delete('/:deletepost', async (req, res) => {
+  try {
+    const postDel = await File.destroy({
+      where: { id: req.params.deletepost },
+    });
+    if (postDel) {
+      res.status(200).json(Number(req.params.deletepost));
+    } else {
+      res
+        .status(400)
+        .json({ message: 'сервер временно не работает', status: 400 });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message, status: 500 });
   }
 });
 

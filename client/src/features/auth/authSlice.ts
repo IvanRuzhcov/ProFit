@@ -6,6 +6,7 @@ import Credentials from './types/Credentials';
 import * as trainerApi from '../Trainer/api';
 import * as sportsmanApi from '../SportsmenPage/api';
 import User from './types/User';
+import { FileTrainerId } from '../Trainer/types/FileTrainer';
 
 // здесь не только сам юзер, но и его файлы, протипизировано в стейте тоже
 const initialState: AuthState = {
@@ -77,6 +78,11 @@ export const changeAvatar = createAsyncThunk(
   (obj: FormData) => sportsmanApi.changeAvatarSportsmanFetch(obj)
 );
 
+export const deletePost = createAsyncThunk(
+  'trainer/deletepost',
+  (postId: FileTrainerId) => trainerApi.deletePostFetch(postId)
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -134,6 +140,21 @@ const authSlice = createSlice({
       .addCase(uploadUrlTrainer.rejected, (state, action) => {
         state.fileError = action.error.message;
       })
+
+      .addCase(deletePost.fulfilled, (state, action) => {
+       
+        if (state.user && state.user.Files) {
+          state.user = {
+            ...state.user,
+            Files: state.user.Files.filter((el) => el.id !== action.payload),
+          };
+        }
+        state.fileError = '';
+      })
+      .addCase(deletePost.rejected, (state, action) => {
+        state.fileError = action.error.message;
+      })
+
       .addCase(upSportsmen.fulfilled, (state, action) => {
         state.user = action.payload;
       })
@@ -141,7 +162,7 @@ const authSlice = createSlice({
         if (state.user && state.user?.profilePicture) {
           state.user.profilePicture = action.payload.profilePicture;
         }
-      })
+      });
   },
 });
 

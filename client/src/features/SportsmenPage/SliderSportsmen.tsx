@@ -14,8 +14,6 @@ function SliderSportsmen(): JSX.Element {
 
   const { coach: slides } = coachSub ?? {};
 
-  console.log(slides);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToSlide = (slideIndex: number): void => {

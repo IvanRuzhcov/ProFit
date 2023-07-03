@@ -581,3 +581,13 @@
   align-items: center;
   margin-top: 20px
 }
+
+.delete_icon_container {
+  position: relative;
+}
+
+.delete_icon {
+  
+  left: 810px;
+  
+}

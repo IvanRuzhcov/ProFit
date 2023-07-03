@@ -71,7 +71,7 @@ function Registration(): JSX.Element {
   const handleSubmit = useCallback(
     async (event: React.FormEvent) => {
       event.preventDefault();
-      console.log(statusUser);
+
 
       const dispatchResult = await dispatch(
         register({
