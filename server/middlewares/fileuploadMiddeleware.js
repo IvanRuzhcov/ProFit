@@ -7,7 +7,7 @@ const storage = async (file) => {
   const size = file.data.length;
   const extension = path.extname(fileName);
 
-  const allowedExtensions = /png|jpeg|jpg|gif|webp|mp4|wmv|mov/;
+  const allowedExtensions = /png|jpeg|JPG|gif|webp|mp4|wmv|mov/;
 
   // eslint-disable-next-line no-throw-literal
   if (!allowedExtensions.test(extension)) throw 'Unsupported extension !';
