@@ -79,7 +79,7 @@ function SportsmenPage(): JSX.Element {
         </div>
         <div className={style.card}>
           <div className={style.content}>
-            <p className={style.heading}>Personal cabinet</p>
+            <p className={style.heading}>Личный кабинет</p>
             <p className={style.para}>{sportsmen?.name}</p>
             <p className={style.para}>{sportsmen?.description}</p>
             <button className={style.btn5} onClick={handalUpdata} type="button">
