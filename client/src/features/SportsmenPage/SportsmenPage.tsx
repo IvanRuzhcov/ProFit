@@ -24,7 +24,7 @@ function SportsmenPage(): JSX.Element {
   );
   const [city, setCity] = useState(sportsmen ? sportsmen.city : '');
 
-const coachSub = useSelector((store:RootState)=> store.user.subscribe)
+  const coachSub = useSelector((store: RootState) => store.user.subscribe);
 
   const refAvatar = useRef<HTMLInputElement>(null);
 
@@ -47,20 +47,25 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
     setModalUpdat(!modalUpdat);
   }
 
+  useEffect(() => {
+    dispatch(initSubscr());
+  }, []);
+
   const uploadAvatarSportsmen = (): void => {
     const formData = new FormData();
     if (refAvatar.current) {
       if (refAvatar.current?.files && user) {
         if (user.id) {
           const url = refAvatar.current.files[0];
-          const { id } = user;
-          formData.append('url', url);
-          formData.append('id', String(id));
-          dispatch(changeAvatar(formData));
+          if (url) {
+            const { id } = user;
+            formData.append('url', url);
+            formData.append('id', String(id));
+            dispatch(changeAvatar(formData));
+          }
         }
       }
     }
-    
   };
   return (
     <div className={style.sport_container}>
@@ -96,15 +101,23 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
       {modalUpdat && (
         <Modal active={modalUpdat} setActive={setModalUpdat}>
           <div className={style.modal}>
-            <div>
-              <div>
-                <input type="file" id="file" ref={refAvatar} style={{borderRadius: '10px'}}/>
+            <div className={style.upload_form}>
+              <div className={style.upload_form_input}>
+                <input
+                  type="file"
+                  id="file"
+                  ref={refAvatar}
+                  className={style.btn_upload}
+                />
               </div>
               <div>
-                <button type="button" onClick={uploadAvatarSportsmen} className={style.btn_upd}>
+                <button
+                  type="button"
+                  onClick={uploadAvatarSportsmen}
+                  className={style.btn_upload}
+                >
                   Загрузить фото
                 </button>
-
               </div>
             </div>
 
@@ -112,7 +125,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
               <input
                 type="text"
                 className={style.input}
-                placeholder="Изменить имя"
+                placeholder="Изменить/добавить имя"
                 defaultValue={sportsmen?.name}
                 onChange={(event) => setName(event.target.value)}
                 value={name}
@@ -125,18 +138,17 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
                 className={style.input}
                 onChange={(event) => setEmail(event.target.value)}
                 value={email}
-                placeholder="Изменить почту"
+                placeholder="Изменить/добавить почту"
               />
             </div>
 
             <div>
-              <input
-                type="text"
-                className={style.input}
+              <textarea
+                className={style.input_edit}
                 onChange={(event) => setDescription(event.target.value)}
                 value={description}
-                placeholder="Изменить Описание"
-              />
+                placeholder="Изменить/добавить Описание"
+                />
             </div>
 
             <div>
@@ -145,7 +157,7 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
                 className={style.input}
                 onChange={(event) => setCity(event.target.value)}
                 value={city}
-                placeholder="Изменить Город"
+                placeholder="Изменить/добавить Город"
               />
             </div>
 
@@ -161,7 +173,6 @@ const coachSub = useSelector((store:RootState)=> store.user.subscribe)
           </div>
         </Modal>
       )}
-      
     </div>
   );
 }

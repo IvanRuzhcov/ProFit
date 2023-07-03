@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { CircularProgress, Stack } from '@mui/material';
 import './App.css';
 import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
@@ -17,7 +18,6 @@ import { initTrainer } from '../features/Trainer/TrainerSlice';
 import Footer from '../features/Footer/Footer';
 import Page404 from '../features/404/Page404';
 import { initSubscr } from '../features/SportsmenPage/SportsmenSlice';
-import { CircularProgress, Stack } from '@mui/material';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();

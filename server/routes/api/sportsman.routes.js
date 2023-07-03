@@ -23,6 +23,7 @@ sportsmanRouter.post('/sportsman', async (req, res) => {
 
 sportsmanRouter.get('/sportsman', async (req, res) => {
   const { userId } = req.session;
+
   try {
     const statistic = await Parametr.findAll({
       where: { user_id_param: userId },
@@ -42,7 +43,7 @@ sportsmanRouter.get('/sportsman/subscription', async (req, res) => {
     res.json(statistic.coach);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json(console.log(error.message));
   }
 });
 
@@ -51,6 +52,7 @@ sportsmanRouter.put('/sportsman', async (req, res) => {
   // const { userId } = req.session;
   // const { idSportsman } = req.params;
   const { url } = req.files;
+  console.log('===============>>>>>>>>>>>');
   const { id } = req.body;
   try {
     if (url) {
