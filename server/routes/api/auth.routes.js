@@ -31,8 +31,8 @@ authRouter.post('/register', async (req, res) => {
           city: user.city,
           vertification: user.vertification,
           profilePicture: user.profilePicture,
-          Certificates: user.Certificates,
-          Files: user.Files,
+          Certificates: [],
+          Files: [],
         });
       } else {
         res.status(400).json({ message: 'Такой пользователь уже существует' });
