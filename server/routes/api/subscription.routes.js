@@ -3,7 +3,7 @@ const { Subscription } = require('../../db/models');
 
 subscriptionRouter.post('/subscribe', async (req, res) => {
   const { userId } = req.body;
-  const sportsmanId = req.session.user.id;
+  const sportsmanId = req.session.userId;
 
   try {
     const sub = await Subscription.findOne({

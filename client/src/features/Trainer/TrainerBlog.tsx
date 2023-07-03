@@ -11,6 +11,8 @@ import { initSubscr } from '../SportsmenPage/SportsmenSlice';
 
 function TrainerBlog(): JSX.Element {
   const { id } = useParams();
+  console.log(id);
+  
   const [flag, setFlag] = useState(0)
   const coachSub = useSelector((store: RootState) => store.user.subscribe);
 

@@ -56,10 +56,12 @@ function TrainerPersonalPage(): JSX.Element {
       if (refAvatar.current?.files && user) {
         if (user.id) {
           const url = refAvatar.current.files[0];
-          const { id } = user;
-          formData.append('url', url);
-          formData.append('id', String(id));
-          dispatch(changeAvatar(formData));
+          if (url) {
+            const { id } = user;
+            formData.append('url', url);
+            formData.append('id', String(id));
+            dispatch(changeAvatar(formData));
+          }
         }
       }
     }

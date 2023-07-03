@@ -188,6 +188,26 @@ body {
   border: 2px solid grey;
 }
 
+.input_edit {
+  width: 400px;
+  max-width: 320px;
+  height: 150px;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 12px;
+  border: 1.5px solid #f68251;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
+}
+.input_edit:hover {
+  border: 2px solid #f68251;
+  box-shadow: 0px 0px 20px -17px;
+}
+.input_edit:focus {
+  border: 2px solid grey;
+}
+
 .btn_upd {
   border-radius: 999px;
   padding: 1em 2em;
@@ -205,6 +225,27 @@ body {
 
 .btn_upd:hover,
 .btn_upd:focus {
+  background: linear-gradient(117deg, #fbefbb, #f68251);
+  box-shadow: 0 0.1rem 0.8rem rgb(254, 100, 70);
+}
+
+.btn_upload {
+  border-radius: 30px;
+  padding: 0.8em 2em;
+  background: linear-gradient(117deg, #fbefbb, #f68251);
+  border: none;
+  color: #000000;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease 0s;
+  letter-spacing: 0.08rem;
+}
+
+.btn_upload:hover,
+.btn_upload:focus {
   background: linear-gradient(117deg, #fbefbb, #f68251);
   box-shadow: 0 0.1rem 0.8rem rgb(254, 100, 70);
 }
@@ -351,3 +392,12 @@ box-shadow: 0 0 25px 0 #f98f62
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.upload_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload_form_input {
+  margin-bottom: 15px;
+}
