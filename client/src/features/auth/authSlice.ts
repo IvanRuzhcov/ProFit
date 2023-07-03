@@ -123,7 +123,7 @@ const authSlice = createSlice({
         state.user = undefined;
       })
       .addCase(uploadFileTrainer.fulfilled, (state, action) => {
-        if (state.user && state.user.Files) {
+        if (state.user && state.user?.Files) {
           state.user = {
             ...state.user,
             Files: [action.payload, ...state.user.Files ],
