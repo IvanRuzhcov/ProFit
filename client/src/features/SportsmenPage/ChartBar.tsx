@@ -27,7 +27,6 @@ ChartJS.register(
   PointElement
 );
 
-
 function ChartBar(): JSX.Element {
   const [time, setTime] = useState('');
   const dispatch = useAppDispatch();
@@ -80,12 +79,10 @@ function ChartBar(): JSX.Element {
     datasets: [
       {
         label: 'Время тренировки',
-        data: dataCharts.map((data) => data.time
-        ),
+        data: dataCharts.map((data) => data.time),
         borderColor: ['rgb(246, 130, 81)'],
         borderWidth: 2,
         backgroundColor: 'rgba(246, 130, 81, 0.3)',
-        
       },
     ],
   };
@@ -102,26 +99,30 @@ function ChartBar(): JSX.Element {
 
   return (
     <>
+      <div className={styles.name_chartLine}>Статистика посещения</div>
       <div className={styles.container_BarChart}>
         <Bar data={dataChart} options={options} />
       </div>
-      <div className={styles.formBar_container} >
-      <form onSubmit={handleAddInputChart}>
-        <div className={styles.barinput_btn_center}>
-          <div>
-            <input className={styles.input_time}
-              type="time"
-              placeholder="Продолжительность тренировки"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
+      <div className={styles.formBar_container}>
+        <form onSubmit={handleAddInputChart}>
+          <div className={styles.barinput_btn_center}>
+            <div>
+              <input
+                className={styles.input_time}
+                type="time"
+                placeholder="Продолжительность тренировки"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+              />
+            </div>
+            <br />
+            <div>
+              <button className={styles.btn6} type="submit">
+                Отправить
+              </button>
+            </div>
           </div>
-          <br />
-          <div>
-            <button className={styles.btn6} type="submit">Отправить</button>
-          </div>
-        </div>
-      </form>
+        </form>
       </div>
     </>
   );

@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { IconButton, Tooltip } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useSelector } from 'react-redux';
 import ModalWindowVideo from './ModalWindowVideo';
 import Modal from '../Modal/Modal';
@@ -7,6 +9,7 @@ import styles from './style.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import ComentsTrainer from './ComentsTrainer';
 import { addComments } from './TrainerSlice';
+import { deletePost } from '../auth/authSlice';
 
 function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const comment = useSelector((store: RootState) => store.coach.comments.filter((el) => el.files_id === file.id));
@@ -17,7 +20,11 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     comment.map((el) => el)
   );
 
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
+
+  const user = useSelector((store: RootState) => store.auth.user);
 
   useEffect(() => {
     refDiv.current?.addEventListener('click', showFunction);
@@ -25,6 +32,10 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
 
   const showFunction = (): void => {
     setShow(true);
+  };
+  
+  const delPost: React.MouseEventHandler<HTMLButtonElement> = (): void => {
+    dispatch(deletePost(file.id));
   };
 
   function hendlerText(text: React.ChangeEvent<HTMLTextAreaElement>): void {
@@ -38,6 +49,28 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
 
   return (
     <div className={styles.post_container}>
+      <div className={styles.delete_icon_container}>
+      {user?.status === 'coach' ? (
+          <Tooltip title="Удалить запись">
+            <IconButton
+              aria-label="delete"
+              size="large"
+              onClick={() => setShowModalDelete(true)}
+              className={styles.delete_icon}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        ):(<div className={styles.fake_div}/> )}
+        {showModalDelete && (
+          <Modal active={showModalDelete} setActive={setShowModalDelete}>
+            <div className="">
+              <div className={styles.text_delete_modal}>Удалить запись?</div>
+              <button type='button' className={styles.bn5} onClick={() => setShowModalDelete(false)}>Оставить</button><button className={styles.bn5} type='button' onClick={delPost}>Удалить</button>
+            </div>
+          </Modal>
+        )}
+      </div>
       <div ref={refDiv}>
         <video className={styles.img_post} src={file.url} playsInline controls>
           <track

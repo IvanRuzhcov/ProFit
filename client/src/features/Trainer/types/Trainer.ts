@@ -11,6 +11,6 @@ export type Trainer ={
     vertification?:string,
     profilePicture?:string,
     login: string
-    Files?: FileTrainer[];
+    Files: FileTrainer[];
 }
 

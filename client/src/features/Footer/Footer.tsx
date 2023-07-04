@@ -15,7 +15,7 @@ function Footer(): JSX.Element {
         <p className='p-icon'><FiTwitter/></p>
         <p className='p-icon'><FiYoutube/></p>
       </div>
-      <h2 className='footer-text2' > ©2021-2023 Все права защищены.</h2>
+      <h2 className='footer-text2' > ©2022-2023 Все права защищены.</h2>
 	<article id="lightings">
     	<section id="one">
             <section id="two">

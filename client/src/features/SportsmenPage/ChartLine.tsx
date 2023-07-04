@@ -31,8 +31,9 @@ function ChartLine(): JSX.Element {
   const [weight, setWeight] = useState('');
   const dispatch = useAppDispatch();
 
-
-  const statistic = useSelector((state: RootState) => state.user.statistic.slice(-30));
+  const statistic = useSelector((state: RootState) =>
+    state.user.statistic.slice(-30)
+  );
 
   const dataChart = {
     labels: statistic.map((data) => {
@@ -41,9 +42,8 @@ function ChartLine(): JSX.Element {
       const month = dateObject.getMonth() + 1;
       if (month < 10) {
         return `${day}.0${month}`;
-      } 
-    return `${day}.${month}`;
-
+      }
+      return `${day}.${month}`;
     }),
     datasets: [
       {
@@ -61,10 +61,12 @@ function ChartLine(): JSX.Element {
     dispatch(chartInit());
   }, [dispatch]);
 
-  const handleAddInputChartBar: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleAddInputChartBar: React.FormEventHandler<HTMLFormElement> = (
+    e
+  ) => {
     e.preventDefault();
     dispatch(addStatisticsChart({ weight }));
-    setWeight('')
+    setWeight('');
   };
 
   const options = {
@@ -102,30 +104,33 @@ function ChartLine(): JSX.Element {
 
   return (
     <>
+      <div className={styles.name_chartLine}>Статистика веса</div>
       <div className={styles.container_lineChart}>
         <Line data={dataChart} options={options} />
       </div>
       <div className={styles.formLine_container}>
-      <form onSubmit={handleAddInputChartBar}>
-        <div className={styles.lineinput_btn_center}>
-          <div>
-            <input
-              className={styles.input}
-              type="number"
-              onChange={(event) => setWeight(event.target.value)}
-              min = "20" 
-              max = "250"
-              step="any"
-              placeholder='Введите актуальный вес'
-              value={weight}
-            />
+        <form onSubmit={handleAddInputChartBar}>
+          <div className={styles.lineinput_btn_center}>
+            <div>
+              <input
+                className={styles.input}
+                type="number"
+                onChange={(event) => setWeight(event.target.value)}
+                min="20"
+                max="250"
+                step="any"
+                placeholder="Введите актуальный вес"
+                value={weight}
+              />
+            </div>
+            <br />
+            <div>
+              <button className={styles.btn5} type="submit">
+                Отправить
+              </button>
+            </div>
           </div>
-          <br />
-          <div>
-            <button className={styles.btn5} type="submit">Отправить</button>
-          </div>
-        </div>
-      </form>
+        </form>
       </div>
     </>
   );

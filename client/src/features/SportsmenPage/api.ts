@@ -56,7 +56,6 @@ export async function addStatisticsChartBarFetch(
     throw error;
   }
   const result = await res.json();
-  console.log(result);
 
   return result;
 }
