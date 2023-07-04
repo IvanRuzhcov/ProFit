@@ -22,7 +22,6 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
 
   const [showModalDelete, setShowModalDelete] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
-  const dispatch = useAppDispatch();
 
   const user = useSelector((store: RootState) => store.auth.user);
 
