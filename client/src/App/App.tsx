@@ -14,10 +14,11 @@ import MainPage from '../features/MainPage/MainPage';
 import Chart from '../features/SportsmenPage/ChartBar';
 import TrenerList from '../features/Trainer/TrenerList';
 import TrainerBlog from '../features/Trainer/TrainerBlog';
-import { initTrainer } from '../features/Trainer/TrainerSlice';
+import { imitComments, initTrainer } from '../features/Trainer/TrainerSlice';
 import Footer from '../features/Footer/Footer';
 import Page404 from '../features/404/Page404';
 import { initSubscr } from '../features/SportsmenPage/SportsmenSlice';
+import { initComment } from '../features/Trainer/api';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -29,7 +30,9 @@ function App(): JSX.Element {
     dispatch(verification());
     dispatch(initTrainer());
     dispatch(initSubscr());
+    dispatch(imitComments());
   }, [dispatch]);
+
 
   if (!authChecked) {
     return (

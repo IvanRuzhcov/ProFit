@@ -483,7 +483,8 @@
 
 .container_btn_trainer_info {
   display: flex;
-  margin-top: 20px;
+    margin-top: 20px;
+    justify-content: center;
 }
 
 .name_trainer {
@@ -573,4 +574,35 @@
   color: #868686;
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
+}
+.bn6{
+  margin-top: 10px;
+  margin-left: 322px;
+  margin-right: 333px;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #f68251;
+  background-color: #232423;
+  padding: 0.3em 1.2em;
+  border-radius: 30px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 550;
+  color: #ffffff;
+  background-size: 100% 100%;
+  box-shadow: 0 0 0 4px #232423 inset;
+}
+.img_comments{
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid orange;
+}
+.container_comments{
+  display: flex ;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 40px;
+  padding:10px
 }

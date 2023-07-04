@@ -1,13 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ModalWindowPhoto from './ModalWindowPhoto';
 import Modal from '../Modal/Modal';
 import { FileTrainer } from './types/FileTrainer';
 import styles from './style.module.css';
+import { RootState, useAppDispatch } from '../../store';
+import { addComments } from './TrainerSlice';
+import ComentsTrainer from './ComentsTrainer';
 
 function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
+  const [coment, setComent] = useState('');
 
+  const comment = useSelector((store: RootState) => store.coach.comments.filter((el) => el.files_id === file.id));
+  
+const [coments, setComents] = useState(
+    comment.map((el) => el)
+  );
+  console.log(coments);
+  
+  function hendlerText(text: React.ChangeEvent<HTMLTextAreaElement>): void {
+    text.preventDefault();
+    setComent(text.target.value);
+  }
+
+  function hendlerButtomCom(): void {
+    dispatch(addComments({ comments: coment, files_id: file.id }));
+    setComent('');
+  }
   useEffect(() => {
     refDiv.current?.addEventListener('click', showFunction);
   }, [refDiv]);
@@ -33,10 +55,25 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
             </div>
             <div>
               <div className={styles.text_container_input}>
-                <textarea className={styles.input_post} />
+                <textarea
+                  className={styles.input_post}
+                  onChange={hendlerText}
+                  value={coment}
+                />
+              </div>
+
+              <div className={styles.bn6}>
+                <button type="button" onClick={hendlerButtomCom}>
+                  Добавить
+                </button>
               </div>
             </div>
-            <div className={styles.comment_post_text}>Комментарии к текущему посту:</div>
+            <div className={styles.comment_post_text}>
+              Комментарии к текущему посту:
+            </div>
+            <div>
+                {comment.map((com)=> <ComentsTrainer com={com} key={com.files_id}/>)}
+              </div>
           </div>
         )}
       </div>

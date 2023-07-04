@@ -123,35 +123,6 @@ function TrainerPersonalPage(): JSX.Element {
                     </Modal>
                   )}
                   <div>
-                    <button
-                      className={styles.bn5}
-                      type="button"
-                      onClick={() => {
-                        setshowCertificates(!showCertificates);
-                      }}
-                    >
-                      Cертификаты
-                    </button>
-                    {showCertificates && (
-                      <Modal
-                        active={showCertificates}
-                        setActive={setshowCertificates}
-                      >
-                        <div>
-                          {user?.Certificates?.map((el) => (
-                            <div>
-                              <img src={el.url_cert} alt="certificate" />
-                            </div>
-                          ))}
-                          <button className={styles.bn5} type="button">
-                            Cертификат
-                          </button>
-                        </div>
-                      </Modal>
-                    )}
-                  </div>
-
-                  <div>
                     {!showFormAddInfo && (
                       <div>
                         <button
