@@ -124,13 +124,6 @@ function FormAddPost({
                 <button
                   className={style.bn5}
                   type="button"
-                  onClick={changeTypeFunction}
-                >
-                  Поменять тип файла
-                </button>{' '}
-                <button
-                  className={style.bn5}
-                  type="button"
                   onClick={addFileForFetch}
                 >
                   Отправить
