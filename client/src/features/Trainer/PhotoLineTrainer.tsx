@@ -10,7 +10,6 @@ import { RootState, useAppDispatch } from '../../store';
 import { addComments } from './TrainerSlice';
 import ComentsTrainer from './ComentsTrainer';
 import { deletePost } from '../auth/authSlice';
-import { useSelector } from 'react-redux';
 
 function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const [show, setShow] = useState(false);
