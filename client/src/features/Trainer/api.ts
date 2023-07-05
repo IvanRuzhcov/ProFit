@@ -45,7 +45,7 @@ export const addSubscribe = async (userId: CoachId): Promise<Subscribe[]> => {
   const data = await res.json();
   return data;
 };
-export const addComents = async (comments: Comments): Promise<Comments[]> => {
+export const addComents = async (comments: Comments): Promise<Comments> => {
   const res = await fetch('/api/comments', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },

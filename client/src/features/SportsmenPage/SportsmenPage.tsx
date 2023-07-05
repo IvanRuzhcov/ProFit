@@ -82,6 +82,7 @@ function SportsmenPage(): JSX.Element {
             <p className={style.heading}>Личный кабинет</p>
             <p className={style.para}>{sportsmen?.name}</p>
             <p className={style.para}>{sportsmen?.description}</p>
+            <p className={style.para}>{sportsmen?.city}</p>
             <button className={style.btn5} onClick={handalUpdata} type="button">
               Редактировать
             </button>

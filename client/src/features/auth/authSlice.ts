@@ -126,7 +126,7 @@ const authSlice = createSlice({
         if (state.user && state.user?.Files) {
           state.user = {
             ...state.user,
-            Files: [action.payload, ...state.user.Files ],
+            Files: [action.payload, ...state.user.Files],
           };
         }
         state.fileError = '';
@@ -142,7 +142,6 @@ const authSlice = createSlice({
       })
 
       .addCase(deletePost.fulfilled, (state, action) => {
-       
         if (state.user && state.user.Files) {
           state.user = {
             ...state.user,
@@ -156,7 +155,13 @@ const authSlice = createSlice({
       })
 
       .addCase(upSportsmen.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = {
+          ...state.user,
+          name: action.payload.name,
+          email: action.payload.email,
+          description: action.payload.description,
+          city: action.payload.city,
+        };
       })
       .addCase(changeAvatar.fulfilled, (state, action) => {
         if (state.user && state.user?.profilePicture) {
