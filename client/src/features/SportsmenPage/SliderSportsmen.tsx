@@ -20,8 +20,6 @@ function SliderSportsmen(): JSX.Element {
     setCurrentIndex(slideIndex);
   };
 
-  console.log(slides);
-
   return (
     <>
       <div className="">

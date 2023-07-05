@@ -157,8 +157,8 @@
   align-items: center;
   justify-content: center;
   margin-left: 40px;
-  max-width: 700px;
-  max-height: 500px;
+  width: 700px;
+  max-height: 700px;
   gap: 10px;
   background: hsl(240, 3%, 30%);
   padding: 40px;
@@ -341,6 +341,21 @@
   box-shadow: 0px 0px 20px -18px;
 }
 
+.input_edit_textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.input_edit_textarea::-webkit-scrollbar-track {
+  background-color: rgb(236, 236, 236);
+  border-radius: 10px;
+}
+
+.input_edit_textarea::-webkit-scrollbar-thumb {
+  background-color: #868686;
+  border-radius: 8px;
+  border: 2px solid rgb(236, 236, 236);
+}
+
 .inputs {
   -webkit-appearance: none;
   /* remove default */
@@ -483,8 +498,8 @@
 
 .container_btn_trainer_info {
   display: flex;
-    margin-top: 20px;
-    justify-content: center;
+  margin-top: 20px;
+  justify-content: center;
 }
 
 .name_trainer {
@@ -524,6 +539,13 @@
   font-size: 20px;
   background-color: #8c8c8c;
   border-radius: 10px;
+  padding: 15px 0px 15px 0px;
+}
+
+.soft_text_post_small {
+  font-size: 20px;
+  background-color: #8c8c8c;
+  border-radius: 10px;
   padding: 15px;
 }
 
@@ -532,16 +554,38 @@
 }
 
 .input_post {
-  width: 500px;
-  height: 150px;
+  width: 672px;
+  height: 100px;
   padding: 10px;
   border-radius: 10px;
   border: 2px solid rgb(87, 87, 87);
   margin-top: 30px;
+  background-color: whitesmoke;
+}
+
+.input_post::-webkit-scrollbar {
+  width: 10px;
+}
+
+.input_post::-webkit-scrollbar-track {
+  background-color: rgb(236, 236, 236);
+  border-radius: 10px;
+}
+
+.input_post::-webkit-scrollbar-thumb {
+  background-color: #868686;
+  border-radius: 8px;
+  border: 2px solid rgb(236, 236, 236);
 }
 
 .btn_post {
   display: flex;
+  border-top: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.pad15 {
+  padding: 0px 15px 0px 15px;
 }
 
 .text_container_input {
@@ -556,6 +600,7 @@
 
 .comment_post_text {
   margin-top: 15px;
+  padding: 0px 15px 0px 15px;
 }
 
 .input_files {
@@ -575,7 +620,7 @@
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
 }
-.bn6{
+.bn6 {
   margin-top: 10px;
   margin-left: 322px;
   margin-right: 333px;
@@ -592,25 +637,51 @@
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
 }
-.img_comments{
+.img_comments {
   width: 60px;
   height: 60px;
   overflow: hidden;
+  object-fit: cover;
   border-radius: 50%;
   border: 2px solid orange;
 }
-.container_comments{
-  display: flex ;
-  border: 1px solid black;
+.container_comments {
+  display: flex;
+  border: 1px solid rgb(61, 61, 61);
   margin: 10px;
-  border-radius: 40px;
-  padding:10px
+  border-radius: 15px;
+  padding: 1px;
 }
+
+.comments_text {
+  max-width: 690px;
+  word-wrap: break-word;
+  padding: 10px 20px 10px 20px;
+}
+
+.comments_img_container {
+  display: flex;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.comments_name {
+  font-weight: 600;
+  padding-top: 5px;
+  padding-left: 20px;
+  font-size: 19px;
+}
+
+.container_name_text {
+  display: flex;
+  flex-direction: column;
+}
+
 .file_push {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .delete_icon_container {
@@ -618,9 +689,7 @@
 }
 
 .delete_icon {
-  
   left: 810px;
-  
 }
 
 .text_delete_modal {

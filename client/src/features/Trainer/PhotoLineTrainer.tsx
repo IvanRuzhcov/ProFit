@@ -23,13 +23,12 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     dispatch(deletePost(file.id));
   };
 
-  const comment = useSelector((store: RootState) => store.coach.comments.filter((el) => el.files_id === file.id));
-  
-const [coments, setComents] = useState(
-    comment.map((el) => el)
-  );
-  console.log(coments);
-  
+  const comment = useSelector((store: RootState) =>
+    store.coach.comments.filter((el) => el.files_id === file.id)
+    );
+    
+  const [coments, setComents] = useState(comment.map((el) => el));
+
   function hendlerText(text: React.ChangeEvent<HTMLTextAreaElement>): void {
     text.preventDefault();
     setComent(text.target.value);
@@ -61,7 +60,9 @@ const [coments, setComents] = useState(
               <DeleteIcon />
             </IconButton>
           </Tooltip>
-        ):(<div className={styles.fake_div}/> )}
+        ) : (
+          <div className={styles.fake_div} />
+        )}
 
         {showModalDelete && (
           <Modal active={showModalDelete} setActive={setShowModalDelete}>
@@ -84,17 +85,18 @@ const [coments, setComents] = useState(
       <img src={file.url} alt="my photos" className={styles.img_post} />
       <div className={styles.soft_text_post}>
         {!show && (
-          <div className={styles.soft_text_post}>
+          <div className={styles.soft_text_post_small}>
             {file.description?.slice(0, 100)}...
           </div>
         )}
         {show && (
           <div className={styles.modal_post}>
             <div className={styles.post_description}>{file?.description}</div>
-            <div className={styles.btn_post}>
+            <div className={styles.btn_post} />
+            <div className={styles.pad15}>
               <div>Добавить комментарий:</div>
             </div>
-            <div>
+            <div className={styles.pad15}>
               <div className={styles.text_container_input}>
                 <textarea
                   className={styles.input_post}
@@ -114,7 +116,7 @@ const [coments, setComents] = useState(
             </div>
             <div>
                 {comment.map((com)=> <ComentsTrainer com={com} key={com.files_id}/>)}
-              </div>
+            </div>
           </div>
         )}
       </div>

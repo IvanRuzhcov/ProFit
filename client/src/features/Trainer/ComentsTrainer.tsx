@@ -9,15 +9,17 @@ function ComentsTrainer({ com }: { com: Comments }): JSX.Element {
 
   return (
     <div className={style.container_comments}>
-      <div>
+      <div className={style.comments_img_container}>
         <img
           className={style.img_comments}
           src={user?.profilePicture}
           alt=""
         />
-        <div>{user?.name}</div>
       </div>
-      <div>{com.comments}</div>
+      <div className={style.container_name_text}>
+        <div className={style.comments_name}>{user?.name}</div>
+        <div className={style.comments_text}>{com.comments}</div>
+      </div>{' '}
     </div>
   );
 }

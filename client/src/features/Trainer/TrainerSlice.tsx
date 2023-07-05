@@ -51,9 +51,10 @@ const trainerSlice = createSlice({
         state.files = [...state.files, action.payload];
       })
       .addCase(addComments.fulfilled, (state, action) => {
-        state.comments = action.payload;
+        state.comments.push(action.payload);
       })
       .addCase(imitComments.fulfilled, (state, action) => {
+
         state.comments = action.payload;
       });
   },
