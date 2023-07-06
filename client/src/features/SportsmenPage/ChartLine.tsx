@@ -106,6 +106,7 @@ function ChartLine(): JSX.Element {
     <>
       <div className={styles.name_chartLine}>Статистика веса</div>
       <div className={styles.container_lineChart}>
+      <h2>Static</h2>
         <Line data={dataChart} options={options} />
       </div>
       <div className={styles.formLine_container}>
