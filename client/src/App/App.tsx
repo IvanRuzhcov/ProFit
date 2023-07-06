@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { CircularProgress, Stack } from '@mui/material';
 import './App.css';
 import { useSelector } from 'react-redux';
 import Registration from '../features/auth/Registration';
@@ -13,11 +14,11 @@ import MainPage from '../features/MainPage/MainPage';
 import Chart from '../features/SportsmenPage/ChartBar';
 import TrenerList from '../features/Trainer/TrenerList';
 import TrainerBlog from '../features/Trainer/TrainerBlog';
-import { initTrainer } from '../features/Trainer/TrainerSlice';
+import { imitComments, initTrainer, initUsers } from '../features/Trainer/TrainerSlice';
 import Footer from '../features/Footer/Footer';
 import Page404 from '../features/404/Page404';
 import { initSubscr } from '../features/SportsmenPage/SportsmenSlice';
-import { CircularProgress, Stack } from '@mui/material';
+import { initComment } from '../features/Trainer/api';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -29,6 +30,8 @@ function App(): JSX.Element {
     dispatch(verification());
     dispatch(initTrainer());
     dispatch(initSubscr());
+    dispatch(imitComments());
+    dispatch(initUsers());
   }, [dispatch]);
 
   if (!authChecked) {

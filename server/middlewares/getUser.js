@@ -1,4 +1,4 @@
-const { User } = require('../db/models');
+  const { User } = require('../db/models');
 const { Certificate, File } = require('../db/models');
 
 module.exports = async function getUser(req, res, next) {

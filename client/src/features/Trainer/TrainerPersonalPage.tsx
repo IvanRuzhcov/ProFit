@@ -11,7 +11,6 @@ import { RootState, useAppDispatch } from '../../store';
 // import { style } from '@mui/system';
 import styles from './style.module.css';
 import { changeAvatar, upSportsmen } from '../auth/authSlice';
-import { style } from '@mui/system';
 
 function TrainerPersonalPage(): JSX.Element {
   const navigate = useNavigate();
@@ -56,10 +55,12 @@ function TrainerPersonalPage(): JSX.Element {
       if (refAvatar.current?.files && user) {
         if (user.id) {
           const url = refAvatar.current.files[0];
-          const { id } = user;
-          formData.append('url', url);
-          formData.append('id', String(id));
-          dispatch(changeAvatar(formData));
+          if (url) {
+            const { id } = user;
+            formData.append('url', url);
+            formData.append('id', String(id));
+            dispatch(changeAvatar(formData));
+          }
         }
       }
     }
@@ -94,20 +95,7 @@ function TrainerPersonalPage(): JSX.Element {
                   <h2 className={styles.city_trainer_main}>
                     Город: {user?.city}
                   </h2>
-                  {/* <div>
-
-              {user?.map((sport) => (
-                <div>{sport.sport}</div>
-              ))}
-            </div> */}
-                  {/* <div>
-              {user?.?.map((exp) => (
-                <div>
-                  <p>{exp.date}</p>
-                  <p>{exp.description}</p>
-                </div>
-              ))}
-            </div> */}
+                 
 
                   <div className="">
                     {user?.online && (
@@ -118,7 +106,6 @@ function TrainerPersonalPage(): JSX.Element {
                   </div>
                 </div>
                 <div className={styles.container_btn_trainer_info}>
-                  {!showFormAdd && (
                     <div>
                       <button
                         className={styles.bn5}
@@ -128,41 +115,11 @@ function TrainerPersonalPage(): JSX.Element {
                         Добавить пост
                       </button>
                     </div>
-                  )}
                   {showFormAdd && (
                     <Modal active={showFormAdd} setActive={setShowFormAdd}>
                       <FormAddPost showForm={showForm} />
                     </Modal>
                   )}
-                  <div>
-                    <button
-                      className={styles.bn5}
-                      type="button"
-                      onClick={() => {
-                        setshowCertificates(!showCertificates);
-                      }}
-                    >
-                      Cертификаты
-                    </button>
-                    {showCertificates && (
-                      <Modal
-                        active={showCertificates}
-                        setActive={setshowCertificates}
-                      >
-                        <div>
-                          {user?.Certificates?.map((el) => (
-                            <div>
-                              <img src={el.url_cert} alt="certificate" />
-                            </div>
-                          ))}
-                          <button className={styles.bn5} type="button">
-                            Cертификат
-                          </button>
-                        </div>
-                      </Modal>
-                    )}
-                  </div>
-
                   <div>
                     {!showFormAddInfo && (
                       <div>

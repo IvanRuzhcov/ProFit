@@ -1,29 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { RootState, useAppDispatch } from '../../store';
 import { addSubscribeTr } from './TrainerSlice';
 import VideoLineTrainer from './VideoLineTrainer';
 import PhotoLineTrainer from './PhotoLineTrainer';
 import styles from './style.module.css';
+import { initSubscr } from '../SportsmenPage/SportsmenSlice';
 
 function TrainerBlog(): JSX.Element {
   const { id } = useParams();
+  const [flag, setFlag] = useState(0)
+  const coachSub = useSelector((store: RootState) => store.user.subscribe);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
+  const { coach: slides } = coachSub ?? {};
+
+  const subCoach = slides?.filter((el)=> el.id === Number(id) )
+  
   const user = useSelector((store: RootState) => store.coach.trenerState);
-  const user2 = useSelector((store: RootState) => store.coach.trenerState);
-
+  const user2 = useSelector((store: RootState) => store.auth.user);
   const coach = user.filter((el) => el.id === Number(id));
 
   function handelsubscribe(): void {
     dispatch(addSubscribeTr(Number(id)));
+    // window.location.reload()
+    setFlag((prev) => prev + 1)
   }
 
-  // useEffect(() => {
-  //   dispatch()
-  // })
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(initSubscr())
+    }, 50);
+  }, [flag]);
+
+  useEffect(() => {
+    if (user2?.status === 'coach') {
+      navigate('/sportsmanpage');
+    }
+  }, [navigate,user2]);
 
   return (
     <div>
@@ -47,18 +64,31 @@ function TrainerBlog(): JSX.Element {
                 <div>
                   <div>
                     <div>
-                      
                       <h2>{coach[0].description}</h2>
-                      <h2 className={styles.info_trainer_main}>Город: {coach[0].city}</h2>
-                      {coach[0].online && <h2 className={styles.info_trainer_main}>Принимаю онлайн</h2>}
+                      <h2 className={styles.info_trainer_main}>
+                        Город: {coach[0].city}
+                      </h2>
+                      {coach[0].online && (
+                        <h2 className={styles.info_trainer_main}>
+                          Принимаю онлайн
+                        </h2>
+                      )}
                       <div className={`${styles.btn_margin} `}>
-                      <button
-                        type="button"
-                        onClick={handelsubscribe}
-                        className={`${styles.btn_upd} `}
-                      >
-                        Подписаться
-                      </button></div>
+                     { !subCoach![0] ? 
+                        (<button
+                          type="button"
+                          onClick={handelsubscribe}
+                          className={`${styles.btn_upd} `}
+                        >
+                          Подписаться
+                        </button>) : (<button
+                          type="button"
+                          onClick={handelsubscribe}
+                          className={`${styles.btn_upd} `}
+                        >
+                          Отписаться 
+                        </button>)
+                     } </div>
                     </div>
                   </div>
                 </div>

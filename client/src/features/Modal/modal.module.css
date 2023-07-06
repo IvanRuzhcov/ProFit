@@ -23,9 +23,7 @@
     border-radius: 12px;
     background-color: #a8a9b3;
     max-width: 1100px;
-
-
-    /* text-decoration: underline; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: 'Bruno Ace SC', cursive;
     font-size: 18px;
     font-weight: 600;

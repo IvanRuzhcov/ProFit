@@ -6,7 +6,7 @@ initCoachRouter.get('/coach', async (req, res) => {
     const statistic = await User.findAll({
       where: { status: 'coach' },
       include: [{ model: File }, { model: Certificate }],
-      order: [[File, 'createdAt', 'ASC']],
+      order: [[File, 'createdAt', 'DESC']],
     });
     res.json(statistic);
   } catch (error) {

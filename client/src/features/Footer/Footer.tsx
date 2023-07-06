@@ -15,6 +15,7 @@ function Footer(): JSX.Element {
         <p className='p-icon'><FiTwitter/></p>
         <p className='p-icon'><FiYoutube/></p>
       </div>
+
       <h2 className='footer-text2' > ©2021-2023 ProFit</h2>
 	<article id="lightings">
     	<section id="one">

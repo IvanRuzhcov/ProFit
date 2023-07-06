@@ -1,31 +1,47 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { TrainerState } from "./types/TrainerState";
-import * as api from "./api";
-import { CoachId } from "./types/Subscribe";
-import { uploadUrlTrainer } from "../auth/authSlice";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { TrainerState } from './types/TrainerState';
+import * as api from './api';
+import { CoachId } from './types/Subscribe';
+import { uploadUrlTrainer } from '../auth/authSlice';
+import { Comments } from './types/Comments';
 
 const initialState: TrainerState = {
   trenerState: [],
   subscribeState: [],
   files: [],
+  comments: [],
+  user: []
 };
 
-export const initTrainer = createAsyncThunk("triner/initTrainer", () =>
+export const initTrainer = createAsyncThunk('triner/initTrainer', () =>
   api.initTrainerFeth()
 );
 
 export const addSubscribeTr = createAsyncThunk(
-  "trainer/addSubscribe",
+  'trainer/addSubscribe',
   (userId: CoachId) => api.addSubscribe(userId)
 );
 
 export const initPost = createAsyncThunk(
-  "trainer/addSubscribe",
+  'trainer/addSubscribe',
   (userId: CoachId) => api.addSubscribe(userId)
 );
 
+export const addComments = createAsyncThunk(
+  'commetns/addComments',
+  (comments: Comments) => api.addComents(comments)
+);
+
+export const imitComments = createAsyncThunk('commetns/initComents', () =>
+  api.initComment()
+);
+
+export const initUsers = createAsyncThunk('user/initUsers', () =>
+  api.initUser()
+);
+
 const trainerSlice = createSlice({
-  name: "trainer",
+  name: 'trainer',
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -38,7 +54,16 @@ const trainerSlice = createSlice({
       })
       .addCase(uploadUrlTrainer.fulfilled, (state, action) => {
         state.files = [...state.files, action.payload];
-      });
+      })
+      .addCase(addComments.fulfilled, (state, action) => {
+        state.comments.push(action.payload);
+      })
+      .addCase(imitComments.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      })
+      .addCase(initUsers.fulfilled, (state,action)=> {
+        state.user = action.payload
+      })
   },
 });
 

@@ -1,6 +1,6 @@
 const sportsmanRouter = require('express').Router();
 
-const { Parametr,Subscription, User } = require('../../db/models');
+const { Parametr, Subscription, User } = require('../../db/models');
 const fileuploadMiddeleware = require('../../middlewares/fileuploadMiddeleware');
 
 sportsmanRouter.post('/sportsman', async (req, res) => {
@@ -23,6 +23,7 @@ sportsmanRouter.post('/sportsman', async (req, res) => {
 
 sportsmanRouter.get('/sportsman', async (req, res) => {
   const { userId } = req.session;
+
   try {
     const statistic = await Parametr.findAll({
       where: { user_id_param: userId },
@@ -41,8 +42,7 @@ sportsmanRouter.get('/sportsman/subscription', async (req, res) => {
     });
     res.json(statistic.coach);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json(console.log(error.message));
   }
 });
 
@@ -55,7 +55,6 @@ sportsmanRouter.put('/sportsman', async (req, res) => {
   try {
     if (url) {
       const newUrl = await fileuploadMiddeleware(url);
-      console.log(newUrl);
       const user = await User.findOne({ where: { id } });
       user.profilePicture = newUrl;
       user.save();
