@@ -10,6 +10,7 @@ const initialState: TrainerState = {
   subscribeState: [],
   files: [],
   comments: [],
+  user: []
 };
 
 export const initTrainer = createAsyncThunk('triner/initTrainer', () =>
@@ -35,6 +36,10 @@ export const imitComments = createAsyncThunk('commetns/initComents', () =>
   api.initComment()
 );
 
+export const initUsers = createAsyncThunk('user/initUsers', () =>
+  api.initUser()
+);
+
 const trainerSlice = createSlice({
   name: 'trainer',
   initialState,
@@ -54,9 +59,11 @@ const trainerSlice = createSlice({
         state.comments.push(action.payload);
       })
       .addCase(imitComments.fulfilled, (state, action) => {
-
         state.comments = action.payload;
-      });
+      })
+      .addCase(initUsers.fulfilled, (state,action)=> {
+        state.user = action.payload
+      })
   },
 });
 

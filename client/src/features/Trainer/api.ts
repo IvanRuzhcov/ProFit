@@ -2,6 +2,7 @@ import { Comments } from './types/Comments';
 import { FileTrainer, FileTrainerId } from "./types/FileTrainer";
 import { CoachId, Subscribe } from "./types/Subscribe";
 import { Trainer } from "./types/Trainer";
+import { User } from './types/User';
 
 // }
 export const addFileTrainerFetch = async (
@@ -63,6 +64,13 @@ export async function initTrainerFeth(): Promise<Trainer[]> {
 export async function initComment(): Promise<Comments[]> {
   const res = await fetch('/api/init/comments');
   const data = await res.json();
+  return data;
+}
+export async function initUser(): Promise<User[]> {
+  const res = await fetch('/api/init/user');
+  const data = await res.json();
+  console.log(data);
+  
   return data;
 }
 

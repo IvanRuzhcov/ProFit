@@ -580,8 +580,8 @@
 
 .btn_post {
   display: flex;
-  border-top: 1px solid black;
   padding-bottom: 10px;
+  margin-left: 15px;
 }
 
 .pad15 {
@@ -595,7 +595,10 @@
 
 .post_description {
   margin-bottom: 15px;
+  border: 1px solid #000000;
+  border-radius: 15px;
   padding: 15px;
+  margin: 10px;
 }
 
 .comment_post_text {
@@ -623,7 +626,9 @@
 .bn6 {
   margin-top: 10px;
   margin-left: 322px;
-  margin-right: 333px;
+  margin-right: 336px;
+  display: inline-block;
+  text-align: center;
   cursor: pointer;
   outline: none;
   border: 1px solid #f68251;
@@ -636,6 +641,10 @@
   color: #ffffff;
   background-size: 100% 100%;
   box-shadow: 0 0 0 4px #232423 inset;
+}
+.bt6{
+  display: flex;
+  justify-content: center;
 }
 .img_comments {
   width: 60px;
@@ -701,4 +710,10 @@
 
 .fake_div {
   height: 40px;
+}
+.container_btn5_1{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  
 }
