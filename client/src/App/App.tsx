@@ -14,7 +14,7 @@ import MainPage from '../features/MainPage/MainPage';
 import Chart from '../features/SportsmenPage/ChartBar';
 import TrenerList from '../features/Trainer/TrenerList';
 import TrainerBlog from '../features/Trainer/TrainerBlog';
-import { imitComments, initTrainer } from '../features/Trainer/TrainerSlice';
+import { imitComments, initTrainer, initUsers } from '../features/Trainer/TrainerSlice';
 import Footer from '../features/Footer/Footer';
 import Page404 from '../features/404/Page404';
 import { initSubscr } from '../features/SportsmenPage/SportsmenSlice';
@@ -31,8 +31,8 @@ function App(): JSX.Element {
     dispatch(initTrainer());
     dispatch(initSubscr());
     dispatch(imitComments());
+    dispatch(initUsers());
   }, [dispatch]);
-
 
   if (!authChecked) {
     return (

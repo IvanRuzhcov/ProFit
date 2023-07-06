@@ -29,6 +29,9 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     
   const [coments, setComents] = useState(comment.map((el) => el));
 
+  // это для того чтобы все посты начинались с больой буквы
+  const capitalized = file.description.charAt(0).toUpperCase() + file.description.slice(1)
+
   function hendlerText(text: React.ChangeEvent<HTMLTextAreaElement>): void {
     text.preventDefault();
     setComent(text.target.value);
@@ -86,12 +89,12 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
       <div className={styles.soft_text_post}>
         {!show && (
           <div className={styles.soft_text_post_small}>
-            {file.description?.slice(0, 100)}...
+            {capitalized.slice(0, 100)}...
           </div>
         )}
         {show && (
           <div className={styles.modal_post}>
-            <div className={styles.post_description}>{file?.description}</div>
+            <div className={styles.post_description}>{capitalized}</div>
             <div className={styles.btn_post} />
             <div className={styles.pad15}>
               <div>Добавить комментарий:</div>
@@ -105,10 +108,12 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
                 />
               </div>
 
+              <div className={styles.bt6}>
               <div className={styles.bn6}>
                 <button type="button" onClick={hendlerButtomCom}>
                   Добавить
                 </button>
+              </div>
               </div>
             </div>
             <div className={styles.comment_post_text}>
