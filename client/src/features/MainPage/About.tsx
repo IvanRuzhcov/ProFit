@@ -5,28 +5,30 @@ import style from './style.module.css'
 function About():JSX.Element {
   return (
       <div className={style.about_container}>
-          
-            <div className={style.grow1}>
-              <p className={style.about_text}>Вы можете загружать свои видеофайлы, связанные со спортом, на платформу.</p>
-              <p className={style.about_text}>Это может включать записи спортивных событий, тренировок, инструкционные видео, спортивные моменты и т.д.</p>
-              <p className={style.about_text}>Видеохостинг использует алгоритмы рекомендаций, чтобы предлагать вам наиболее подходящие видео, исходя из ваших предпочтений.</p>
-            </div>
-            <div className={style.grow4}>.</div>
-        
-            <div className={style.grow1}>
-              <p className={style.about_text}>Видеохостинг предоставляет вам механизмы для хранения загруженных видеофайлов и организации их в удобные категории или коллекции.</p>
-              <p className={style.about_text}>Например, видео могут быть разделены по видам спорта, соревнованиям, командам или тегам.</p>
-            </div>
-            <div className={style.grow3}>.</div>
-            
-            <div className={style.grow1}>
-              <p className={style.about_text}>Вы можете комментировать видео, ставить лайки, делиться видеофайлами в социальных сетях, подписываться на каналы или авторов видео.</p>
-              <p className={style.about_text}>Это позволяет создавать сообщество спортивных энтузиастов, обмениваться мнениями и взаимодействовать друг с другом.</p>
-              <p className={style.about_text}>Также мы предоставляем возможность создания персонализированных плейлистов или подборок видео.</p>
-            </div>
-            <div className={style.grow5}>.</div>
-            <div className={style.grow6}>.</div>
-            <div className={style.grow7}>.</div>  
+          <div className={style.parent}>
+
+             <div className={style.box}>
+               <p className={style.title}><span className={style.color_effect}>продуктивная обстановка</span></p>
+               <div className={style.grow7}>.</div>
+               <p className={style.about_text}>Мы разработали не имеющее аналогов приложение, позволяющее следить за расписанием, добавлять друзей и получать уведомления когда они приходят в клуб, выбирать тренеров и отслеживать свой рейтинг в лидерборде, изучать статистику посещений и веса и многое другое</p>
+               
+             </div>
+
+             <div className={style.box}>
+               <p className={style.title}><span className={style.color_effect}>дружное сообщество</span></p>
+               <div className={style.grow3}>.</div>
+               <p className={style.about_text}>Создавая наилучшие условия для достижения любых целей, вплоть до самых амбициозных, мы помогаем людям влюбиться в здоровый образ жизни. Это позволяет создавать сообщество спортивных энтузиастов, обмениваться мнениями и взаимодействовать друг с другом.</p>
+               
+             </div>
+             
+             <div className={style.box}>
+               <p className={style.title}><span className={style.color_effect}>включайся</span></p>
+               <div className={style.grow5}>.</div>
+               <p className={style.about_text1}>Вы можете комментировать посты, ставить лайки, делиться ими в социальных сетях, подписываться на каналы или авторов видео.
+               Также для наших постоянных клиентов предусмотрена программа лояльности.</p>
+             </div>
+
+          </div>  
       </div>
     
   )
