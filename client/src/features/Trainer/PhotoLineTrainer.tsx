@@ -23,14 +23,33 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     dispatch(deletePost(file.id));
   };
 
-  const comment = useSelector((store: RootState) =>
-    store.coach.comments.filter((el) => el.files_id === file.id)
-    );
-    
-  const [coments, setComents] = useState(comment.map((el) => el));
+  const filteredComments = useSelector((store: RootState) =>
+  store.coach.comments.filter((el) => el.files_id === file.id)
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [commentsPerPage] = useState(5);
+console.log(currentPage);
+
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+
+  const currentComments = filteredComments.slice(
+    indexOfFirstComment,
+    indexOfLastComment
+  );
+
+  const nextPage = (): void => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const prevPage = (): void => {
+    setCurrentPage((prPage) => prPage - 1);
+  };
+ 
 
   // это для того чтобы все посты начинались с больой буквы
-  const capitalized = file.description.charAt(0).toUpperCase() + file.description.slice(1)
+  const capitalized =
+    file.description.charAt(0).toUpperCase() + file.description.slice(1);
 
   function hendlerText(text: React.ChangeEvent<HTMLTextAreaElement>): void {
     text.preventDefault();
@@ -109,19 +128,39 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
               </div>
 
               <div className={styles.bt6}>
-              <div className={styles.bn6}>
-                <button type="button" onClick={hendlerButtomCom}>
-                  Добавить
-                </button>
-              </div>
+                <div className={styles.bn6}>
+                  <button type="button" onClick={hendlerButtomCom}>
+                    Добавить
+                  </button>
+                </div>
               </div>
             </div>
             <div className={styles.comment_post_text}>
               Комментарии к текущему посту:
             </div>
             <div>
-                {comment.map((com)=> <ComentsTrainer com={com} key={com.files_id}/>)}
+              {currentComments.map((com) => (
+                <ComentsTrainer com={com} key={com.files_id} />
+              ))}
             </div>
+            <div className={styles.container_btn5_1}>
+                <button
+                  type="button"
+                  onClick={prevPage}
+                  className={styles.bn5}
+                  disabled={currentPage === 1}
+                >
+                  Предыдущая страница
+                </button>
+                <button
+                  type="button"
+                  className={styles.bn5}
+                  onClick={nextPage}
+                  disabled={currentComments.length < commentsPerPage}
+                >
+                  Следующая страница
+                </button>
+                </div>
           </div>
         )}
       </div>
