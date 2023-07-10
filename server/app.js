@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 
 const express = require('express');
 // const path = require('path');
@@ -32,6 +33,8 @@ app.use('/api', chartBarRouter);
 app.use('/api', comentsRouter);
 app.use('/api/init', userRouter);
 
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, _next) => {
   // eslint-disable-next-line no-console
@@ -42,8 +45,8 @@ app.use((error, req, res, _next) => {
   });
 });
 
-// app.use('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/public/index.html'));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 // });
 
 // eslint-disable-next-line no-console

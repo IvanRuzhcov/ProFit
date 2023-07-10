@@ -13,13 +13,15 @@ import { deletePost } from '../auth/authSlice';
 
 function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const comment = useSelector((store: RootState) =>
-    store.coach.comments.filter((el) => el.files_id === file.id)
+  store.coach.comments.filter((el) => el.files_id === file.id)
   );
   const dispatch = useAppDispatch();
   const [show, setShow] = useState(false);
   const [coment, setComent] = useState('');
   const [coments, setComents] = useState(comment.map((el) => el));
-
+  
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [commentsPerPage] = useState(5);
 
@@ -43,7 +45,6 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   const capitalized =
     file.description.charAt(0).toUpperCase() + file.description.slice(1);
 
-  const [showModalDelete, setShowModalDelete] = useState(false);
   const refDiv = useRef<HTMLDivElement>(null);
 
   const user = useSelector((store: RootState) => store.auth.user);
