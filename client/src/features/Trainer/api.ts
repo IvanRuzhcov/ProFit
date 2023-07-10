@@ -69,8 +69,6 @@ export async function initComment(): Promise<Comments[]> {
 export async function initUser(): Promise<User[]> {
   const res = await fetch('/api/init/user');
   const data = await res.json();
-  console.log(data);
-  
   return data;
 }
 

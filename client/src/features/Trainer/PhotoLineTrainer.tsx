@@ -24,11 +24,10 @@ function PhotoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
   };
 
   const filteredComments = useSelector((store: RootState) =>
-  store.coach.comments.filter((el) => el.files_id === file.id)
+    store.coach.comments.filter((el) => el.files_id === file.id)
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [commentsPerPage] = useState(5);
-console.log(currentPage);
 
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
@@ -45,7 +44,6 @@ console.log(currentPage);
   const prevPage = (): void => {
     setCurrentPage((prPage) => prPage - 1);
   };
- 
 
   // это для того чтобы все посты начинались с больой буквы
   const capitalized =
@@ -56,8 +54,10 @@ console.log(currentPage);
     setComent(text.target.value);
   }
 
+  const dateNow = new Date().toString()
+  
   function hendlerButtomCom(): void {
-    dispatch(addComments({ comments: coment, files_id: file.id }));
+    dispatch(addComments({ comments: coment, files_id: file.id, createdAt: dateNow }));
     setComent('');
   }
   useEffect(() => {
@@ -144,23 +144,23 @@ console.log(currentPage);
               ))}
             </div>
             <div className={styles.container_btn5_1}>
-                <button
-                  type="button"
-                  onClick={prevPage}
-                  className={styles.bn5}
-                  disabled={currentPage === 1}
-                >
-                  Предыдущая страница
-                </button>
-                <button
-                  type="button"
-                  className={styles.bn5}
-                  onClick={nextPage}
-                  disabled={currentComments.length < commentsPerPage}
-                >
-                  Следующая страница
-                </button>
-                </div>
+              <button
+                type="button"
+                onClick={prevPage}
+                className={styles.bn5}
+                disabled={currentPage === 1}
+              >
+                Предыдущая страница
+              </button>
+              <button
+                type="button"
+                className={styles.bn5}
+                onClick={nextPage}
+                disabled={currentComments.length < commentsPerPage}
+              >
+                Следующая страница
+              </button>
+            </div>
           </div>
         )}
       </div>
