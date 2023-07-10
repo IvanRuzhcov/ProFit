@@ -65,8 +65,11 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
     text.preventDefault();
     setComent(text.target.value);
   }
+
+  const dateNow = new Date().toString()
+
   function hendlerButtomCom(): void {
-    dispatch(addComments({ comments: coment, files_id: file.id }));
+    dispatch(addComments({ comments: coment, files_id: file.id, createdAt: dateNow }));
     setComent('');
   }
 
@@ -116,7 +119,7 @@ function VideoLineTrainer({ file }: { file: FileTrainer }): JSX.Element {
         </video>
         <div className={styles.soft_text_post}>
           {!show && (
-            <div className={styles.soft_text_post}>
+            <div className={styles.soft_text_post_small}>
               {capitalized.slice(0, 100)}...
             </div>
           )}

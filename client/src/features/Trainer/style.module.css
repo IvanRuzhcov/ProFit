@@ -717,3 +717,9 @@
   justify-content: center;
   
 }
+
+.date_message {
+  font-weight: 300;
+  padding-left: 20px;
+  font-size: 17px;
+}
